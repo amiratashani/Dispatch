@@ -2,7 +2,7 @@
   dependencies {
     detekt(<span style="color: #BA2121">&quot;io.gitlab.arturbosch.detekt:detekt-cli:1.9.1&quot;</span>)
 
-    detektPlugins(<span style="color: #BA2121">&quot;com.rickbusarow.dispatch:dispatch-detekt:1.0.0-beta03&quot;</span>)
+    detektPlugins(<span style="color: #BA2121">&quot;com.rickbusarow.dispatch:dispatch-detekt:1.0.0-beta04&quot;</span>)
   }
 }
 </pre></div> <h3 id=configuration>Configuration<a class=headerlink href=#configuration title="Permanent link">&para;</a></h3> <p>After adding the dependencies, you'll want to add parameters to your detekt config .yml file.</p> <p>If you don't already have a config file, you can create one by invoking:</p> <p><code>./gradlew detektGenerateConfig</code></p> <p>Then, add the following to the bottom of the <code>detekt-config.yml</code> file:</p> <div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">dispatch</span>:
