@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package dispatch.android.lifecycle
+package dispatch.android.lifecycle.internal
 
 import dispatch.core.*
 import kotlinx.coroutines.*
@@ -23,13 +23,15 @@ import kotlin.coroutines.*
 
 @OptIn(ExperimentalCoroutinesApi::class, ObsoleteCoroutinesApi::class)
 internal class PausingDispatcher(
-  private val coroutineScope: CoroutineScope
+  private val coroutineScope: CoroutineScope,
+  private val paused: MutableStateFlow<Boolean> = MutableStateFlow(false)
 ) : CoroutineDispatcher() {
+
+  private val delegate =
+    coroutineScope.coroutineContext[ContinuationInterceptor] as? CoroutineDispatcher
 
   private var finished: Boolean = false
   private var working: Boolean = false
-
-  val paused = MutableStateFlow(false)
 
   val a = coroutineScope.actor<Runnable>(capacity = Channel.UNLIMITED) {
     for (runnable in channel) {
@@ -61,7 +63,23 @@ internal class PausingDispatcher(
     a.close()
   }
 
-  override fun dispatch(context: CoroutineContext, block: Runnable) {
-    a.sendBlocking(block)
+  override fun isDispatchNeeded(context: CoroutineContext): Boolean {
+
+    return delegate?.isDispatchNeeded(context) ?: true
   }
+
+  override fun dispatch(context: CoroutineContext, block: Runnable) {
+    if (isDispatchNeeded(context)) {
+      copy(context).a.sendBlocking(block)
+    } else {
+      a.sendBlocking(block)
+    }
+  }
+
+  private fun copy(
+    context: CoroutineContext
+  ): PausingDispatcher = PausingDispatcher(
+    coroutineScope = coroutineScope + context,
+    paused = paused
+  )
 }
