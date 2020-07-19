@@ -23,7 +23,6 @@ import dispatch.core.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.flow.*
-import java.util.concurrent.atomic.*
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 internal fun LifecycleCoroutineScope.launchOn(
@@ -32,6 +31,13 @@ internal fun LifecycleCoroutineScope.launchOn(
   block: suspend CoroutineScope.() -> Unit
 ): Job = when (statePolicy) {
   CANCEL        -> launch { lifecycle.onNext(minimumState, block) }
+  PAUSE         -> launch {
+    val dispatcher = PausingDispatcher()
+    val observerJob = pauseWithState(minimumState, dispatcher)
+    withContext(dispatcher, block)
+    dispatcher.finish()
+    observerJob.cancel()
+  }
   RESTART_EVERY -> launchEvery(minimumState, block)
 }
 
@@ -41,20 +47,20 @@ internal suspend fun <T> Lifecycle.onNext(
 ): T? {
 
   var result: T? = null
-  val stateReached = AtomicBoolean(false)
+  var stateReached = false
 
   try {
     // suspend until the lifecycle's flow has reached the minimum state, then move on
     eventFlow(minimumState)
       .onEachLatest { stateIsHighEnough ->
         if (stateIsHighEnough) {
-          stateReached.compareAndSet(false, true)
+          stateReached = true
           coroutineScope { result = block() }
           throw FlowCancellationException()
         }
       }
       .collectUntil { stateIsHighEnough ->
-        !stateIsHighEnough && stateReached.get()
+        !stateIsHighEnough && stateReached
       }
   } catch (e: FlowCancellationException) {
     // do nothing
@@ -62,6 +68,21 @@ internal suspend fun <T> Lifecycle.onNext(
 
   return result
 }
+
+@Suppress("EXPERIMENTAL_API_USAGE")
+internal fun LifecycleCoroutineScope.pauseWithState(
+  minimumState: Lifecycle.State,
+  pausingDispatcher: PausingDispatcher
+): Job = lifecycle.eventFlow(minimumState)
+  .onEachLatest { stateIsHighEnough ->
+    if (stateIsHighEnough) {
+      pausingDispatcher.resume()
+    } else {
+      pausingDispatcher.pause()
+    }
+  }
+  .takeWhile { !pausingDispatcher.isEmpty() }
+  .launchIn(this)
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 internal fun LifecycleCoroutineScope.launchEvery(

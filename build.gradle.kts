@@ -224,13 +224,9 @@ subprojects {
 
         jvmTarget = "1.8"
 
-        // https://youtrack.jetbrains.com/issue/KT-24946
-        // freeCompilerArgs = listOf(
-        //     "-progressive",
-        //     "-Xskip-runtime-version-check",
-        //     "-Xdisable-default-scripting-plugin",
-        //     "-Xuse-experimental=kotlin.Experimental"
-        // )
+        freeCompilerArgs = listOf(
+          "-Xopt-in=kotlin.RequiresOptIn"
+        )
       }
     }
 }

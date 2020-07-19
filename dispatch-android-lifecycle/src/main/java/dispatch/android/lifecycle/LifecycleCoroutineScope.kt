@@ -140,6 +140,9 @@ open class LifecycleCoroutineScope(
      */
     CANCEL,
 
+    // TODO add kdoc
+    PAUSE,
+
     /**
      * When using `RESTART_EVERY`, a coroutine will be created every time the [lifecycle] meets the minimum state,
      * and will be cancelled upon dropping below it.
