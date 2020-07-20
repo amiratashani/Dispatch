@@ -15,7 +15,6 @@
 
 package dispatch.android.lifecycle.internal
 
-import dispatch.core.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.flow.*
@@ -24,11 +23,9 @@ import kotlin.coroutines.*
 @OptIn(ExperimentalCoroutinesApi::class, ObsoleteCoroutinesApi::class)
 internal class PausingDispatcher(
   private val coroutineScope: CoroutineScope,
-  private val paused: MutableStateFlow<Boolean> = MutableStateFlow(false)
+  private val paused: MutableStateFlow<Boolean> = MutableStateFlow(false),
+  private val delegate: CoroutineContext? = coroutineScope.coroutineContext[ContinuationInterceptor] as? CoroutineDispatcher
 ) : CoroutineDispatcher() {
-
-  private val delegate =
-    coroutineScope.coroutineContext[ContinuationInterceptor] as? CoroutineDispatcher
 
   private var finished: Boolean = false
   private var working: Boolean = false
@@ -37,25 +34,25 @@ internal class PausingDispatcher(
     for (runnable in channel) {
 
       if (paused.value) {
-        paused.takeWhile { shouldWait -> !shouldWait }
+        paused.takeWhile { shouldWait -> shouldWait }
           .collect()
       }
 
       working = true
-
+      println(this)
       runnable.run()
 
       working = false
     }
   }
 
-  suspend fun resume() = withMain {
+  fun resume() {
     if (!finished) {
       paused.value = false
     }
   }
 
-  suspend fun pause() = withMain {
+  fun pause() {
     paused.value = true
   }
 
@@ -63,13 +60,44 @@ internal class PausingDispatcher(
     a.close()
   }
 
-  override fun isDispatchNeeded(context: CoroutineContext): Boolean {
-
-    return delegate?.isDispatchNeeded(context) ?: true
-  }
+//  override fun isDispatchNeeded(context: CoroutineContext): Boolean {
+//
+//    return true
+//
+////    if (context === coroutineScope.coroutineContext) {
+////      return false
+////    }
+////
+////    val old = delegate
+////    val new = context.replacePausingWithDelegate()[ContinuationInterceptor]
+////
+////    println("""~~~~~~~~~~~~~~~~~~~~~~~~
+////      |$old
+////      |$new
+////    """.trimMargin())
+////
+////    return context.replacePausingWithDelegate()[ContinuationInterceptor] != coroutineScope.coroutineContext.replacePausingWithDelegate()[ContinuationInterceptor]
+//
+////    println(1)
+////    val newDelegate =
+////      (context[ContinuationInterceptor] as? PausingDispatcher)?.delegate ?: return true
+////    println(
+////      """2 -->
+////      |       $newDelegate
+////      |       $delegate""".trimMargin()
+////    )
+////    return newDelegate != delegate
+//  }
 
   override fun dispatch(context: CoroutineContext, block: Runnable) {
-    if (isDispatchNeeded(context)) {
+
+    val needed = isDispatchNeeded(context)
+
+    println("needed --> $needed")
+
+
+    if (needed) {
+
       copy(context).a.sendBlocking(block)
     } else {
       a.sendBlocking(block)
@@ -79,7 +107,8 @@ internal class PausingDispatcher(
   private fun copy(
     context: CoroutineContext
   ): PausingDispatcher = PausingDispatcher(
-    coroutineScope = coroutineScope + context,
-    paused = paused
+    coroutineScope = coroutineScope,
+    paused = paused,
+    delegate = context
   )
 }

@@ -27,6 +27,7 @@ public final class dispatch/android/lifecycle/LifecycleCoroutineScope$Companion 
 
 public final class dispatch/android/lifecycle/LifecycleCoroutineScope$MinimumStatePolicy : java/lang/Enum {
 	public static final field CANCEL Ldispatch/android/lifecycle/LifecycleCoroutineScope$MinimumStatePolicy;
+	public static final field PAUSE Ldispatch/android/lifecycle/LifecycleCoroutineScope$MinimumStatePolicy;
 	public static final field RESTART_EVERY Ldispatch/android/lifecycle/LifecycleCoroutineScope$MinimumStatePolicy;
 	public static fun valueOf (Ljava/lang/String;)Ldispatch/android/lifecycle/LifecycleCoroutineScope$MinimumStatePolicy;
 	public static fun values ()[Ldispatch/android/lifecycle/LifecycleCoroutineScope$MinimumStatePolicy;

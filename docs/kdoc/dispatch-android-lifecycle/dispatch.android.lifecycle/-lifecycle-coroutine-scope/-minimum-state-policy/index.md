@@ -12,4 +12,5 @@ before said [Job](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines
 | Name | Summary |
 |---|---|
 | [CANCEL](-c-a-n-c-e-l.md) | When using `CANCEL`, a coroutine will be created the first time the [lifecycle](../lifecycle.md) meets the minimum state, and cancelled upon dropping below it. Subsequently meeting the minimum state again will not resume the coroutine or create a new one. |
+| [PAUSE](-p-a-u-s-e.md) |  |
 | [RESTART_EVERY](-r-e-s-t-a-r-t_-e-v-e-r-y.md) | When using `RESTART_EVERY`, a coroutine will be created every time the [lifecycle](../lifecycle.md) meets the minimum state, and will be cancelled upon dropping below it. Subsequently meeting the minimum state again will create a new coroutine. |

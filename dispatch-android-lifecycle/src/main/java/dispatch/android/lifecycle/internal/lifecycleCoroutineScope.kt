@@ -23,7 +23,6 @@ import dispatch.core.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.flow.*
-import java.util.concurrent.atomic.*
 import kotlin.coroutines.*
 
 @Suppress("EXPERIMENTAL_API_USAGE")
@@ -34,13 +33,7 @@ internal fun LifecycleCoroutineScope.launchOn(
   block: suspend CoroutineScope.() -> Unit
 ): Job = when (statePolicy) {
   CANCEL        -> launch { lifecycle.onNext(context, minimumState, block) }
-  PAUSE         -> launch {
-    val dispatcher = PausingDispatcher()
-    val observerJob = pauseWithState(minimumState, dispatcher)
-    withContext(dispatcher, block)
-    dispatcher.finish()
-    observerJob.cancel()
-  }
+  PAUSE         -> launchPausingWithState(minimumState, block)
   RESTART_EVERY -> launchEvery(context, minimumState, block)
 }
 
@@ -79,19 +72,29 @@ internal suspend fun <T> Lifecycle.onNext(
 }
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-internal fun LifecycleCoroutineScope.pauseWithState(
+private fun LifecycleCoroutineScope.launchPausingWithState(
   minimumState: Lifecycle.State,
-  pausingDispatcher: PausingDispatcher
-): Job = lifecycle.eventFlow(minimumState)
-  .onEachLatest { stateIsHighEnough ->
-    if (stateIsHighEnough) {
-      pausingDispatcher.resume()
-    } else {
-      pausingDispatcher.pause()
+  block: suspend CoroutineScope.() -> Unit
+): Job = launch {
+
+  val dispatcher = PausingDispatcher(coroutineScope = this)
+
+  val observerJob = lifecycle.eventFlow(minimumState)
+    .onEachLatest { stateIsHighEnough ->
+      if (stateIsHighEnough) {
+        dispatcher.resume()
+      } else {
+        dispatcher.pause()
+      }
     }
-  }
-  .takeWhile { !pausingDispatcher.isEmpty() }
-  .launchIn(this)
+    .launchIn(this)
+
+  withContext(dispatcher, block)
+
+  dispatcher.finish()
+
+  observerJob.cancel()
+}
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 internal fun LifecycleCoroutineScope.launchEvery(
