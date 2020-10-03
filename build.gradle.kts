@@ -15,6 +15,7 @@
 
 @file:Suppress("MagicNumber")
 
+import formatting.sortDependencies
 import io.gitlab.arturbosch.detekt.*
 import kotlinx.knit.*
 import kotlinx.validation.*
@@ -329,12 +330,23 @@ val generateDependencyGraph by tasks.registering {
   }
 }
 
+val sortDependencies by tasks.registering {
+
+  description = "sort all dependencies in a gradle kts file"
+  group = "refactor"
+
+  doLast {
+    sortDependencies()
+  }
+}
+
 subprojects {
 
   // force update all transitive dependencies (prevents some library leaking an old version)
   configurations.all {
     resolutionStrategy {
       force(
+        Libs.Kotlin.reflect,
         // androidx is currently leaking coroutines 1.1.1 everywhere
         Libs.Kotlinx.Coroutines.core,
         Libs.Kotlinx.Coroutines.test,

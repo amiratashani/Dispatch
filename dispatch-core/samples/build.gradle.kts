@@ -23,21 +23,18 @@ plugins {
 sourceSets["test"].java.srcDir("test")
 
 dependencies {
-  implementation(Libs.Kotlin.stdlib)
 
+  implementation(Libs.Kotlin.stdlib)
   implementation(Libs.Kotlinx.Coroutines.core)
 
   implementation(project(":dispatch-core"))
 
   testImplementation(Libs.JUnit.jUnit5)
   testImplementation(Libs.Kotest.assertions)
-  testImplementation(Libs.Kotest.consoleRunner)
   testImplementation(Libs.Kotest.properties)
   testImplementation(Libs.Kotest.runner)
-
   testImplementation(Libs.Kotlin.test)
   testImplementation(Libs.Kotlin.testCommon)
-
   testImplementation(Libs.Kotlinx.Coroutines.test)
 
 }
