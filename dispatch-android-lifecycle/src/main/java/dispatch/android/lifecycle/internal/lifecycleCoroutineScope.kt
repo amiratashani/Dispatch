@@ -17,22 +17,22 @@
 package dispatch.android.lifecycle.internal
 
 import androidx.lifecycle.*
-import dispatch.android.lifecycle.*
 import dispatch.android.lifecycle.LifecycleCoroutineScope.MinimumStatePolicy.*
 import dispatch.core.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.flow.*
 import kotlin.coroutines.*
+import dispatch.android.lifecycle.LifecycleCoroutineScope as DispatchLifecycleCoroutineScope
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-internal fun LifecycleCoroutineScope.launchOn(
+internal fun DispatchLifecycleCoroutineScope.launchOn(
   context: CoroutineContext,
   minimumState: Lifecycle.State,
-  statePolicy: LifecycleCoroutineScope.MinimumStatePolicy,
+  statePolicy: DispatchLifecycleCoroutineScope.MinimumStatePolicy,
   block: suspend CoroutineScope.() -> Unit
 ): Job = when (statePolicy) {
-  CANCEL        -> launch { lifecycle.onNext(context, minimumState, block) }
+  CANCEL -> launch { lifecycle.onNext(context, minimumState, block) }
   PAUSE         -> launchPausingWithState(minimumState, block)
   RESTART_EVERY -> launchEvery(context, minimumState, block)
 }
@@ -97,7 +97,7 @@ private fun LifecycleCoroutineScope.launchPausingWithState(
 }
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-internal fun LifecycleCoroutineScope.launchEvery(
+internal fun DispatchLifecycleCoroutineScope.launchEvery(
   context: CoroutineContext,
   minimumState: Lifecycle.State,
   block: suspend CoroutineScope.() -> Unit
