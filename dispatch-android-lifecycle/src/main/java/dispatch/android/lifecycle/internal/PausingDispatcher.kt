@@ -21,6 +21,7 @@ import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.flow.*
 import kotlin.coroutines.*
 
+@ExperimentalDispatchApi
 interface PausingCoroutineScope : CoroutineScope,
                                   PauseController {
   companion object {
@@ -51,7 +52,14 @@ interface PausingCoroutineScope : CoroutineScope,
         )
       }
 
-      override val coroutineContext: CoroutineContext = delegate.coroutineContext + dp
+      override val coroutineContext: CoroutineContext =
+        delegate.coroutineContext + dp + delegate.coroutineContext[ContinuationInterceptor].let { continuationInterceptor ->
+          when (continuationInterceptor) {
+            is PausingDispatcher -> continuationInterceptor
+            is CoroutineDispatcher -> PausingDispatcher(delegate, continuationInterceptor, lock)
+            else                   -> dp.default
+          }
+        }
 
       override fun resume() {
         lock.value = false
@@ -64,8 +72,10 @@ interface PausingCoroutineScope : CoroutineScope,
   }
 }
 
+@ExperimentalDispatchApi
 fun CoroutineScope.pausing() = PausingCoroutineScope(this)
 
+@ExperimentalDispatchApi
 interface PausingDispatcherProvider : DispatcherProvider {
   override val default: PausingDispatcher
   override val io: PausingDispatcher
@@ -93,18 +103,32 @@ interface PausingDispatcherProvider : DispatcherProvider {
   }
 }
 
+@ExperimentalDispatchApi
 interface PausingContinuationInterceptor : PauseController,
                                            ContinuationInterceptor
 
+@ExperimentalDispatchApi
 interface PauseController {
   fun resume()
   fun pause()
 }
 
+/**
+ * Marks declarations that are still **experimental** in coroutines API, which means that the design of the
+ * corresponding declarations has open issues which may (or may not) lead to their changes in the future.
+ * Roughly speaking, there is a chance that those declarations will be deprecated in the near future or
+ * the semantics of their behavior may change in some way that may break some code.
+ */
+@MustBeDocumented
+@Retention(value = AnnotationRetention.BINARY)
+@RequiresOptIn(level = RequiresOptIn.Level.WARNING)
+public annotation class ExperimentalDispatchApi
+
+@ExperimentalDispatchApi
 @OptIn(ExperimentalCoroutinesApi::class, ObsoleteCoroutinesApi::class)
 class PausingDispatcher(
-  private val coroutineScope: CoroutineScope,
-  private val delegate: CoroutineDispatcher,
+  coroutineScope: CoroutineScope,
+  delegate: CoroutineDispatcher,
   private val paused: MutableStateFlow<Boolean> = MutableStateFlow(false)
 ) : CoroutineDispatcher(),
     PausingContinuationInterceptor {
@@ -112,9 +136,8 @@ class PausingDispatcher(
   private var finished: Boolean = false
   private var working: Boolean = false
 
-  init {
-    require(coroutineScope.coroutineContext[ContinuationInterceptor] !is PausingDispatcher) { "actor's dispatcher can't be a pausing dispatcher" }
-  }
+  private val delegate: CoroutineDispatcher =
+    (delegate as? PausingDispatcher)?.delegate ?: delegate
 
   val actor = coroutineScope.actor<DelegatedArgs>(capacity = Channel.UNLIMITED) {
     for ((context, block) in channel) {
@@ -126,7 +149,7 @@ class PausingDispatcher(
 
       working = true
 
-      delegate.dispatch(context, block)
+      this@PausingDispatcher.delegate.dispatch(context, block)
 
       working = false
     }

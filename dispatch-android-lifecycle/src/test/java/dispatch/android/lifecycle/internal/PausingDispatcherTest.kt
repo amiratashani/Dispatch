@@ -33,7 +33,7 @@ internal class PausingDispatcherTest : HermitJUnit5() {
 
     val dispatchers = List(5) { newSingleThreadContext("single $it") }
 
-    val tdp = object : DispatcherProvider {
+    val dp = object : DispatcherProvider {
       override val default = dispatchers[0]
       override val io = dispatchers[1]
       override val main = dispatchers[2]
@@ -43,20 +43,23 @@ internal class PausingDispatcherTest : HermitJUnit5() {
 
     val alien = newSingleThreadContext("alien")
 
-    val scope = CoroutineScope(tdp).pausing()
+    val pausingScope = CoroutineScope(Job() + dp.default + dp).pausing()
+    val pausingScope2 = pausingScope.pausing()
+
+    println(pausingScope2)
 
     launch {
       repeat(10) {
         delay(1000)
         println("going to resume")
-        scope.resume()
+        pausingScope.resume()
         println("resumed")
       }
     }
 
 //    val out = mutableListOf<String>()
 
-    val job = scope.launch {
+    val job = pausingScope.launch {
 
       println("1 --> ${Thread.currentThread()}")
       delay(100)
@@ -66,7 +69,7 @@ internal class PausingDispatcherTest : HermitJUnit5() {
         println("2 --> ${Thread.currentThread()}")
 
         println("going to pause")
-        scope.pause()
+        pausingScope.pause()
         println("paused")
         delay(100)
 
@@ -75,7 +78,7 @@ internal class PausingDispatcherTest : HermitJUnit5() {
           println("3 --> ${Thread.currentThread()}")
 
           println("going to pause")
-          scope.pause()
+          pausingScope.pause()
           println("paused")
 
           delay(100)
@@ -85,7 +88,7 @@ internal class PausingDispatcherTest : HermitJUnit5() {
             println("4 --> ${Thread.currentThread()}")
 
             println("going to pause")
-            scope.pause()
+            pausingScope.pause()
             println("paused")
             delay(100)
 
@@ -94,7 +97,7 @@ internal class PausingDispatcherTest : HermitJUnit5() {
               println("5 --> ${Thread.currentThread()}")
 
               println("going to pause")
-              scope.pause()
+              pausingScope.pause()
               println("paused")
               delay(100)
 
@@ -103,7 +106,7 @@ internal class PausingDispatcherTest : HermitJUnit5() {
                 println("6 --> ${Thread.currentThread()}")
 
                 println("going to pause")
-                scope.pause()
+                pausingScope.pause()
                 println("paused")
                 delay(100)
 
