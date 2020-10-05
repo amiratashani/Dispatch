@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 package dispatch.android.lifecycle.internal
 
 import androidx.lifecycle.*
@@ -33,7 +32,7 @@ internal fun DispatchLifecycleCoroutineScope.launchOn(
   block: suspend CoroutineScope.() -> Unit
 ): Job = when (statePolicy) {
   CANCEL -> launch { lifecycle.onNext(context, minimumState, block) }
-  PAUSE         -> launchPausingWithState(minimumState, block)
+  PAUSE -> launchPausingWithState(minimumState, block)
   RESTART_EVERY -> launchEvery(context, minimumState, block)
 }
 
@@ -48,7 +47,7 @@ internal suspend fun <T> Lifecycle.onNext(
   var stateReached = false
 
   try {
-    // suspend until the lifecycle's flow has reached the minimum state, then move on
+    // suspend until the lifecycle's flow as reached the minimum state, then move on
     eventFlow(minimumState)
       .onEachLatest { stateIsHighEnough ->
         if (stateIsHighEnough) {
@@ -72,12 +71,12 @@ internal suspend fun <T> Lifecycle.onNext(
 }
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-private fun LifecycleCoroutineScope.launchPausingWithState(
+private fun DispatchLifecycleCoroutineScope.launchPausingWithState(
   minimumState: Lifecycle.State,
   block: suspend CoroutineScope.() -> Unit
 ): Job = launch {
 
-  val dispatcher = PausingDispatcher(coroutineScope = this)
+  val dispatcher = PausingDispatcher(coroutineScope = this, mainDispatcher)
 
   val observerJob = lifecycle.eventFlow(minimumState)
     .onEachLatest { stateIsHighEnough ->

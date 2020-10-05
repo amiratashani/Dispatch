@@ -15,23 +15,109 @@
 
 package dispatch.android.lifecycle.internal
 
+import dispatch.core.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.flow.*
 import kotlin.coroutines.*
 
+interface PausingCoroutineScope : CoroutineScope,
+                                  PauseController {
+  companion object {
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    operator fun invoke(delegate: CoroutineScope) = object : PausingCoroutineScope {
+
+      private val lock = MutableStateFlow(false)
+
+      val dp = object : PausingDispatcherProvider {
+
+        val delegateProvider = delegate.dispatcherProvider
+
+        override val default: PausingDispatcher = PausingDispatcher(
+          delegate, delegateProvider.default, lock
+        )
+        override val io: PausingDispatcher = PausingDispatcher(
+          delegate, delegateProvider.io, lock
+        )
+        override val main: PausingDispatcher = PausingDispatcher(
+          delegate, delegateProvider.main, lock
+        )
+        override val mainImmediate: PausingDispatcher = PausingDispatcher(
+          delegate, delegateProvider.mainImmediate, lock
+        )
+        override val unconfined: PausingDispatcher = PausingDispatcher(
+          delegate, delegateProvider.unconfined, lock
+        )
+      }
+
+      override val coroutineContext: CoroutineContext = delegate.coroutineContext + dp
+
+      override fun resume() {
+        lock.value = false
+      }
+
+      override fun pause() {
+        lock.value = true
+      }
+    }
+  }
+}
+
+fun CoroutineScope.pausing() = PausingCoroutineScope(this)
+
+interface PausingDispatcherProvider : DispatcherProvider {
+  override val default: PausingDispatcher
+  override val io: PausingDispatcher
+  override val main: PausingDispatcher
+  override val mainImmediate: PausingDispatcher
+  override val unconfined: PausingDispatcher
+
+  companion object {
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    operator fun invoke(
+      scope: CoroutineScope,
+      dispatcherProvider: DispatcherProvider = scope.dispatcherProvider
+    ) = object : PausingDispatcherProvider {
+      private val lock = MutableStateFlow(false)
+      override val default: PausingDispatcher =
+        PausingDispatcher(scope, dispatcherProvider.default, lock)
+      override val io: PausingDispatcher = PausingDispatcher(scope, dispatcherProvider.io, lock)
+      override val main: PausingDispatcher = PausingDispatcher(scope, dispatcherProvider.main, lock)
+      override val mainImmediate: PausingDispatcher =
+        PausingDispatcher(scope, dispatcherProvider.mainImmediate, lock)
+      override val unconfined: PausingDispatcher =
+        PausingDispatcher(scope, dispatcherProvider.unconfined, lock)
+    }
+  }
+}
+
+interface PausingContinuationInterceptor : PauseController,
+                                           ContinuationInterceptor
+
+interface PauseController {
+  fun resume()
+  fun pause()
+}
+
 @OptIn(ExperimentalCoroutinesApi::class, ObsoleteCoroutinesApi::class)
-internal class PausingDispatcher(
+class PausingDispatcher(
   private val coroutineScope: CoroutineScope,
-  private val paused: MutableStateFlow<Boolean> = MutableStateFlow(false),
-  private val delegate: CoroutineContext? = coroutineScope.coroutineContext[ContinuationInterceptor] as? CoroutineDispatcher
-) : CoroutineDispatcher() {
+  private val delegate: CoroutineDispatcher,
+  private val paused: MutableStateFlow<Boolean> = MutableStateFlow(false)
+) : CoroutineDispatcher(),
+    PausingContinuationInterceptor {
 
   private var finished: Boolean = false
   private var working: Boolean = false
 
-  val a = coroutineScope.actor<Runnable>(capacity = Channel.UNLIMITED) {
-    for (runnable in channel) {
+  init {
+    require(coroutineScope.coroutineContext[ContinuationInterceptor] !is PausingDispatcher) { "actor's dispatcher can't be a pausing dispatcher" }
+  }
+
+  val actor = coroutineScope.actor<DelegatedArgs>(capacity = Channel.UNLIMITED) {
+    for ((context, block) in channel) {
 
       if (paused.value) {
         paused.takeWhile { shouldWait -> shouldWait }
@@ -39,76 +125,31 @@ internal class PausingDispatcher(
       }
 
       working = true
-      println(this)
-      runnable.run()
+
+      delegate.dispatch(context, block)
 
       working = false
     }
   }
 
-  fun resume() {
+  override fun resume() {
     if (!finished) {
       paused.value = false
     }
   }
 
-  fun pause() {
+  override fun pause() {
     paused.value = true
   }
 
   fun finish() {
-    a.close()
+    actor.close()
   }
-
-//  override fun isDispatchNeeded(context: CoroutineContext): Boolean {
-//
-//    return true
-//
-////    if (context === coroutineScope.coroutineContext) {
-////      return false
-////    }
-////
-////    val old = delegate
-////    val new = context.replacePausingWithDelegate()[ContinuationInterceptor]
-////
-////    println("""~~~~~~~~~~~~~~~~~~~~~~~~
-////      |$old
-////      |$new
-////    """.trimMargin())
-////
-////    return context.replacePausingWithDelegate()[ContinuationInterceptor] != coroutineScope.coroutineContext.replacePausingWithDelegate()[ContinuationInterceptor]
-//
-////    println(1)
-////    val newDelegate =
-////      (context[ContinuationInterceptor] as? PausingDispatcher)?.delegate ?: return true
-////    println(
-////      """2 -->
-////      |       $newDelegate
-////      |       $delegate""".trimMargin()
-////    )
-////    return newDelegate != delegate
-//  }
 
   override fun dispatch(context: CoroutineContext, block: Runnable) {
 
-    val needed = isDispatchNeeded(context)
-
-    println("needed --> $needed")
-
-
-    if (needed) {
-
-      copy(context).a.sendBlocking(block)
-    } else {
-      a.sendBlocking(block)
-    }
+    actor.sendBlocking(DelegatedArgs(context, block))
   }
 
-  private fun copy(
-    context: CoroutineContext
-  ): PausingDispatcher = PausingDispatcher(
-    coroutineScope = coroutineScope,
-    paused = paused,
-    delegate = context
-  )
+  data class DelegatedArgs(val context: CoroutineContext, val block: Runnable)
 }

@@ -15,79 +15,109 @@
 
 package dispatch.android.lifecycle.internal
 
+import dispatch.core.*
 import dispatch.test.*
-import hermit.test.coroutines.*
 import hermit.test.junit.*
 import kotlinx.coroutines.*
 import org.junit.jupiter.api.*
-import kotlin.coroutines.*
 
 @CoroutineTest
 @ObsoleteCoroutinesApi
 @ExperimentalCoroutinesApi
 internal class PausingDispatcherTest : HermitJUnit5() {
 
-  val testScope by resetsScope<TestProvidedCoroutineScope>()
+//  val testScope by resetsScope<TestProvidedCoroutineScope>()
 
   @Test
   fun delegation() = runBlocking<Unit> {
 
     val dispatchers = List(5) { newSingleThreadContext("single $it") }
 
-    val rd = newSingleThreadContext("root")
-    val rd2 = newSingleThreadContext("2")
+    val tdp = object : DispatcherProvider {
+      override val default = dispatchers[0]
+      override val io = dispatchers[1]
+      override val main = dispatchers[2]
+      override val mainImmediate = dispatchers[3]
+      override val unconfined = dispatchers[4]
+    }
 
-    val scope = CoroutineScope(rd)
+    val alien = newSingleThreadContext("alien")
 
-    val root = PausingDispatcher(scope)
+    val scope = CoroutineScope(tdp).pausing()
 
-    println(root)
+    launch {
+      repeat(10) {
+        delay(1000)
+        println("going to resume")
+        scope.resume()
+        println("resumed")
+      }
+    }
 
 //    val out = mutableListOf<String>()
 
-    withContext(root) {
-      println("====================")
+    val job = scope.launch {
 
-      withContext(rd2) {
-        println("------------------------")
-//        root.pause()
-        delay(100)
-        println(".......................")
-      }
-      println("99999999999999")
-    }
-    val job = launch(root) {
-
-      println(" --> ${coroutineContext[ContinuationInterceptor]}")
+      println("1 --> ${Thread.currentThread()}")
       delay(100)
-      withContext(dispatchers[0]) {
-        println(" --> ${coroutineContext[ContinuationInterceptor]}")
-        delay(100)
-        withContext(dispatchers[1]) {
-          println(" --> ${coroutineContext[ContinuationInterceptor]}")
 
-          root.pause()
+      withDefault {
+
+        println("2 --> ${Thread.currentThread()}")
+
+        println("going to pause")
+        scope.pause()
+        println("paused")
+        delay(100)
+
+        withContext(alien) {
+
+          println("3 --> ${Thread.currentThread()}")
+
+          println("going to pause")
+          scope.pause()
+          println("paused")
+
           delay(100)
-          withContext(dispatchers[2]) {
-            println(" --> ${coroutineContext[ContinuationInterceptor]}")
+
+          withMain {
+
+            println("4 --> ${Thread.currentThread()}")
+
+            println("going to pause")
+            scope.pause()
+            println("paused")
             delay(100)
-            withContext(dispatchers[3]) {
-              println(" --> ${coroutineContext[ContinuationInterceptor]}")
+
+            withMainImmediate {
+
+              println("5 --> ${Thread.currentThread()}")
+
+              println("going to pause")
+              scope.pause()
+              println("paused")
               delay(100)
-              withContext(dispatchers[4]) {
-                println(" --> ${coroutineContext[ContinuationInterceptor]}")
+
+              withUnconfined {
+
+                println("6 --> ${Thread.currentThread()}")
+
+                println("going to pause")
+                scope.pause()
+                println("paused")
                 delay(100)
-                println(" <-- ${coroutineContext[ContinuationInterceptor]}")
+
+                println(" <-- ${Thread.currentThread()}")
               }
-              println(" <-- ${coroutineContext[ContinuationInterceptor]}")
+              println(" <-- ${Thread.currentThread()}")
             }
-            println(" <-- ${coroutineContext[ContinuationInterceptor]}")
+            println(" <-- ${Thread.currentThread()}")
           }
-          println(" <-- ${coroutineContext[ContinuationInterceptor]}")
+          println(" <-- ${Thread.currentThread()}")
         }
-        println(" <-- ${coroutineContext[ContinuationInterceptor]}")
+        println(" <-- ${Thread.currentThread()}")
       }
-      println(" <-- ${coroutineContext[ContinuationInterceptor]}")
+      println(" <-- ${Thread.currentThread()}")
     }
     job.join()
   }
