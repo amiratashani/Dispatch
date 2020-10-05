@@ -15,6 +15,7 @@
 
 package dispatch.android.lifecycle.internal
 
+import dispatch.android.lifecycle.*
 import dispatch.core.*
 import dispatch.test.*
 import hermit.test.junit.*
@@ -22,6 +23,7 @@ import kotlinx.coroutines.*
 import org.junit.jupiter.api.*
 
 @CoroutineTest
+@ExperimentalDispatchApi
 @ObsoleteCoroutinesApi
 @ExperimentalCoroutinesApi
 internal class PausingDispatcherTest : HermitJUnit5() {

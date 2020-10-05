@@ -15,6 +15,7 @@
 
 package dispatch.android.lifecycle.internal
 
+import dispatch.android.lifecycle.*
 import dispatch.core.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
@@ -22,122 +23,81 @@ import kotlinx.coroutines.flow.*
 import kotlin.coroutines.*
 
 @ExperimentalDispatchApi
-interface PausingCoroutineScope : CoroutineScope,
-                                  PauseController {
-  companion object {
+@OptIn(ExperimentalCoroutinesApi::class)
+class PausingCoroutineScopeImpl(private val delegate: CoroutineScope) : PausingCoroutineScope {
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    operator fun invoke(delegate: CoroutineScope) = object : PausingCoroutineScope {
+  private val lock = MutableStateFlow(false)
 
-      private val lock = MutableStateFlow(false)
+  val dp = object : PausingDispatcherProvider {
 
-      val dp = object : PausingDispatcherProvider {
+    val delegateProvider = delegate.dispatcherProvider
 
-        val delegateProvider = delegate.dispatcherProvider
+    override val default: PausingDispatcher = PausingDispatcherImpl(
+      delegate, delegateProvider.default, lock
+    )
+    override val io: PausingDispatcher = PausingDispatcherImpl(
+      delegate, delegateProvider.io, lock
+    )
+    override val main: PausingDispatcher = PausingDispatcherImpl(
+      delegate, delegateProvider.main, lock
+    )
+    override val mainImmediate: PausingDispatcher = PausingDispatcherImpl(
+      delegate, delegateProvider.mainImmediate, lock
+    )
+    override val unconfined: PausingDispatcher = PausingDispatcherImpl(
+      delegate, delegateProvider.unconfined, lock
+    )
+  }
 
-        override val default: PausingDispatcher = PausingDispatcher(
-          delegate, delegateProvider.default, lock
-        )
-        override val io: PausingDispatcher = PausingDispatcher(
-          delegate, delegateProvider.io, lock
-        )
-        override val main: PausingDispatcher = PausingDispatcher(
-          delegate, delegateProvider.main, lock
-        )
-        override val mainImmediate: PausingDispatcher = PausingDispatcher(
-          delegate, delegateProvider.mainImmediate, lock
-        )
-        override val unconfined: PausingDispatcher = PausingDispatcher(
-          delegate, delegateProvider.unconfined, lock
-        )
-      }
-
-      override val coroutineContext: CoroutineContext =
-        delegate.coroutineContext + dp + delegate.coroutineContext[ContinuationInterceptor].let { continuationInterceptor ->
-          when (continuationInterceptor) {
-            is PausingDispatcher -> continuationInterceptor
-            is CoroutineDispatcher -> PausingDispatcher(delegate, continuationInterceptor, lock)
-            else                   -> dp.default
-          }
-        }
-
-      override fun resume() {
-        lock.value = false
-      }
-
-      override fun pause() {
-        lock.value = true
+  override val coroutineContext: CoroutineContext =
+    delegate.coroutineContext + dp + delegate.coroutineContext[ContinuationInterceptor].let { continuationInterceptor ->
+      when (continuationInterceptor) {
+        is PausingDispatcher -> continuationInterceptor
+        is CoroutineDispatcher -> PausingDispatcherImpl(delegate, continuationInterceptor, lock)
+        else                   -> dp.default
       }
     }
+
+  override fun resume() {
+    lock.value = false
+  }
+
+  override fun pause() {
+    lock.value = true
   }
 }
 
 @ExperimentalDispatchApi
-fun CoroutineScope.pausing() = PausingCoroutineScope(this)
+@OptIn(ExperimentalCoroutinesApi::class)
+class PausingDispatcherProviderImpl(
+  private val scope: CoroutineScope,
+  private val dispatcherProvider: DispatcherProvider
+) : PausingDispatcherProvider {
 
-@ExperimentalDispatchApi
-interface PausingDispatcherProvider : DispatcherProvider {
-  override val default: PausingDispatcher
-  override val io: PausingDispatcher
-  override val main: PausingDispatcher
-  override val mainImmediate: PausingDispatcher
-  override val unconfined: PausingDispatcher
-
-  companion object {
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    operator fun invoke(
-      scope: CoroutineScope,
-      dispatcherProvider: DispatcherProvider = scope.dispatcherProvider
-    ) = object : PausingDispatcherProvider {
-      private val lock = MutableStateFlow(false)
-      override val default: PausingDispatcher =
-        PausingDispatcher(scope, dispatcherProvider.default, lock)
-      override val io: PausingDispatcher = PausingDispatcher(scope, dispatcherProvider.io, lock)
-      override val main: PausingDispatcher = PausingDispatcher(scope, dispatcherProvider.main, lock)
-      override val mainImmediate: PausingDispatcher =
-        PausingDispatcher(scope, dispatcherProvider.mainImmediate, lock)
-      override val unconfined: PausingDispatcher =
-        PausingDispatcher(scope, dispatcherProvider.unconfined, lock)
-    }
-  }
+  private val lock = MutableStateFlow(false)
+  override val default: PausingDispatcher =
+    PausingDispatcherImpl(scope, dispatcherProvider.default, lock)
+  override val io: PausingDispatcher = PausingDispatcherImpl(scope, dispatcherProvider.io, lock)
+  override val main: PausingDispatcher = PausingDispatcherImpl(scope, dispatcherProvider.main, lock)
+  override val mainImmediate: PausingDispatcher =
+    PausingDispatcherImpl(scope, dispatcherProvider.mainImmediate, lock)
+  override val unconfined: PausingDispatcher =
+    PausingDispatcherImpl(scope, dispatcherProvider.unconfined, lock)
 }
-
-@ExperimentalDispatchApi
-interface PausingContinuationInterceptor : PauseController,
-                                           ContinuationInterceptor
-
-@ExperimentalDispatchApi
-interface PauseController {
-  fun resume()
-  fun pause()
-}
-
-/**
- * Marks declarations that are still **experimental** in coroutines API, which means that the design of the
- * corresponding declarations has open issues which may (or may not) lead to their changes in the future.
- * Roughly speaking, there is a chance that those declarations will be deprecated in the near future or
- * the semantics of their behavior may change in some way that may break some code.
- */
-@MustBeDocumented
-@Retention(value = AnnotationRetention.BINARY)
-@RequiresOptIn(level = RequiresOptIn.Level.WARNING)
-public annotation class ExperimentalDispatchApi
 
 @ExperimentalDispatchApi
 @OptIn(ExperimentalCoroutinesApi::class, ObsoleteCoroutinesApi::class)
-class PausingDispatcher(
+class PausingDispatcherImpl(
   coroutineScope: CoroutineScope,
   delegate: CoroutineDispatcher,
   private val paused: MutableStateFlow<Boolean> = MutableStateFlow(false)
-) : CoroutineDispatcher(),
-    PausingContinuationInterceptor {
+) : PausingDispatcher() {
 
   private var finished: Boolean = false
   private var working: Boolean = false
 
   private val delegate: CoroutineDispatcher =
-    (delegate as? PausingDispatcher)?.delegate ?: delegate
+    (delegate as? PausingDispatcherImpl)?.delegate ?: delegate
 
   val actor = coroutineScope.actor<DelegatedArgs>(capacity = Channel.UNLIMITED) {
     for ((context, block) in channel) {
@@ -149,7 +109,7 @@ class PausingDispatcher(
 
       working = true
 
-      this@PausingDispatcher.delegate.dispatch(context, block)
+      this@PausingDispatcherImpl.delegate.dispatch(context, block)
 
       working = false
     }
@@ -163,10 +123,6 @@ class PausingDispatcher(
 
   override fun pause() {
     paused.value = true
-  }
-
-  fun finish() {
-    actor.close()
   }
 
   override fun dispatch(context: CoroutineContext, block: Runnable) {

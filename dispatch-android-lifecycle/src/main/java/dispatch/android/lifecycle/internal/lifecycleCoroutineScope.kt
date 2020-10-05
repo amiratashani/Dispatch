@@ -16,6 +16,7 @@
 package dispatch.android.lifecycle.internal
 
 import androidx.lifecycle.*
+import dispatch.android.lifecycle.*
 import dispatch.android.lifecycle.LifecycleCoroutineScope.MinimumStatePolicy.*
 import dispatch.core.*
 import kotlinx.coroutines.*
@@ -76,7 +77,7 @@ private fun DispatchLifecycleCoroutineScope.launchPausingWithState(
   block: suspend CoroutineScope.() -> Unit
 ): Job = launch {
 
-  val dispatcher = PausingDispatcher(coroutineScope = this, mainDispatcher)
+  val dispatcher = pausing()
 
   val observerJob = lifecycle.eventFlow(minimumState)
     .onEachLatest { stateIsHighEnough ->
@@ -88,9 +89,7 @@ private fun DispatchLifecycleCoroutineScope.launchPausingWithState(
     }
     .launchIn(this)
 
-  withContext(dispatcher, block)
-
-  dispatcher.finish()
+  dispatcher.block()
 
   observerJob.cancel()
 }
