@@ -23,7 +23,9 @@ import kotlin.coroutines.*
 @ExperimentalDispatchApi
 abstract class PausingDispatcher : CoroutineDispatcher(),
                                    PausingContinuationInterceptor,
-                                   PauseController
+                                   PauseController {
+  abstract fun close(cause: Throwable? = null)
+}
 
 @ExperimentalDispatchApi
 fun PausingDispatcher(
@@ -32,13 +34,15 @@ fun PausingDispatcher(
 ): PausingDispatcher = PausingDispatcherImpl(coroutineScope, delegate)
 
 @ExperimentalDispatchApi
-interface PausingDispatcherProvider : DispatcherProvider {
+interface PausingDispatcherProvider : DispatcherProvider,
+                                      PauseController {
   override val default: PausingDispatcher
   override val io: PausingDispatcher
   override val main: PausingDispatcher
   override val mainImmediate: PausingDispatcher
   override val unconfined: PausingDispatcher
 
+  fun close(cause: Throwable? = null)
 }
 
 @ExperimentalDispatchApi

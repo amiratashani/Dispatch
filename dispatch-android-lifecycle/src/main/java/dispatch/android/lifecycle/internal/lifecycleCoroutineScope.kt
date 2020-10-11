@@ -181,7 +181,7 @@ internal fun <T> Flow<T>.onEachLatest(action: suspend (T) -> Unit) = transformLa
  * @return null if this channel is closed for send.
  * @see sendBlocking
  */
-private fun <E> SendChannel<E>.sendBlockingOrNull(element: E) = try {
+internal fun <E> SendChannel<E>.sendBlockingOrNull(element: E) = try {
   sendBlocking(element)
 } catch (e: ClosedSendChannelException) {
   null

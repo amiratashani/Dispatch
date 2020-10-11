@@ -18,115 +18,119 @@ package dispatch.android.lifecycle.internal
 import dispatch.android.lifecycle.*
 import dispatch.core.*
 import dispatch.test.*
-import hermit.test.junit.*
+import io.kotest.assertions.*
+import io.kotest.assertions.throwables.*
+import io.kotest.core.spec.style.*
+import io.kotest.matchers.*
 import kotlinx.coroutines.*
-import org.junit.jupiter.api.*
+import kotlinx.coroutines.channels.*
+import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
 
 @CoroutineTest
 @ExperimentalDispatchApi
 @ObsoleteCoroutinesApi
 @ExperimentalCoroutinesApi
-internal class PausingDispatcherTest : HermitJUnit5() {
+internal class PausingDispatcherTest : FreeSpec(
+  {
 
-//  val testScope by resetsScope<TestProvidedCoroutineScope>()
+    val testScope = TestProvidedCoroutineScope()
 
-  @Test
-  fun delegation() = runBlocking<Unit> {
+    val out = Channel<Int>(UNLIMITED)
 
-    val dispatchers = List(5) { newSingleThreadContext("single $it") }
+    val delegate = RecordingDispatcher("delegate")
 
-    val dp = object : DispatcherProvider {
-      override val default = dispatchers[0]
-      override val io = dispatchers[1]
-      override val main = dispatchers[2]
-      override val mainImmediate = dispatchers[3]
-      override val unconfined = dispatchers[4]
+    val pausingDispatcher = PausingDispatcher(testScope, delegate)
+
+    afterTest {
+      pausingDispatcher.close()
+      testScope.cleanupTestCoroutines()
     }
 
-    val alien = newSingleThreadContext("alien")
+    "delegation" - {
 
-    val pausingScope = CoroutineScope(Job() + dp.default + dp).pausing()
-    val pausingScope2 = pausingScope.pausing()
+      "should delegate dispatch when not paused" {
 
-    println(pausingScope2)
+        val pausingJob = launch(pausingDispatcher) { out.send(1) }
 
-    launch {
-      repeat(10) {
-        delay(1000)
-        println("going to resume")
-        pausingScope.resume()
-        println("resumed")
+        out.receive() shouldBe 1
+        delegate.dispatchCount.get() shouldBe 1
+
+        pausingJob.join()
       }
-    }
 
-//    val out = mutableListOf<String>()
+      "should not delegate dispatch when paused" {
 
-    val job = pausingScope.launch {
+        pausingDispatcher.pause()
 
-      println("1 --> ${Thread.currentThread()}")
-      delay(100)
+        pausingDispatcher.dispatch(coroutineContext) {}
 
-      withDefault {
+        delegate.dispatchCount.get() shouldBe 0
+      }
 
-        println("2 --> ${Thread.currentThread()}")
+      "should delegate dispatch after resume" {
 
-        println("going to pause")
-        pausingScope.pause()
-        println("paused")
-        delay(100)
+        pausingDispatcher.pause()
 
-        withContext(alien) {
-
-          println("3 --> ${Thread.currentThread()}")
-
-          println("going to pause")
-          pausingScope.pause()
-          println("paused")
-
-          delay(100)
-
-          withMain {
-
-            println("4 --> ${Thread.currentThread()}")
-
-            println("going to pause")
-            pausingScope.pause()
-            println("paused")
-            delay(100)
-
-            withMainImmediate {
-
-              println("5 --> ${Thread.currentThread()}")
-
-              println("going to pause")
-              pausingScope.pause()
-              println("paused")
-              delay(100)
-
-              withUnconfined {
-
-                println("6 --> ${Thread.currentThread()}")
-
-                println("going to pause")
-                pausingScope.pause()
-                println("paused")
-                delay(100)
-
-                println(" <-- ${Thread.currentThread()}")
-              }
-              println(" <-- ${Thread.currentThread()}")
-            }
-            println(" <-- ${Thread.currentThread()}")
-          }
-          println(" <-- ${Thread.currentThread()}")
+        val pausingJob = launch {
+          pausingDispatcher.dispatch(coroutineContext) {}
         }
-        println(" <-- ${Thread.currentThread()}")
+
+        pausingDispatcher.resume()
+
+        pausingJob.join()
+
+        delegate.dispatchCount.get() shouldBe 1
       }
-      println(" <-- ${Thread.currentThread()}")
     }
-    job.join()
-  }
-}
 
+    "backpressure" - {
 
+      "should execute queued blocks in order when resumed" {
 
+        pausingDispatcher.pause()
+
+        val pausingJob = launch {
+          pausingDispatcher.dispatch(coroutineContext) { out.sendBlocking(1) }
+          pausingDispatcher.dispatch(coroutineContext) { out.sendBlocking(2) }
+          pausingDispatcher.dispatch(coroutineContext) { out.sendBlocking(3) }
+          pausingDispatcher.dispatch(coroutineContext) { out.sendBlocking(4) }
+          pausingDispatcher.dispatch(coroutineContext) { out.sendBlocking(5) }
+        }
+
+        pausingDispatcher.resume()
+
+        pausingJob.join()
+        out.close()
+
+        out.toList() shouldBe listOf(1, 2, 3, 4, 5)
+
+        delegate.dispatchCount.get() shouldBe 5
+      }
+    }
+
+    "cancellation" - {
+
+      "should not dispatch when closed" {
+
+        pausingDispatcher.close()
+
+        shouldThrow<Exception> {
+          pausingDispatcher.dispatch(coroutineContext) { fail("should not be invoked") }
+        }
+
+        delegate.dispatchCount.get() shouldBe 0
+      }
+
+      "should throw ClosedPausingDispatcherException" {
+
+        pausingDispatcher.close()
+
+        val exception = shouldThrow<ClosedPausingDispatcherException> {
+          pausingDispatcher.dispatch(coroutineContext) { fail("should not be invoked") }
+        }
+
+        exception.message shouldBe "pausing dispatcher was closed"
+      }
+    }
+
+  })

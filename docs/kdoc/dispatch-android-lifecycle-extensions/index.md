@@ -100,7 +100,7 @@ class SomeFragmentEspressoTest {
 
 ## Automatic lifecycle jobs
 
-Structured concurrency relies upon cancellation, but [androidx-lifecycle-runtime.ktx](https://developer.android.com/jetpack/androidx/releases/lifecycle) doesn't cancel.  It uses a special [PausingDispatcher](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-master-dev:lifecycle/lifecycle-runtime-ktx/src/main/java/androidx/lifecycle/PausingDispatcher.kt). This pausing behavior then **leaks** upstream, creating backpressure and potentially deadlocks.
+Structured concurrency relies upon cancellation, but [androidx-lifecycle-runtime.ktx](https://developer.android.com/jetpack/androidx/releases/lifecycle) doesn't cancel.  It uses a special [PausingDispatcher](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-master-dev:lifecycle/lifecycle-runtime-ktx/src/main/java/androidx/lifecycle/PausingDispatcherImpl.kt). This pausing behavior then **leaks** upstream, creating backpressure and potentially deadlocks.
 
 There's a [bug filed in their issue tracker](https://issuetracker.google.com/issues/146370660), but 2.2.0 got released anyway.
 
