@@ -13,7 +13,7 @@ jobs:
       - name: Generate changelog
         uses: charmixer/auto-changelog-action@v1.1
         with:
-          token: ${{ secrets.CHANGELOG_TOKEN or GITHUB_TOKEN }}
+          token: ${{ secrets.CHANGELOG_TOKEN }}
 
       - name: Commit files
         env:
@@ -28,6 +28,6 @@ jobs:
         if: env.push == 1
         env:
           CI_USER: ${{ secrets.YOUR_GITHUB_NAME }}
-          CI_TOKEN: ${{ secrets.CHANGELOG_TOKEN or GITHUB_TOKEN }}
+          CI_TOKEN: ${{ secrets.CHANGELOG_TOKEN }}
         run: |
           git push "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
