@@ -609,7 +609,7 @@
                 
                 <h1 id="module-dispatch-android-espresso">Module dispatch-android-espresso<a class="headerlink" href="#module-dispatch-android-espresso" title="Permanent link">&para;</a></h1>
 <p>Tools to provide <a href="https://developer.android.com/training/testing/espresso/idling-resource">Espresso</a> functionality for coroutines.</p>
-<p>If an <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a> is registered with the <a href="https://developer.android.com/reference/androidx/test/espresso/IdlingRegistry">IdlingRegistry</a>, <a href="https://developer.android.com/training/testing/espresso">Espresso</a> will wait
+<p>If an <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a> is registered with the <a href="https://developer.android.com/reference/androidx/test/espresso/IdlingRegistry">IdlingRegistry</a>, <a href="https://developer.android.com/training/testing/espresso">Espresso</a> will wait
 for all associated coroutines to leave the <em>active</em> state before performing any assertions.</p>
 <p>Coroutines which are in a <em>suspended</em> state (such as a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/index.html">Job</a> "observing" a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/index.html">Flow</a> for updates)
 do not prevent Espresso from performing assertions.</p>
@@ -670,20 +670,20 @@ do not prevent Espresso from performing assertions.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider-rule/index.html">IdlingDispatcherProviderRule</a></td>
-<td>JUnit 4 <a href="https://junit.org/junit4/javadoc/4.12/org/junit/Rule.html">Rule</a> which automatically registers an <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a> with the <a href="https://developer.android.com/reference/androidx/test/espresso/IdlingRegistry">IdlingRegistry</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider-rule/index.html">IdlingDispatcherProviderRule</a></td>
+<td>JUnit 4 <a href="https://junit.org/junit4/javadoc/4.12/org/junit/Rule.html">Rule</a> which automatically registers an <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a> with the <a href="https://developer.android.com/reference/androidx/test/espresso/IdlingRegistry">IdlingRegistry</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher/index.html">IdlingDispatcher</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher/index.html">IdlingDispatcher</a></td>
 <td>A <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> which tracks each dispatched coroutine using a <a href="https://developer.android.com/reference/androidx/test/espresso/idling/CountingIdlingResource">CountingIdlingResource</a>.  All actual dispatches are delegated to a provided <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a>.</td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a></td>
-<td>A special <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> which guarantees that each of its properties is an <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher/index.html">IdlingDispatcher</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a></td>
+<td>A special <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> which guarantees that each of its properties is an <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher/index.html">IdlingDispatcher</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a></td>
-<td>A special <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a> which guarantees a property of an <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a></td>
+<td>A special <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a> which guarantees a property of an <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a></td>
 </tr>
 </tbody>
 </table>
@@ -698,29 +698,29 @@ do not prevent Espresso from performing assertions.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-default-idling-coroutine-scope/index.html">DefaultIdlingCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-default-idling-coroutine-scope/index.html">DefaultIdlingCoroutineScope</a></td>
-<td>A <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>default</code>.</td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-default-idling-coroutine-scope/index.html">DefaultIdlingCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-default-idling-coroutine-scope/index.html">DefaultIdlingCoroutineScope</a></td>
+<td>A <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>default</code>.</td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-i-o-idling-coroutine-scope/index.html">IOIdlingCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-i-o-idling-coroutine-scope/index.html">IOIdlingCoroutineScope</a></td>
-<td>A <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>io</code>.</td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-i-o-idling-coroutine-scope/index.html">IOIdlingCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-i-o-idling-coroutine-scope/index.html">IOIdlingCoroutineScope</a></td>
+<td>A <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>io</code>.</td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-main-idling-coroutine-scope/index.html">MainIdlingCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-main-idling-coroutine-scope/index.html">MainIdlingCoroutineScope</a></td>
-<td>A <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>main</code>.</td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-main-idling-coroutine-scope/index.html">MainIdlingCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-main-idling-coroutine-scope/index.html">MainIdlingCoroutineScope</a></td>
+<td>A <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>main</code>.</td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-main-immediate-idling-coroutine-scope/index.html">MainImmediateIdlingCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-main-immediate-idling-coroutine-scope/index.html">MainImmediateIdlingCoroutineScope</a></td>
-<td>A <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>mainImmediate</code>.</td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-main-immediate-idling-coroutine-scope/index.html">MainImmediateIdlingCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-main-immediate-idling-coroutine-scope/index.html">MainImmediateIdlingCoroutineScope</a></td>
+<td>A <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>mainImmediate</code>.</td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-unconfined-idling-coroutine-scope/index.html">UnconfinedIdlingCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-unconfined-idling-coroutine-scope/index.html">UnconfinedIdlingCoroutineScope</a></td>
-<td>A <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>unconfined</code>.</td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-unconfined-idling-coroutine-scope/index.html">UnconfinedIdlingCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-unconfined-idling-coroutine-scope/index.html">UnconfinedIdlingCoroutineScope</a></td>
+<td>A <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of <code>unconfined</code>.</td>
 </tr>
 </tbody>
 </table>

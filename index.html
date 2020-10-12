@@ -786,7 +786,7 @@ a <code>Dispatchers</code> object again.</p>
 <p>Everywhere you use coroutines, you use a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext</a>. If we embed the
 <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatchers</a> settings we want into the context, then we don't need to
 pass them around manually.</p>
-<p>The core of this library is <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> - an interface with properties corresponding to the
+<p>The core of this library is <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> - an interface with properties corresponding to the
 5 different <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatchers</a> we can get from the <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/index.html">Dispatchers</a> singleton.
 It lives inside the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext</a>, and gets passed from parent to child coroutines
 transparently without any additional code.</p>
@@ -822,23 +822,23 @@ will always use the <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx
 </thead>
 <tbody>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-coroutine-scope/index.html">DefaultCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-coroutine-scope/index.html">DefaultCoroutineScope</a></td>
 <td><a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-default.html">Dispatchers.Default</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-i-o-coroutine-scope/index.html">IOCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-i-o-coroutine-scope/index.html">IOCoroutineScope</a></td>
 <td><a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-io.html">Dispatchers.IO</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-main-coroutine-scope/index.html">MainCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-main-coroutine-scope/index.html">MainCoroutineScope</a></td>
 <td><a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-main.html">Dispatchers.Main</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-main-immediate-coroutine-scope/index.html">MainImmediateCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-main-immediate-coroutine-scope/index.html">MainImmediateCoroutineScope</a></td>
 <td><a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-main-coroutine-dispatcher/immediate.html">Dispatchers.Main.immediate</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-unconfined-coroutine-scope/index.html">UnconfinedCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-unconfined-coroutine-scope/index.html">UnconfinedCoroutineScope</a></td>
 <td><a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-unconfined.html">Dispatchers.Unconfined</a></td>
 </tr>
 </tbody>
@@ -875,35 +875,35 @@ functions:</p>
 <tbody>
 <tr>
 <td><a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/index.html">Job</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-default.html">launchDefault</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-i-o.html">launchIO</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-main.html">launchMain</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-main-immediate.html">launchMainImmediate</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-unconfined.html">launchUnconfined</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-default.html">launchDefault</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-i-o.html">launchIO</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-main.html">launchMain</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-main-immediate.html">launchMainImmediate</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-unconfined.html">launchUnconfined</a></td>
 </tr>
 <tr>
 <td><a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-deferred/index.html">Deferred</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-default.html">asyncDefault</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-i-o.html">asyncIO</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-main.html">asyncMain</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-main-immediate.html">asyncMainImmediate</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-unconfined.html">asyncUnconfined</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-default.html">asyncDefault</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-i-o.html">asyncIO</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-main.html">asyncMain</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-main-immediate.html">asyncMainImmediate</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-unconfined.html">asyncUnconfined</a></td>
 </tr>
 <tr>
 <td><code>suspend T</code></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-default.html">withDefault</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-i-o.html">withIO</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-main.html">withMain</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-main-immediate.html">withMainImmediate</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-unconfined.html">withUnconfined</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-default.html">withDefault</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-i-o.html">withIO</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-main.html">withMain</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-main-immediate.html">withMainImmediate</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-unconfined.html">withUnconfined</a></td>
 </tr>
 <tr>
 <td><code>Flow&lt;T&gt;</code></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-default.html">flowOnDefault</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-i-o.html">flowOnIO</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-main.html">flowOnMain</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-main-immediate.html">flowOnMainImmediate</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-unconfined.html">flowOnUnconfined</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-default.html">flowOnDefault</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-i-o.html">flowOnIO</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-main.html">flowOnMain</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-main-immediate.html">flowOnMainImmediate</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-unconfined.html">flowOnUnconfined</a></td>
 </tr>
 </tbody>
 </table>
@@ -923,7 +923,7 @@ functions:</p>
    <a href="https://developer.android.com/training/testing/espresso">Espresso</a> testing by requiring the use of <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/kotlinx.coroutines.-dispatchers/set-main.html">Dispatchers.setMain</a>.
 2. It <em>pauses</em> the dispatcher when the lifecycle state passes below its threshold, which <a href="https://issuetracker.google.com/issues/146370660">leaks
    backpressure to the producing coroutine and can create deadlocks</a>.</p>
-<p><a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html">Dispatch-android-lifecycle</a> and <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle-extensions</a> completely replace the AndroidX version.</p>
+<p><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html">Dispatch-android-lifecycle</a> and <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle-extensions</a> completely replace the AndroidX version.</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nn">dispatch.android.lifecycle.*</span>
 <span class="k">import</span> <span class="nn">dispatch.core.*</span>
 <span class="k">import</span> <span class="nn">kotlinx.coroutines.flow.*</span>
@@ -939,19 +939,19 @@ functions:</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScope</a> may be configured with any dispatcher, since
-<a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-main-immediate-coroutine-scope/index.html">MainImmediateCoroutineScope</a> is just a marker interface. Its lifecycle-aware functions <em>cancel</em>
+<p>The <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScope</a> may be configured with any dispatcher, since
+<a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-main-immediate-coroutine-scope/index.html">MainImmediateCoroutineScope</a> is just a marker interface. Its lifecycle-aware functions <em>cancel</em>
 when dropping below a threshold, then automatically restart when entering into the desired lifecycle
 state again. This is key to preventing the backpressure leak of the AndroidX version, and it's also
 more analogous to the behavior of <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData">LiveData</a> to which many developers are accustomed.</p>
 <p>There are two built-in ways to define a custom LifecycleCoroutineScope - by simply constructing one
-directly inside a Lifecycle class, or by statically setting a custom <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/-lifecycle-scope-factory/index.html">LifecycleScopeFactory</a>. This
-second option can be very useful when utilizing an <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a>.</p>
+directly inside a Lifecycle class, or by statically setting a custom <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/-lifecycle-scope-factory/index.html">LifecycleScopeFactory</a>. This
+second option can be very useful when utilizing an <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a>.</p>
 <h2 id="android-espresso">Android Espresso<a class="headerlink" href="#android-espresso" title="Permanent link">&para;</a></h2>
 <p><a href="https://developer.android.com/training/testing/espresso">Espresso</a> is able to use <a href="https://developer.android.com/training/testing/espresso/idling-resource">IdlingResource</a> to infer when it should perform its actions, which helps
 to reduce the flakiness of tests. Conventional thread-based <code>IdlingResource</code> implementations don't
 work with coroutines, however.</p>
-<p><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> utilizes <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher/index.html">IdlingDispatchers</a>, which count a coroutine as
+<p><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a> utilizes <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher/index.html">IdlingDispatchers</a>, which count a coroutine as
 being "idle" when it is suspended. Using statically defined factories, service locators, or
 dependency injection, it is possible to utilize idling-aware dispatchers throughout a codebase
 during Espresso testing.</p>
@@ -996,15 +996,15 @@ during Espresso testing.</p>
 <a href="https://developer.android.com/topic/libraries/architecture/coroutines#viewmodelscope">viewModelScope</a> extension function to provide an auto-cancelled
 <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a>, but again, this <code>CoroutineScope</code> is hard-coded and uses <code>Dispatchers.Main</code>. This
 limitation needn't exist.</p>
-<p><a href="https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel/dispatch.android.viewmodel/index.html">Dispatch-android-viewmodel</a> doesn't have as many options as its lifecycle counterpart, because the
+<p><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/index.html">Dispatch-android-viewmodel</a> doesn't have as many options as its lifecycle counterpart, because the
 <a href="https://developer.android.com/reference/androidx/lifecycle/ViewModel#onCleared()">ViewModel.onCleared</a> function is <code>protected</code> and <a href="https://developer.android.com/reference/androidx/lifecycle/ViewModel">ViewModel</a> does not expose anything about its
 lifecycle. The only way for a third party library to achieve a lifecycle-aware <code>CoroutineScope</code> is
 through inheritance.</p>
-<p><a href="https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html">CoroutineViewModel</a> is a simple abstract class which exposes a lazy <a href="https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html#dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a> property which
+<p><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html">CoroutineViewModel</a> is a simple abstract class which exposes a lazy <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html#dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a> property which
 is automatically cancelled when the <code>ViewModel</code> is destroyed. The exact type of the <code>viewModelScope</code>
-can be configured statically via <a href="https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel/dispatch.android.viewmodel/-view-model-scope-factory/index.html">ViewModelScopeFactory</a>. In this way, you can use
-<a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScopes</a> for Espresso testing,
-<a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScopes</a> for unit testing, or any other custom
+can be configured statically via <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/-view-model-scope-factory/index.html">ViewModelScopeFactory</a>. In this way, you can use
+<a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScopes</a> for Espresso testing,
+<a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScopes</a> for unit testing, or any other custom
 scope you'd like.</p>
 <p>If you're using the AAC <code>ViewModel</code> but not dependency injection, this artifact should be very
 helpful with testing.</p>
@@ -1021,19 +1021,19 @@ helpful with testing.</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScope</a> may be configured with any dispatcher, since
-<a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-main-immediate-coroutine-scope/index.html">MainImmediateCoroutineScope</a> is just a marker interface. Its lifecycle-aware functions <em>cancel</em>
+<p>The <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScope</a> may be configured with any dispatcher, since
+<a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-main-immediate-coroutine-scope/index.html">MainImmediateCoroutineScope</a> is just a marker interface. Its lifecycle-aware functions <em>cancel</em>
 when dropping below a threshold, then automatically restart when entering into the desired lifecycle
 state again. This is key to preventing the backpressure leak of the AndroidX version, and it's also
 more analogous to the behavior of <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData">LiveData</a> to which many developers are accustomed.</p>
 <p>There are two built-in ways to define a custom LifecycleCoroutineScope - by simply constructing one
-directly inside a Lifecycle class, or by statically setting a custom <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/-lifecycle-scope-factory/index.html">LifecycleScopeFactory</a>. This
-second option can be very useful when utilizing an <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a>.</p>
+directly inside a Lifecycle class, or by statically setting a custom <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/-lifecycle-scope-factory/index.html">LifecycleScopeFactory</a>. This
+second option can be very useful when utilizing an <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-coroutine-scope/index.html">IdlingCoroutineScope</a>.</p>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>Testing is why this library exists. <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/-test-coroutine-scope/index.html">TestCoroutineScope</a> and <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/-test-coroutine-dispatcher/index.html">TestCoroutineDispatcher</a> are very
 powerful when they can be used, but any reference to a statically defined dispatcher (like a
 <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/index.html">Dispatchers</a> property) removes that control.</p>
-<p>To that end, there's a configurable <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">TestDispatcherProvider</a>:</p>
+<p>To that end, there's a configurable <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">TestDispatcherProvider</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestDispatcherProvider</span><span class="p">(</span>
   <span class="k">override</span> <span class="k">val</span> <span class="py">default</span><span class="p">:</span> <span class="n">CoroutineDispatcher</span> <span class="p">=</span> <span class="n">TestCoroutineDispatcher</span><span class="p">(),</span>
   <span class="k">override</span> <span class="k">val</span> <span class="py">io</span><span class="p">:</span> <span class="n">CoroutineDispatcher</span> <span class="p">=</span> <span class="n">TestCoroutineDispatcher</span><span class="p">(),</span>
@@ -1042,7 +1042,7 @@ powerful when they can be used, but any reference to a statically defined dispat
   <span class="k">override</span> <span class="k">val</span> <span class="py">unconfined</span><span class="p">:</span> <span class="n">CoroutineDispatcher</span> <span class="p">=</span> <span class="n">TestCoroutineDispatcher</span><span class="p">()</span>
 <span class="p">)</span> <span class="p">:</span> <span class="n">DispatcherProvider</span>
 </code></pre></div>
-<p>As well as a polymorphic <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a> which may be used in place of any type-specific <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a>:</p>
+<p>As well as a polymorphic <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a> which may be used in place of any type-specific <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">testScope</span> <span class="p">=</span> <span class="n">TestProvidedCoroutineScope</span><span class="p">()</span>
 
 <span class="k">val</span> <span class="py">someUIClass</span> <span class="p">=</span> <span class="n">SomeUIClass</span><span class="p">(</span><span class="n">testScope</span><span class="p">)</span>
@@ -1055,8 +1055,8 @@ powerful when they can be used, but any reference to a statically defined dispat
 
 <span class="p">}</span>
 </code></pre></div>
-<p>There's also <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/test-provided.html">testProvided</a>, which delegates to <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/run-blocking-test.html">runBlockingTest</a> but which
-includes a <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">TestDispatcherProvider</a> inside the <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/-test-coroutine-scope/index.html">TestCoroutineScope</a>.</p>
+<p>There's also <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/test-provided.html">testProvided</a>, which delegates to <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/run-blocking-test.html">runBlockingTest</a> but which
+includes a <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">TestDispatcherProvider</a> inside the <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/-test-coroutine-scope/index.html">TestCoroutineScope</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
   <span class="c1">// this would normally be a hard-coded reference to Dispatchers.Main</span>
   <span class="n">suspend</span> <span class="k">fun</span> <span class="nf">sayHello</span><span class="p">()</span> <span class="p">=</span> <span class="n">withMain</span> <span class="p">{</span>  <span class="p">}</span>
@@ -1080,40 +1080,40 @@ includes a <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.t
 </thead>
 <tbody>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/index.html">dispatch-android-espresso</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher/index.html">IdlingDispatcher</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/index.html">dispatch-android-espresso</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher/index.html">IdlingDispatcher</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/-idling-dispatcher-provider/index.html">IdlingDispatcherProvider</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle-extensions</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/lifecycleScope/androidx.lifecycle.LifecycleOwner#/PointingToDeclaration/">lifecycleScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle-extensions</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/lifecycleScope/androidx.lifecycle.LifecycleOwner#/PointingToDeclaration/">lifecycleScope</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScope</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/launch-on-create.html">launchOnCreate</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/launch-on-start.html">launchOnStart</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/launch-on-resume.html">launchOnResume</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/on-next-create.html">onNextCreate</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/on-next-start.html">onNextStart</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/on-next-resume.html">onNextResume</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScope</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/launch-on-create.html">launchOnCreate</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/launch-on-start.html">launchOnStart</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/launch-on-resume.html">launchOnResume</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/on-next-create.html">onNextCreate</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/on-next-start.html">onNextStart</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/on-next-resume.html">onNextResume</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel/dispatch.android.viewmodel/index.html">dispatch-android-viewmodel</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html">CoroutineViewModel</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html#dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/index.html">dispatch-android-viewmodel</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html">CoroutineViewModel</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html#dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/index.html">dispatch-core</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/index.html">dispatch-core</a></td>
 <td>Dispatcher-specific types and factories <p> Dispatcher-specific coroutine builders</td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-detekt/dispatch.detekt/index.html">dispatch-detekt</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-detekt/dispatch.detekt/index.html">dispatch-detekt</a></td>
 <td><a href="https://github.com/detekt/detekt">Detekt</a> rules for common auto-imported-the-wrong-thing problems</td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit4/dispatch.test/index.html">dispatch-test-junit4</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit4/dispatch.test/-test-coroutine-rule/index.html">TestCoroutineRule</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit4/dispatch.test/index.html">dispatch-test-junit4</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit4/dispatch.test/-test-coroutine-rule/index.html">TestCoroutineRule</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit5/dispatch.test/index.html">dispatch-test-junit5</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit5/dispatch.test/-coroutine-test/index.html">CoroutineTest</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit5/dispatch.test/-coroutine-test-extension/index.html">CoroutineTestExtension</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit5/dispatch.test/index.html">dispatch-test-junit5</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit5/dispatch.test/-coroutine-test/index.html">CoroutineTest</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit5/dispatch.test/-coroutine-test-extension/index.html">CoroutineTestExtension</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/index.html">dispatch-test</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">TestDispatcherProvider</a> <p> <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/run-blocking-provided.html">runBlockingProvided</a> and <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/test-provided.html">testProvided</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/index.html">dispatch-test</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">TestDispatcherProvider</a> <p> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/run-blocking-provided.html">runBlockingProvided</a> and <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/test-provided.html">testProvided</a></td>
 </tr>
 </tbody>
 </table>

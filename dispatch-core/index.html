@@ -782,7 +782,7 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>Custom <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScopes</a> interfaces allow for more granularity when defining a class or function with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a> dependency.</p>
-<p>There are also factory functions for conveniently creating any implementation, with a built-in <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a>.</p>
+<p>There are also factory functions for conveniently creating any implementation, with a built-in <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">mainScope</span> <span class="p">=</span> <span class="n">MainCoroutineScope</span><span class="p">()</span>
 
 <span class="k">val</span> <span class="py">someUIClass</span> <span class="p">=</span> <span class="n">SomeUIClass</span><span class="p">(</span><span class="n">mainScope</span><span class="p">)</span>
@@ -823,12 +823,12 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a></td>
 <td>Interface which provides the 5 standard <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> properties of the <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/index.html">Dispatchers</a> object, but which can be embedded in a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a></td>
-<td>Mutable singleton holder for an implementation of <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a>. By default, it simply delegates to the corresponding properties in the <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/index.html">Dispatchers</a> singleton.  Whenever a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext</a> does not have a <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a>, this singleton's value will be used by default.</td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a></td>
+<td>Mutable singleton holder for an implementation of <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a>. By default, it simply delegates to the corresponding properties in the <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/index.html">Dispatchers</a> singleton.  Whenever a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext</a> does not have a <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a>, this singleton's value will be used by default.</td>
 </tr>
 </tbody>
 </table>
@@ -842,24 +842,24 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-coroutine-scope/index.html">DefaultCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/default/#/PointingToDeclaration/">DispatcherProvider.default</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-coroutine-scope/index.html">DefaultCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/default/#/PointingToDeclaration/">DispatcherProvider.default</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-i-o-coroutine-scope/index.html">IOCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/io/#/PointingToDeclaration/">DispatcherProvider.io</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-i-o-coroutine-scope/index.html">IOCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/io/#/PointingToDeclaration/">DispatcherProvider.io</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-main-coroutine-scope/index.html">MainCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/main/#/PointingToDeclaration/">DispatcherProvider.main</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-main-coroutine-scope/index.html">MainCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/main/#/PointingToDeclaration/">DispatcherProvider.main</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-main-immediate-coroutine-scope/index.html">MainImmediateCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/mainImmediate/#/PointingToDeclaration/">DispatcherProvider.mainImmediate</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-main-immediate-coroutine-scope/index.html">MainImmediateCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/mainImmediate/#/PointingToDeclaration/">DispatcherProvider.mainImmediate</a></td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-unconfined-coroutine-scope/index.html">UnconfinedCoroutineScope</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/unconfined/#/PointingToDeclaration/">DispatcherProvider.unconfined</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-unconfined-coroutine-scope/index.html">UnconfinedCoroutineScope</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html#dispatch.core/DispatcherProvider/unconfined/#/PointingToDeclaration/">DispatcherProvider.unconfined</a></td>
 </tr>
 </tbody>
 </table>
@@ -878,35 +878,35 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
 <tbody>
 <tr>
 <td><a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/index.html">Job</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-default.html">launchDefault</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-i-o.html">launchIO</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-main.html">launchMain</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-main-immediate.html">launchMainImmediate</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/launch-unconfined.html">launchUnconfined</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-default.html">launchDefault</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-i-o.html">launchIO</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-main.html">launchMain</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-main-immediate.html">launchMainImmediate</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/launch-unconfined.html">launchUnconfined</a></td>
 </tr>
 <tr>
 <td><a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-deferred/index.html">Deferred</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-default.html">asyncDefault</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-i-o.html">asyncIO</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-main.html">asyncMain</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-main-immediate.html">asyncMainImmediate</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/async-unconfined.html">asyncUnconfined</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-default.html">asyncDefault</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-i-o.html">asyncIO</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-main.html">asyncMain</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-main-immediate.html">asyncMainImmediate</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/async-unconfined.html">asyncUnconfined</a></td>
 </tr>
 <tr>
 <td><code>suspend T</code></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-default.html">withDefault</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-i-o.html">withIO</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-main.html">withMain</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-main-immediate.html">withMainImmediate</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/with-unconfined.html">withUnconfined</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-default.html">withDefault</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-i-o.html">withIO</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-main.html">withMain</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-main-immediate.html">withMainImmediate</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/with-unconfined.html">withUnconfined</a></td>
 </tr>
 <tr>
 <td><code>Flow&lt;T&gt;</code></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-default.html">flowOnDefault</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-i-o.html">flowOnIO</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-main.html">flowOnMain</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-main-immediate.html">flowOnMainImmediate</a></td>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/flow-on-unconfined.html">flowOnUnconfined</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-default.html">flowOnDefault</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-i-o.html">flowOnIO</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-main.html">flowOnMain</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-main-immediate.html">flowOnMainImmediate</a></td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/flow-on-unconfined.html">flowOnUnconfined</a></td>
 </tr>
 </tbody>
 </table>
@@ -950,12 +950,12 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
 </code></pre></div>
 <h2 id="defaultdispatcherprovider">DefaultDispatcherProvider<a class="headerlink" href="#defaultdispatcherprovider" title="Permanent link">&para;</a></h2>
 <p>The simplest way to get up and running with Dispatch. All library access to a
-<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext's</a> <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> filters through a single extension
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext's</a> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> filters through a single extension
 property:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">val</span> <span class="py">CoroutineContext</span><span class="p">.</span><span class="n">dispatcherProvider</span><span class="p">:</span> <span class="n">DispatcherProvider</span>
   <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="k">get</span><span class="p">(</span><span class="n">DispatcherProvider</span><span class="p">)</span> <span class="o">?:</span> <span class="n">DefaultDispatcherProvider</span><span class="p">.</span><span class="k">get</span><span class="p">()</span> 
 </code></pre></div>
-<p>If the receiver does not have a <code>DispatcherProvider</code>, the value from <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a>
+<p>If the receiver does not have a <code>DispatcherProvider</code>, the value from <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a>
 will be returned. In practice, this brings at least two benefits:</p>
 <h3 id="out-of-box-default-functionality">Out-of-box default functionality<a class="headerlink" href="#out-of-box-default-functionality" title="Permanent link">&para;</a></h3>
 <p>Calls such as <code>launchIO { ... }</code>or <code>withMain { ... }</code> are safe to use (guaranteed to have a
@@ -964,10 +964,10 @@ without any additional configuration. By default, they will access the correspon
 <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatchers</a> from the <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/index.html">Dispatchers</a> singleton.</p>
 <h3 id="easy-global-dispatcher-overrides">Easy global dispatcher overrides<a class="headerlink" href="#easy-global-dispatcher-overrides" title="Permanent link">&para;</a></h3>
 <p><code>DefaultDispatcherProvider</code> has similar
-<a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-dispatcher-provider/set.html">set</a>/<a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-dispatcher-provider/set.html">reset</a> functionality to the
+<a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-dispatcher-provider/set.html">set</a>/<a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-dispatcher-provider/set.html">reset</a> functionality to the
 <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/kotlinx.coroutines.-dispatchers/set-main.html">Dispatchers.setMain</a>/<a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/kotlinx.coroutines.-dispatchers/reset-main.html">Dispatchers.resetMain</a> extensions in <code>kotlinx-coroutines-test</code>, except it
 doesn't need to be confined to testing.</p>
-<p>You can use <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-dispatcher-provider/set.html">DefaultDispatcherProvider.set</a> to globally set a custom implementation at the beginning
+<p>You can use <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-dispatcher-provider/set.html">DefaultDispatcherProvider.set</a> to globally set a custom implementation at the beginning
 of an application's lifecycle, but the most likely use-case is certainly in testing.</p>
 <div class="highlight"><pre><span></span><code><span class="n">@Test</span>
 <span class="k">fun</span> <span class="nf">`my test`</span><span class="p">()</span> <span class="p">=</span> <span class="n">runBlocking</span> <span class="p">{</span>
@@ -983,7 +983,7 @@ of an application's lifecycle, but the most likely use-case is certainly in test
 <span class="p">}</span> 
 </code></pre></div>
 <blockquote>
-<p>See <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/index.html">dispatch-test</a> and <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">TestDispatcherProvider</a></p>
+<p>See <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/index.html">dispatch-test</a> and <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">TestDispatcherProvider</a></p>
 </blockquote>
 <h2 id="minimum-gradle-config">Minimum Gradle Config<a class="headerlink" href="#minimum-gradle-config" title="Permanent link">&para;</a></h2>
 <p>Add to your module's <code>build.gradle.kts</code>:</p>

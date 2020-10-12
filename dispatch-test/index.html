@@ -688,7 +688,7 @@
                 
                 
                 <h1 id="module-dispatch-test">Module dispatch-test<a class="headerlink" href="#module-dispatch-test" title="Permanent link">&para;</a></h1>
-<p>Test helpers for the <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/index.html">dispatch-core</a> module.  Most of the tools you need to automatically handle <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> in your tests.  (see <a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit4/dispatch.test/index.html">dispatch-test-junit4</a> or <a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit5/dispatch.test/index.html">dispatch-test-junit5</a> for the rest.)</p>
+<p>Test helpers for the <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/index.html">dispatch-core</a> module.  Most of the tools you need to automatically handle <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> in your tests.  (see <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit4/dispatch.test/index.html">dispatch-test-junit4</a> or <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit5/dispatch.test/index.html">dispatch-test-junit5</a> for the rest.)</p>
 <h2 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">&para;</a></h2>
 <!--- TOC -->
 
@@ -704,9 +704,9 @@
 <!--- END -->
 
 <h2 id="testdispatcherprovider">TestDispatcherProvider<a class="headerlink" href="#testdispatcherprovider" title="Permanent link">&para;</a></h2>
-<p>Testing version of the <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> with three main styles of creation:</p>
+<p>Testing version of the <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> with three main styles of creation:</p>
 <h3 id="constructor-with-default-arguments">Constructor with default arguments<a class="headerlink" href="#constructor-with-default-arguments" title="Permanent link">&para;</a></h3>
-<p><a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">(link)</a></p>
+<p><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">(link)</a></p>
 <p>Each property becomes its own <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/-test-coroutine-dispatcher/index.html">TestCoroutineDispatcher</a> by default, but may be replaced by any <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">customTestDispatcherProvider</span> <span class="p">=</span> <span class="n">TestDispatcherProvider</span><span class="p">(</span>
   <span class="n">default</span> <span class="p">=</span> <span class="n">newSingleThreadContext</span><span class="p">(</span><span class="s">&quot;default&quot;</span><span class="p">),</span>
@@ -719,7 +719,7 @@
 <span class="k">val</span> <span class="py">defaultTetsDispatcherProvider</span> <span class="p">=</span> <span class="n">TestDispatcherProvider</span><span class="p">()</span>
 </code></pre></div>
 <h3 id="single-arg-factory">Single-arg factory<a class="headerlink" href="#single-arg-factory" title="Permanent link">&para;</a></h3>
-<p><a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">(link)</a></p>
+<p><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">(link)</a></p>
 <p>Another option is to pass a single <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a>, which is then used to populate all fields.</p>
 <div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">dispatcher</span> <span class="p">=</span> <span class="n">newSingleThreadContext</span><span class="p">(</span><span class="s">&quot;custom&quot;</span><span class="p">)</span>
 
@@ -732,10 +732,10 @@
 <span class="n">dispatcherProvider</span><span class="p">.</span><span class="n">unconfined</span> <span class="n">shouldBe</span> <span class="n">myDispatcher</span>
 </code></pre></div>
 <h3 id="basic-testdispatcherprovider">Basic TestDispatcherProvider<a class="headerlink" href="#basic-testdispatcherprovider" title="Permanent link">&para;</a></h3>
-<p><a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">(link)</a></p>
+<p><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">(link)</a></p>
 <p>Sometimes we want to have the normal dispatch behaviors of a production environment,
 just without the awkward mechanics of <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/kotlinx.coroutines.-dispatchers/set-main.html">Dispatchers.setMain</a>.</p>
-<p>This is essentially <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a> except with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/new-single-thread-context.html">single-threaded executor</a> handling the "main" thread.</p>
+<p>This is essentially <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a> except with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/new-single-thread-context.html">single-threaded executor</a> handling the "main" thread.</p>
 <div class="highlight"><pre><span></span><code><span class="k">fun</span> <span class="nf">TestBasicDispatcherProvider</span><span class="p">():</span> <span class="n">TestDispatcherProvider</span> <span class="p">{</span>
 
   <span class="k">val</span> <span class="py">mainThread</span> <span class="p">=</span> <span class="n">newSingleThreadContext</span><span class="p">(</span><span class="s">&quot;main thread proxy&quot;</span><span class="p">)</span>
@@ -750,8 +750,8 @@ just without the awkward mechanics of <a href="https://kotlin.github.io/kotlinx.
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="testprovidedcoroutinescope">TestProvidedCoroutineScope<a class="headerlink" href="#testprovidedcoroutinescope" title="Permanent link">&para;</a></h2>
-<p><a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">(link)</a></p>
-<p>A polymorphic <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a> which implements all the type-safe versions from <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/index.html">dispatch-core</a>, as well as <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/-test-coroutine-scope/index.html">TestCoroutineScope</a>.</p>
+<p><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">(link)</a></p>
+<p>A polymorphic <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a> which implements all the type-safe versions from <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/index.html">dispatch-core</a>, as well as <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/-test-coroutine-scope/index.html">TestCoroutineScope</a>.</p>
 <p>This type may be injected anywhere, regardless of the requirement.</p>
 <h2 id="builders">Builders<a class="headerlink" href="#builders" title="Permanent link">&para;</a></h2>
 <p>Sometimes, instead of explicitly creating a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a> object, we prefer to just use a coroutineScope builder function within a function.</p>
@@ -774,12 +774,12 @@ just without the awkward mechanics of <a href="https://kotlin.github.io/kotlinx.
 </thead>
 <tbody>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/run-blocking-provided.html">runBlockingProvided</a></td>
-<td>Uses <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/run-blocking.html">runBlocking</a>, but injects a <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> into its <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a>.  Use this function if you want normal dispatch behavior.</td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/run-blocking-provided.html">runBlockingProvided</a></td>
+<td>Uses <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/run-blocking.html">runBlocking</a>, but injects a <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> into its <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a>.  Use this function if you want normal dispatch behavior.</td>
 </tr>
 <tr>
-<td><a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/test-provided.html">testProvided</a></td>
-<td>Uses <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/run-blocking-test.html">runBlockingTest</a>, but injects a <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> into its <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/-test-coroutine-scope/index.html">TestCoroutineScope</a>.  Use this function if you want the explicit time control of <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/run-blocking-test.html">runBlockingTest</a>.</td>
+<td><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/test-provided.html">testProvided</a></td>
+<td>Uses <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/run-blocking-test.html">runBlockingTest</a>, but injects a <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> into its <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/-test-coroutine-scope/index.html">TestCoroutineScope</a>.  Use this function if you want the explicit time control of <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/kotlinx.coroutines.test/run-blocking-test.html">runBlockingTest</a>.</td>
 </tr>
 </tbody>
 </table>
