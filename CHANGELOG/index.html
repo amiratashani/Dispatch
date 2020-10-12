@@ -1,1 +1,1042 @@
-<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=description content="Quality of life coroutine utilities."><link href=https://rbusarow.github.io/Dispatch/CHANGELOG/ rel=canonical><meta name=author content="2020 Rick Busarow"><meta name=lang:clipboard.copy content="Copy to clipboard"><meta name=lang:clipboard.copied content="Copied to clipboard"><meta name=lang:search.language content=en><meta name=lang:search.pipeline.stopwords content=True><meta name=lang:search.pipeline.trimmer content=True><meta name=lang:search.result.none content="No matching documents"><meta name=lang:search.result.one content="1 matching document"><meta name=lang:search.result.other content="# matching documents"><meta name=lang:search.tokenizer content=[\s\-]+><link rel="shortcut icon" href=../assets/images/favicon.png><meta name=generator content="mkdocs-1.0.4, mkdocs-material-4.6.0"><title>Change Log - Dispatch</title><link rel=stylesheet href=../assets/stylesheets/application.1b62728e.css><link rel=stylesheet href=../assets/stylesheets/application-palette.a8b3c06d.css><meta name=theme-color content=#2196f3><script src=../assets/javascripts/modernizr.268332fc.js></script><link href=https://fonts.gstatic.com rel=preconnect crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel=stylesheet href=../assets/fonts/material-icons.css></head> <body dir=ltr data-md-color-primary=blue data-md-color-accent=blue> <svg class=md-svg> <defs> <svg xmlns=http://www.w3.org/2000/svg width=416 height=448 viewbox="0 0 416 448" id=__github><path fill=currentColor d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg> </defs> </svg> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay data-md-component=overlay for=__drawer></label> <a href=#change-log-for-dispatch tabindex=1 class=md-skip> Skip to content </a> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid"> <div class=md-flex> <div class="md-flex__cell md-flex__cell--shrink"> <a href=https://rbusarow.github.io/Dispatch/ title=Dispatch class="md-header-nav__button md-logo"> <i class=md-icon></i> </a> </div> <div class="md-flex__cell md-flex__cell--shrink"> <label class="md-icon md-icon--menu md-header-nav__button" for=__drawer></label> </div> <div class="md-flex__cell md-flex__cell--stretch"> <div class="md-flex__ellipsis md-header-nav__title" data-md-component=title> <span class=md-header-nav__topic> Dispatch </span> <span class=md-header-nav__topic> Change Log </span> </div> </div> <div class="md-flex__cell md-flex__cell--shrink"> <label class="md-icon md-icon--search md-header-nav__button" for=__search></label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=query data-md-state=active> <label class="md-icon md-search__icon" for=__search></label> <button type=reset class="md-icon md-search__icon" data-md-component=reset tabindex=-1> &#xE5CD; </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=result> <div class=md-search-result__meta> Type to start searching </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> </div> <div class="md-flex__cell md-flex__cell--shrink"> <div class=md-header-nav__source> <a href=https://github.com/rbusarow/dispatch/ title="Go to repository" class=md-source data-md-source=github> <div class=md-source__icon> <svg viewbox="0 0 24 24" width=24 height=24> <use xlink:href=#__github width=24 height=24></use> </svg> </div> <div class=md-source__repository> Dispatch </div> </a> </div> </div> </div> </nav> </header> <div class=md-container> <nav class=md-tabs data-md-component=tabs> <div class="md-tabs__inner md-grid"> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=.. class="md-tabs__link md-tabs__link--active"> Intro </a> </li> <li class=md-tabs__item> <a href=../modules/dispatch-core/ class=md-tabs__link> Modules </a> </li> <li class=md-tabs__item> <a href=../kdoc/dispatch-core/ class=md-tabs__link> KDoc </a> </li> </ul> </div> </nav> <main class=md-main role=main> <div class="md-main__inner md-grid" data-md-component=container> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" data-md-level=0> <label class="md-nav__title md-nav__title--site" for=__drawer> <a href=https://rbusarow.github.io/Dispatch/ title=Dispatch class="md-nav__button md-logo"> <i class=md-icon></i> </a> Dispatch </label> <div class=md-nav__source> <a href=https://github.com/rbusarow/dispatch/ title="Go to repository" class=md-source data-md-source=github> <div class=md-source__icon> <svg viewbox="0 0 24 24" width=24 height=24> <use xlink:href=#__github width=24 height=24></use> </svg> </div> <div class=md-source__repository> Dispatch </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=.. title=Intro class=md-nav__link> Intro </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-toggle md-nav__toggle" data-md-toggle=nav-2 type=checkbox id=nav-2> <label class=md-nav__link for=nav-2> Modules </label> <nav class=md-nav data-md-component=collapsible data-md-level=1> <label class=md-nav__title for=nav-2> Modules </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../modules/dispatch-core/ title=Core class=md-nav__link> Core </a> </li> <li class=md-nav__item> <a href=../modules/dispatch-detekt/ title=Detekt class=md-nav__link> Detekt </a> </li> <li class=md-nav__item> <a href=../modules/dispatch-test/ title=Test-Core class=md-nav__link> Test-Core </a> </li> <li class=md-nav__item> <a href=../modules/dispatch-test-junit4/ title=Test-JUnit4 class=md-nav__link> Test-JUnit4 </a> </li> <li class=md-nav__item> <a href=../modules/dispatch-test-junit5/ title=Test-JUnit5 class=md-nav__link> Test-JUnit5 </a> </li> <li class=md-nav__item> <a href=../modules/dispatch-android-espresso/ title=Android-Espresso class=md-nav__link> Android-Espresso </a> </li> <li class=md-nav__item> <a href=../modules/dispatch-android-lifecycle/ title=android-lifecycle class=md-nav__link> android-lifecycle </a> </li> <li class=md-nav__item> <a href=../modules/dispatch-android-viewmodel/ title=Android-viewmodel class=md-nav__link> Android-viewmodel </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-toggle md-nav__toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> Change Log </label> <a href=./ title="Change Log" class="md-nav__link md-nav__link--active"> Change Log </a> <nav class="md-nav md-nav--secondary"> <label class=md-nav__title for=__toc>Table of contents</label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#version-100-beta04 class=md-nav__link> Version 1.0.0-beta04 </a> <nav class=md-nav> <ul class=md-nav__list> <li class=md-nav__item> <a href=#bug-fixes class=md-nav__link> Bug fixes </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#version-100-beta03 class=md-nav__link> Version 1.0.0-beta03 </a> <nav class=md-nav> <ul class=md-nav__list> <li class=md-nav__item> <a href=#renames class=md-nav__link> Renames </a> </li> <li class=md-nav__item> <a href=#new-artifacts class=md-nav__link> New artifacts </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#version-100-beta02 class=md-nav__link> Version 1.0.0-beta02 </a> <nav class=md-nav> <ul class=md-nav__list> <li class=md-nav__item> <a href=#test-features class=md-nav__link> Test features </a> </li> <li class=md-nav__item> <a href=#bug-fixes-and-improvements class=md-nav__link> Bug fixes and improvements </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#version-100-beta01 class=md-nav__link> Version 1.0.0-beta01 </a> <nav class=md-nav> <ul class=md-nav__list> <li class=md-nav__item> <a href=#flow class=md-nav__link> Flow </a> </li> <li class=md-nav__item> <a href=#misc class=md-nav__link> Misc </a> </li> </ul> </nav> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-toggle md-nav__toggle" data-md-toggle=nav-4 type=checkbox id=nav-4> <label class=md-nav__link for=nav-4> KDoc </label> <nav class=md-nav data-md-component=collapsible data-md-level=1> <label class=md-nav__title for=nav-4> KDoc </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../kdoc/dispatch-core/ title=core class=md-nav__link> core </a> </li> <li class=md-nav__item> <a href=../kdoc/dispatch-detekt/ title=dtekt class=md-nav__link> dtekt </a> </li> <li class=md-nav__item> <a href=../kdoc/dispatch-test/ title=test-core class=md-nav__link> test-core </a> </li> <li class=md-nav__item> <a href=../kdoc/dispatch-test-junit4/ title=test-junit4 class=md-nav__link> test-junit4 </a> </li> <li class=md-nav__item> <a href=../kdoc/dispatch-test-junit5/ title=test-junit5 class=md-nav__link> test-junit5 </a> </li> <li class=md-nav__item> <a href=../kdoc/dispatch-android-espresso/ title=android-espresso class=md-nav__link> android-espresso </a> </li> <li class=md-nav__item> <a href=../kdoc/dispatch-android-lifecycle/ title=android-lifecycle class=md-nav__link> android-lifecycle </a> </li> <li class=md-nav__item> <a href=../kdoc/dispatch-android-viewmodel/ title=android-viewmodel class=md-nav__link> android-viewmodel </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary"> <label class=md-nav__title for=__toc>Table of contents</label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#version-100-beta04 class=md-nav__link> Version 1.0.0-beta04 </a> <nav class=md-nav> <ul class=md-nav__list> <li class=md-nav__item> <a href=#bug-fixes class=md-nav__link> Bug fixes </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#version-100-beta03 class=md-nav__link> Version 1.0.0-beta03 </a> <nav class=md-nav> <ul class=md-nav__list> <li class=md-nav__item> <a href=#renames class=md-nav__link> Renames </a> </li> <li class=md-nav__item> <a href=#new-artifacts class=md-nav__link> New artifacts </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#version-100-beta02 class=md-nav__link> Version 1.0.0-beta02 </a> <nav class=md-nav> <ul class=md-nav__list> <li class=md-nav__item> <a href=#test-features class=md-nav__link> Test features </a> </li> <li class=md-nav__item> <a href=#bug-fixes-and-improvements class=md-nav__link> Bug fixes and improvements </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#version-100-beta01 class=md-nav__link> Version 1.0.0-beta01 </a> <nav class=md-nav> <ul class=md-nav__list> <li class=md-nav__item> <a href=#flow class=md-nav__link> Flow </a> </li> <li class=md-nav__item> <a href=#misc class=md-nav__link> Misc </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> <a href=https://github.com/rbusarow/dispatch/edit/master/docs/CHANGELOG.md title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a> <h1 id=change-log-for-dispatch>Change log for Dispatch<a class=headerlink href=#change-log-for-dispatch title="Permanent link">&para;</a></h1> <h2 id=version-100-beta04>Version 1.0.0-beta04<a class=headerlink href=#version-100-beta04 title="Permanent link">&para;</a></h2> <h3 id=bug-fixes>Bug fixes<a class=headerlink href=#bug-fixes title="Permanent link">&para;</a></h3> <ul> <li><a href=https://rbusarow.github.io/Dispatch/dispatch-test-junit5//dispatch.test/-coroutine-test-extension/index.html>CoroutineTestExtension</a> will now properly call <code>Dispatchers.setMain(...)</code> when injecting a CoroutineScope into a function or when not injecting at all. (<a href=https://github.com/RBusarow/Dispatch/issues/130>#130</a>)</li> </ul> <h2 id=version-100-beta03>Version 1.0.0-beta03<a class=headerlink href=#version-100-beta03 title="Permanent link">&para;</a></h2> <h3 id=renames>Renames<a class=headerlink href=#renames title="Permanent link">&para;</a></h3> <ul> <li>The project has been renamed from DispatcherProvider to Dispatch.</li> <li>Maven coordinates for existing modules have changed.</li> <li>The base Maven coordinate has changed from <code>com.rickbusarow.DispatcherProvider</code> to <code>com.rickbusarow.dispatch</code>.</li> <li>Base package names have been updated.</li> </ul> <h3 id=new-artifacts>New artifacts<a class=headerlink href=#new-artifacts title="Permanent link">&para;</a></h3> <ul> <li><a href=https://rbusarow.github.io/Dispatch/android-espresso//index.html>dispatch-android-espresso</a> adds support for <a href=https://developer.android.com/training/testing/espresso/idling-resource>IdlingResource</a> dispatchers in Espresso testing.</li> <li><a href=https://rbusarow.github.io/Dispatch/android-lifecycle//index.html>dispatch-android-lifecycle</a> adds an alternative to the Androidx <a href="https://cs.android.com/androidx/platform/frameworks/support/+/androidx-master-dev:lifecycle/lifecycle-runtime-ktx/src/main/java/androidx/lifecycle/Lifecycle.kt;l=44">LifecycleScope</a> functionality, with lots of configuration options.</li> <li><a href=https://rbusarow.github.io/Dispatch/android-lifecycle-extensions//index.html>dispatch-android-lifecycle-extensions</a> adds the <a href=https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle-extensions//dispatch.android.lifecycle/androidx.lifecycle.-lifecycle-owner/lifecycle-scope.html>lifecycleScope</a> extension property, but with a configurable factory (useful for Espresso testing).</li> <li><a href=https://rbusarow.github.io/Dispatch/android-lifecycle-viewmodel//index.html>dispatch-android-viewmodel</a> adds an alternative to Androidx <a href=https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel//dispatch.android.viewmodel/-coroutine-view-model/view-model-scope.html>viewModelScope</a> with configuration options.</li> <li><a href=https://rbusarow.github.io/Dispatch/dispatch-detekt//index.html>dispatch-detekt</a> adds <a href=https://github.com/detekt/detekt>Detekt</a> rules to warn against accidentally using a hard-coded CoroutineDispatcher.</li> <li><a href=https://rbusarow.github.io/Dispatch/core-test-junit4//index.html>dispatch-test-junit4</a> adds a JUnit4 Rule for automatically providing and cleaning up a <a href=https://rbusarow.github.io/Dispatch/dispatch-test//dispatch.test/-test-provided-coroutine-scope/index.html>TestProvidedCoroutineScope</a>.</li> <li><a href=https://rbusarow.github.io/Dispatch/core-test-junit5//index.html>dispatch-test-junit5</a> adds JUnit5 Extension support for automatically providing and cleaning up a <a href=https://rbusarow.github.io/Dispatch/dispatch-test//dispatch.test/-test-provided-coroutine-scope/index.html>TestProvidedCoroutineScope</a>.</li> </ul> <h2 id=version-100-beta02>Version 1.0.0-beta02<a class=headerlink href=#version-100-beta02 title="Permanent link">&para;</a></h2> <h3 id=test-features>Test features<a class=headerlink href=#test-features title="Permanent link">&para;</a></h3> <ul> <li>Added <code>TestBasicDispatcherProvider</code> factory which uses <code>CommonPool</code> for <code>default</code> and <code>io</code>, but a shared single-threaded <code>ExecutorCoroutineDispatcher</code> for <code>main</code> and <code>mainImmediate</code> to provide "natural" dispatch behavior in tests without <code>Dispatchers.setMain(...)</code>.</li> </ul> <h3 id=bug-fixes-and-improvements>Bug fixes and improvements<a class=headerlink href=#bug-fixes-and-improvements title="Permanent link">&para;</a></h3> <ul> <li><code>runBlockingTestProvided</code> now uses the same <code>TestCoroutineDispatcher</code> as its <code>ContinuationInterceptor</code> and in its <code>TestDispatcherProvider</code> (#15).</li> <li><code>runBlockingProvided</code> now uses <code>TestBasicDispatcherProvider</code> as its <code>DispatcherProvider</code>.</li> </ul> <h2 id=version-100-beta01>Version 1.0.0-beta01<a class=headerlink href=#version-100-beta01 title="Permanent link">&para;</a></h2> <h3 id=flow>Flow<a class=headerlink href=#flow title="Permanent link">&para;</a></h3> <ul> <li>Add non-suspending <code>flowOn___()</code> operators for the <code>Flow</code> api.</li> </ul> <h3 id=misc>Misc<a class=headerlink href=#misc title="Permanent link">&para;</a></h3> <ul> <li>Lots of Kdocs.</li> <li>Maven artifacts.</li> <li>Lower JDK version to 1.6</li> </ul> <!--- MODULE dispatch-core--> <!--- INDEX  --> <!--- MODULE dispatch-test--> <!--- INDEX  --> <p><!--- MODULE dispatch-test-junit4--> <!--- INDEX  --> <!--- MODULE dispatch-test-junit5--> <!--- INDEX  --></p> <p><!--- MODULE dispatch-android-espresso--> <!--- INDEX  --> <!--- MODULE dispatch-android-lifecycle--> <!--- INDEX  --> <!--- MODULE dispatch-android-lifecycle-extensions--> <!--- INDEX  --></p> <p><!--- MODULE dispatch-android-viewmodel--> <!--- INDEX  --></p> <!--- END --> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid"> <a href=../modules/dispatch-android-viewmodel/ title=Android-viewmodel class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i> </div> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Previous </span> Android-viewmodel </span> </div> </a> <a href=../kdoc/dispatch-core/ title=core class="md-flex md-footer-nav__link md-footer-nav__link--next" rel=next> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Next </span> core </span> </div> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2020 Rick Busarow </div> powered by <a href=https://www.mkdocs.org>MkDocs</a> and <a href=https://squidfunk.github.io/mkdocs-material/ > Material for MkDocs</a> </div> <div class=md-footer-social> <link rel=stylesheet href=../assets/fonts/font-awesome.css> <a href=https://github.com/rbusarow/dispatch class="md-footer-social__link fa fa-github"></a> <a href=https://twitter.com/rbusarow class="md-footer-social__link fa fa-twitter"></a> <a href=https://linkedin.com/in/rick-busarow class="md-footer-social__link fa fa-linkedin"></a> </div> </div> </div> </footer> </div> <script src=../assets/javascripts/application.808e90bb.js></script> <script>app.initialize({version:"1.0.4",url:{base:".."}})</script> </body> </html>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Quality of life coroutine utilities.">
+      
+      
+        <link rel="canonical" href="https://rbusarow.github.io/Dispatch/CHANGELOG/">
+      
+      
+        <meta name="author" content="2020 Rick Busarow">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.2">
+    
+    
+      
+        <title>Change Log - Dispatch</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f72e892.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#change-log-for-dispatch" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://rbusarow.github.io/Dispatch/" title="Dispatch" class="md-header-nav__button md-logo" aria-label="Dispatch">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Dispatch
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Change Log
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/rbusarow/dispatch/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Dispatch
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://rbusarow.github.io/Dispatch/" title="Dispatch" class="md-nav__button md-logo" aria-label="Dispatch">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Dispatch
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/rbusarow/dispatch/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Dispatch
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Intro
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Modules
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Modules" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dispatch-core/" class="md-nav__link">
+      core
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dispatch-detekt/" class="md-nav__link">
+      detekt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dispatch-test/" class="md-nav__link">
+      test-core
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dispatch-test-junit4/" class="md-nav__link">
+      test-junit4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dispatch-test-junit5/" class="md-nav__link">
+      test-junit5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dispatch-android-espresso/" class="md-nav__link">
+      android-espresso
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dispatch-android-lifecycle/" class="md-nav__link">
+      android-lifecycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dispatch-android-lifecycle-extensions/" class="md-nav__link">
+      android-lifecycle-extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dispatch-android-viewmodel/" class="md-nav__link">
+      android-viewmodel
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Change Log
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Change Log
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-beta04" class="md-nav__link">
+    Version 1.0.0-beta04
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta04">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    Bug fixes
+  </a>
+  
+    <nav class="md-nav" aria-label="Bug fixes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispatch-test-junit5" class="md-nav__link">
+    dispatch-test-junit5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatch-android-lifecycle" class="md-nav__link">
+    dispatch-android-lifecycle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatch-android-lifecycle-extensions" class="md-nav__link">
+    dispatch-android-lifecycle-extensions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecations" class="md-nav__link">
+    Deprecations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    Breaking changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-beta03" class="md-nav__link">
+    Version 1.0.0-beta03
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta03">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renames" class="md-nav__link">
+    Renames
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-artifacts" class="md-nav__link">
+    New artifacts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-beta02" class="md-nav__link">
+    Version 1.0.0-beta02
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta02">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-features" class="md-nav__link">
+    Test features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes-and-improvements" class="md-nav__link">
+    Bug fixes and improvements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-beta01" class="md-nav__link">
+    Version 1.0.0-beta01
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta01">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flow" class="md-nav__link">
+    Flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    Misc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/dispatch-core/dispatch.core/" class="md-nav__link">
+      core
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/dispatch-detekt/dispatch.detekt/" class="md-nav__link">
+      detekt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/dispatch-test/dispatch.test/" class="md-nav__link">
+      test-core
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/dispatch-test-junit4/dispatch.test/" class="md-nav__link">
+      test-junit4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/dispatch-test-junit5/dispatch.test/" class="md-nav__link">
+      test-junit5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/dispatch-android-espresso/dispatch.android.espresso/" class="md-nav__link">
+      android-espresso
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/dispatch-android-lifecycle/dispatch.android.lifecycle/" class="md-nav__link">
+      android-lifecycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/" class="md-nav__link">
+      android-lifecycle-extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/dispatch-android-viewmodel/dispatch.android.viewmodel/" class="md-nav__link">
+      android-viewmodel
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-beta04" class="md-nav__link">
+    Version 1.0.0-beta04
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta04">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    Bug fixes
+  </a>
+  
+    <nav class="md-nav" aria-label="Bug fixes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispatch-test-junit5" class="md-nav__link">
+    dispatch-test-junit5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatch-android-lifecycle" class="md-nav__link">
+    dispatch-android-lifecycle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatch-android-lifecycle-extensions" class="md-nav__link">
+    dispatch-android-lifecycle-extensions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecations" class="md-nav__link">
+    Deprecations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    Breaking changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-beta03" class="md-nav__link">
+    Version 1.0.0-beta03
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta03">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renames" class="md-nav__link">
+    Renames
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-artifacts" class="md-nav__link">
+    New artifacts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-beta02" class="md-nav__link">
+    Version 1.0.0-beta02
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta02">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-features" class="md-nav__link">
+    Test features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes-and-improvements" class="md-nav__link">
+    Bug fixes and improvements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-beta01" class="md-nav__link">
+    Version 1.0.0-beta01
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta01">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flow" class="md-nav__link">
+    Flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    Misc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/rbusarow/dispatch/blob/main/docs/CHANGELOG.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="change-log-for-dispatch">Change log for Dispatch<a class="headerlink" href="#change-log-for-dispatch" title="Permanent link">&para;</a></h1>
+<h2 id="version-100-beta04">Version 1.0.0-beta04<a class="headerlink" href="#version-100-beta04" title="Permanent link">&para;</a></h2>
+<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a> is now a mutable singleton which allows for a custom global default.</li>
+</ul>
+<h3 id="bug-fixes">Bug fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h3>
+<h4 id="dispatch-test-junit5">dispatch-test-junit5<a class="headerlink" href="#dispatch-test-junit5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit5/dispatch.test/-coroutine-test-extension/index.html">CoroutineTestExtension</a> will now properly call <code>Dispatchers.setMain(...)</code> when injecting a
+  CoroutineScope into a function or when not injecting at all.
+  (<a href="https://github.com/RBusarow/Dispatch/issues/130">#130</a>)</li>
+</ul>
+<h4 id="dispatch-android-lifecycle">dispatch-android-lifecycle<a class="headerlink" href="#dispatch-android-lifecycle" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScope</a> will now be automatically cancelled when the associated <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.html">Lifecycle</a> drops to the <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.html">Destroyed</a> state.
+  (<a href="https://github.com/RBusarow/Dispatch/issues/135">#135</a>)</li>
+</ul>
+<h4 id="dispatch-android-lifecycle-extensions">dispatch-android-lifecycle-extensions<a class="headerlink" href="#dispatch-android-lifecycle-extensions" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Cached <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScopes</a> will now be removed from the cache when
+  they are destroyed. (<a href="https://github.com/RBusarow/Dispatch/issues/136">#136</a>)</li>
+<li>Fixed a race condition where multiple <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScopes</a> may be
+  created for concurrent cache misses. (<a href="https://github.com/RBusarow/Dispatch/issues/136">#136</a>)</li>
+</ul>
+<h3 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The <a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a> class constructor has been changed to an object factory function
+  (<code>operator fun invoke(): DispatcherProvider</code>) and deprecated. This function will be removed prior
+  to the 1.0 release.</li>
+</ul>
+<h3 id="breaking-changes">Breaking changes<a class="headerlink" href="#breaking-changes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a> has been changed from a <code>class</code> to an <code>object</code>, and its functionality
+  changed. It is now a singleton holder for a default <code>DispatcherProvider</code> instance. To create a
+  default <code>DispatcherProvider</code>, use the interface's companion object factory function
+  (<code>DispatcherProvider()</code>).</li>
+</ul>
+<h2 id="version-100-beta03">Version 1.0.0-beta03<a class="headerlink" href="#version-100-beta03" title="Permanent link">&para;</a></h2>
+<h3 id="renames">Renames<a class="headerlink" href="#renames" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The project has been renamed from DispatcherProvider to Dispatch.</li>
+<li>Maven coordinates for existing modules have changed.</li>
+<li>The base Maven coordinate has changed from <code>com.rickbusarow.DispatcherProvider</code> to <code>com.rickbusarow.dispatch</code>.</li>
+<li>Base package names have been updated.</li>
+</ul>
+<h3 id="new-artifacts">New artifacts<a class="headerlink" href="#new-artifacts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-android-espresso/dispatch.android.espresso/index.html">dispatch-android-espresso</a> adds support for <a href="https://developer.android.com/training/testing/espresso/idling-resource">IdlingResource</a> dispatchers in Espresso testing.</li>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle</a> adds an alternative to the Androidx <a href="https://cs.android.com/androidx/platform/frameworks/support/+/androidx-master-dev:lifecycle/lifecycle-runtime-ktx/src/main/java/androidx/lifecycle/Lifecycle.kt;l=44">LifecycleScope</a> functionality, with lots of configuration options.</li>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle-extensions</a> adds the <a href="https://rbusarow.github.io/Dispatch/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/lifecycleScope/androidx.lifecycle.LifecycleOwner#/PointingToDeclaration/">lifecycleScope</a> extension property, but with a configurable factory (useful for Espresso testing).</li>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel/dispatch.android.viewmodel/index.html">dispatch-android-viewmodel</a> adds an alternative to Androidx <a href="https://rbusarow.github.io/Dispatch/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html#dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a> with configuration options.</li>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-detekt/dispatch.detekt/index.html">dispatch-detekt</a> adds <a href="https://github.com/detekt/detekt">Detekt</a> rules to warn against accidentally using a hard-coded CoroutineDispatcher.</li>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit4/dispatch.test/index.html">dispatch-test-junit4</a> adds a JUnit4 Rule for automatically providing and cleaning up a <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a>.</li>
+<li><a href="https://rbusarow.github.io/Dispatch/dispatch-test-junit4/dispatch.test/index.html">dispatch-test-junit5</a> adds JUnit5 Extension support for automatically providing and cleaning up a <a href="https://rbusarow.github.io/Dispatch/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a>.</li>
+</ul>
+<h2 id="version-100-beta02">Version 1.0.0-beta02<a class="headerlink" href="#version-100-beta02" title="Permanent link">&para;</a></h2>
+<h3 id="test-features">Test features<a class="headerlink" href="#test-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added <code>TestBasicDispatcherProvider</code> factory which uses <code>CommonPool</code> for <code>default</code> and <code>io</code>, but a shared single-threaded <code>ExecutorCoroutineDispatcher</code> for <code>main</code> and <code>mainImmediate</code> to provide "natural" dispatch behavior in tests without <code>Dispatchers.setMain(...)</code>.</li>
+</ul>
+<h3 id="bug-fixes-and-improvements">Bug fixes and improvements<a class="headerlink" href="#bug-fixes-and-improvements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>runBlockingTestProvided</code> now uses the same <code>TestCoroutineDispatcher</code> as its <code>ContinuationInterceptor</code> and in its <code>TestDispatcherProvider</code> (#15).</li>
+<li><code>runBlockingProvided</code> now uses <code>TestBasicDispatcherProvider</code> as its <code>DispatcherProvider</code>.</li>
+</ul>
+<h2 id="version-100-beta01">Version 1.0.0-beta01<a class="headerlink" href="#version-100-beta01" title="Permanent link">&para;</a></h2>
+<h3 id="flow">Flow<a class="headerlink" href="#flow" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add non-suspending <code>flowOn___()</code> operators for the <code>Flow</code> api.</li>
+</ul>
+<h3 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Lots of Kdocs.</li>
+<li>Maven artifacts.</li>
+<li>Lower JDK version to 1.6</li>
+</ul>
+<!--- MODULE dispatch-core-->
+<!--- INDEX  -->
+<!--- MODULE dispatch-test-->
+<!--- INDEX  -->
+<!--- MODULE dispatch-test-junit4-->
+<!--- INDEX  -->
+<!--- MODULE dispatch-test-junit5-->
+<!--- INDEX  -->
+<!--- MODULE dispatch-android-espresso-->
+<!--- INDEX  -->
+<!--- MODULE dispatch-android-lifecycle-->
+<!--- INDEX  -->
+<!--- MODULE dispatch-android-lifecycle-extensions-->
+<!--- INDEX  -->
+<!--- MODULE dispatch-android-viewmodel-->
+<!--- INDEX  -->
+<!--- END -->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../dispatch-android-viewmodel/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                android-viewmodel
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../api/dispatch-core/dispatch.core/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                core
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 Rick Busarow
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/rbusarow/dispatch" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.77e55a48.min.js"></script>
+      <script src="../assets/javascripts/bundle.9554a270.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['search.highlight', 'instant'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
