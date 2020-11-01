@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-    <title>CoroutineViewModel</title>
+    <title>DispatchViewModel</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
 <script src="https://unpkg.com/kotlin-playground@1" data-selector="code.runnablesample"></script>    <link href="../../../styles/style.css" rel="Stylesheet">
     <script type="text/javascript" src="../../../scripts/navigationLoader.js" async="async"></script>
@@ -23,11 +23,12 @@
         <div id="searchBar"></div>
         <script type="text/javascript" src="../../../scripts/pages.js"></script>
         <script type="text/javascript" src="../../../scripts/main.js"></script>
-        <div id="content" pageIds="dispatch.android.viewmodel/CoroutineViewModel///PointingToDeclaration/">
-          <div class="breadcrumbs"><a href="../../index.html">dispatch-android-viewmodel</a>/<a href="../index.html">dispatch.android.viewmodel</a>/<a href="index.html">CoroutineViewModel</a></div>
+        <div id="content" pageIds="dispatch.android.viewmodel/DispatchViewModel///PointingToDeclaration/">
+          <div class="breadcrumbs"><a href="../../index.html">dispatch-android-viewmodel</a>/<a href="../index.html">dispatch.android.viewmodel</a>/<a href="index.html">DispatchViewModel</a></div>
           <div class="cover ">
-            <h1 class="cover"><a data-name="coroutineviewmodel"></a><span>Coroutine</span><wbr></wbr><span>View</span><wbr></wbr><span>Model</span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><p class="paragraph"><p class="paragraph">Base class for <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html">ViewModel</a>s which will be using a <a href="index.html#dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a>.</p><p class="paragraph">The <code>viewModelScope</code> instance is created automatically upon first access from the factory set in <a href="../-view-model-scope-factory/index.html">ViewModelScopeFactory</a>.</p><p class="paragraph">The type of <span data-unresolved-link="kotlinx.coroutines//CoroutineScope/#kotlin.coroutines.CoroutineContext/PointingToDeclaration/">CoroutineScope</span> created is configurable via <a href="../-view-model-scope-factory/set.html">ViewModelScopeFactory.set</a>.</p><p class="paragraph">This must be an abstract class since nothing about the <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html#oncleared">ViewModel.onCleared</a> event is exposed.</p><p class="paragraph"><code>viewModelScope</code> is automatically cancelled when <code>onCleared()</code> is invoked.</p></p><div class="symbol monospace">abstract class <a href="index.html">CoroutineViewModel</a> : <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html">ViewModel</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dispatch-android-viewmodel:dokkaHtml/release">androidJvm</button><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dispatch-android-viewmodel:dokkaHtml/main">androidJvm</button></div>
+            <h1 class="cover"><a data-name="dispatchviewmodel"></a><span>Dispatch</span><wbr></wbr><span>View</span><wbr></wbr><span>Model</span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><p class="paragraph"><p class="paragraph">Base class for <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html">ViewModel</a>s which will be using a <a href="index.html#dispatch.android.viewmodel/DispatchViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a>.</p><p class="paragraph">The <code>viewModelScope</code> instance is created automatically upon first access from the factory set in <a href="../-view-model-scope-factory/index.html">ViewModelScopeFactory</a>.</p><p class="paragraph">The type of <span data-unresolved-link="kotlinx.coroutines//CoroutineScope/#kotlin.coroutines.CoroutineContext/PointingToDeclaration/">CoroutineScope</span> created is configurable via <a href="../-view-model-scope-factory/set.html">ViewModelScopeFactory.set</a>.</p><p class="paragraph">This must be an abstract class since nothing about the <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html#oncleared">ViewModel.onCleared</a> event is exposed.</p><p class="paragraph"><code>viewModelScope</code> is automatically cancelled when <code>onCleared()</code> is invoked.</p></p><div class="symbol monospace">abstract class <a href="index.html">DispatchViewModel</a> : <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html">ViewModel</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -43,7 +44,7 @@ import io.kotest.matchers.*
 import kotlinx.coroutines.*
 fun main() { 
    //sampleStart 
-   class SomeViewModel : CoroutineViewModel() {
+   class SomeViewModel : DispatchViewModel() {
 
   init {
 
@@ -65,20 +66,24 @@ fun main() {
    //sampleEnd
 }</pre></code></div></div></div>
               <h2 class="tabbedcontent"><a data-name="constructors"></a>Constructors</h2>
-              <div class="table" data-togglable="Constructors"><a data-name="dispatch.android.viewmodel/CoroutineViewModel/CoroutineViewModel/#/PointingToDeclaration/"></a>
+              <div class="table" data-togglable="Constructors"><a data-name="dispatch.android.viewmodel/DispatchViewModel/DispatchViewModel/#/PointingToDeclaration/"></a>
                 <div class="table-row" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release">
-                  <div class="main-subrow TabbedContent"><span><a href="-coroutine-view-model.html">CoroutineViewModel</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/CoroutineViewModel/CoroutineViewModel/#/PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div class="main-subrow TabbedContent"><span><a href="-dispatch-view-model.html">DispatchViewModel</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/DispatchViewModel/DispatchViewModel/#/PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title">
-                      <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Constructors"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace">fun <a href="-coroutine-view-model.html">CoroutineViewModel</a>()<span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Constructors"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace">fun <a href="-dispatch-view-model.html">DispatchViewModel</a>()<span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -97,7 +102,11 @@ fun main() {
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title"><div class="divergent-group" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release"><div class="brief-with-platform-tags"><div class="inner-brief-with-platform-tags"></div>
@@ -123,7 +132,11 @@ fun main() {
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title"><div class="divergent-group" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release"><div class="brief-with-platform-tags"><div class="inner-brief-with-platform-tags"></div>
@@ -149,14 +162,18 @@ fun main() {
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title"><div class="divergent-group" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release"><div class="brief-with-platform-tags"><div class="inner-brief-with-platform-tags"></div>
 <span class="pull-right"></span></div>
 
   <div class="main-subrow">
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace">open override fun &lt;<span data-unresolved-link="dispatch.android.viewmodel/CoroutineViewModel/getTag/#kotlin.String/PointingToDeclaration/">T</span> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt; <a href="index.html#androidx.lifecycle/ViewModel/getTag/#kotlin.String/PointingToDeclaration/">getTag</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <span data-unresolved-link="dispatch.android.viewmodel/CoroutineViewModel/getTag/#kotlin.String/PointingToGenericParameters(0)/">T</span><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace">open override fun &lt;<span data-unresolved-link="dispatch.android.viewmodel/DispatchViewModel/getTag/#kotlin.String/PointingToDeclaration/">T</span> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt; <a href="index.html#androidx.lifecycle/ViewModel/getTag/#kotlin.String/PointingToDeclaration/">getTag</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <span data-unresolved-link="dispatch.android.viewmodel/DispatchViewModel/getTag/#kotlin.String/PointingToGenericParameters(0)/">T</span><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -175,7 +192,11 @@ fun main() {
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title"><div class="divergent-group" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release"><div class="brief-with-platform-tags"><div class="inner-brief-with-platform-tags"></div>
@@ -201,14 +222,18 @@ fun main() {
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title"><div class="divergent-group" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release"><div class="brief-with-platform-tags"><div class="inner-brief-with-platform-tags"></div>
 <span class="pull-right"></span></div>
 
   <div class="main-subrow">
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace">open override fun &lt;<span data-unresolved-link="dispatch.android.viewmodel/CoroutineViewModel/setTagIfAbsent/#kotlin.String#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/">T</span> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt; <a href="index.html#androidx.lifecycle/ViewModel/setTagIfAbsent/#kotlin.String#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/">setTagIfAbsent</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, p1: <span data-unresolved-link="dispatch.android.viewmodel/CoroutineViewModel/setTagIfAbsent/#kotlin.String#TypeParam(bounds=[kotlin.Any])/PointingToGenericParameters(0)/">T</span>): <span data-unresolved-link="dispatch.android.viewmodel/CoroutineViewModel/setTagIfAbsent/#kotlin.String#TypeParam(bounds=[kotlin.Any])/PointingToGenericParameters(0)/">T</span><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace">open override fun &lt;<span data-unresolved-link="dispatch.android.viewmodel/DispatchViewModel/setTagIfAbsent/#kotlin.String#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/">T</span> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt; <a href="index.html#androidx.lifecycle/ViewModel/setTagIfAbsent/#kotlin.String#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/">setTagIfAbsent</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, p1: <span data-unresolved-link="dispatch.android.viewmodel/DispatchViewModel/setTagIfAbsent/#kotlin.String#TypeParam(bounds=[kotlin.Any])/PointingToGenericParameters(0)/">T</span>): <span data-unresolved-link="dispatch.android.viewmodel/DispatchViewModel/setTagIfAbsent/#kotlin.String#TypeParam(bounds=[kotlin.Any])/PointingToGenericParameters(0)/">T</span><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -227,7 +252,11 @@ fun main() {
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title"><div class="divergent-group" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release"><div class="brief-with-platform-tags"><div class="inner-brief-with-platform-tags"></div>
@@ -246,20 +275,24 @@ fun main() {
                 </div>
               </div>
               <h2 class=""><a data-name="properties"></a>Properties</h2>
-              <div class="table" data-togglable="Properties"><a data-name="dispatch.android.viewmodel/CoroutineViewModel/mBagOfTags/#/PointingToDeclaration/"></a>
+              <div class="table" data-togglable="Properties"><a data-name="dispatch.android.viewmodel/DispatchViewModel/mBagOfTags/#/PointingToDeclaration/"></a>
                 <div class="table-row" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release">
-                  <div class="main-subrow "><span><a href="index.html#dispatch.android.viewmodel/CoroutineViewModel/mBagOfTags/#/PointingToDeclaration/">mBagOfTags</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/CoroutineViewModel/mBagOfTags/#/PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div class="main-subrow "><span><a href="index.html#dispatch.android.viewmodel/DispatchViewModel/mBagOfTags/#/PointingToDeclaration/">mBagOfTags</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/DispatchViewModel/mBagOfTags/#/PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title">
-                      <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block">@<a href="https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html">Nullable</a>()</div></div>override val <a href="index.html#dispatch.android.viewmodel/CoroutineViewModel/mBagOfTags/#/PointingToDeclaration/">mBagOfTags</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt;?<span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block">@<a href="https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html">Nullable</a>()</div></div>override val <a href="index.html#dispatch.android.viewmodel/DispatchViewModel/mBagOfTags/#/PointingToDeclaration/">mBagOfTags</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt;?<span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -267,20 +300,24 @@ fun main() {
                     </div>
                   </div>
                 </div>
-<a data-name="dispatch.android.viewmodel/CoroutineViewModel/mCleared/#/PointingToDeclaration/"></a>
+<a data-name="dispatch.android.viewmodel/DispatchViewModel/mCleared/#/PointingToDeclaration/"></a>
                 <div class="table-row" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release">
-                  <div class="main-subrow "><span><a href="index.html#dispatch.android.viewmodel/CoroutineViewModel/mCleared/#/PointingToDeclaration/">mCleared</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/CoroutineViewModel/mCleared/#/PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div class="main-subrow "><span><a href="index.html#dispatch.android.viewmodel/DispatchViewModel/mCleared/#/PointingToDeclaration/">mCleared</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/DispatchViewModel/mCleared/#/PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title">
-                      <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace">override val <a href="index.html#dispatch.android.viewmodel/CoroutineViewModel/mCleared/#/PointingToDeclaration/">mCleared</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="symbol monospace">override val <a href="index.html#dispatch.android.viewmodel/DispatchViewModel/mCleared/#/PointingToDeclaration/">mCleared</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -288,20 +325,24 @@ fun main() {
                     </div>
                   </div>
                 </div>
-<a data-name="dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/"></a>
+<a data-name="dispatch.android.viewmodel/DispatchViewModel/viewModelScope/#/PointingToDeclaration/"></a>
                 <div class="table-row" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/release" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/release">
-                  <div class="main-subrow "><span><a href="index.html#dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div class="main-subrow "><span><a href="index.html#dispatch.android.viewmodel/DispatchViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/DispatchViewModel/viewModelScope/#/PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                   <div class="platform-dependent-row keyValue">
                     <div></div>
                     <div class="title">
-                      <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="brief "><p class="paragraph"><p class="paragraph"><span data-unresolved-link="kotlinx.coroutines//CoroutineScope/#kotlin.coroutines.CoroutineContext/PointingToDeclaration/">CoroutineScope</span> instance for the <a href="index.html">CoroutineViewModel</a>. By default, it uses the <span data-unresolved-link="kotlinx.coroutines/MainCoroutineDispatcher/immediate/#/PointingToDeclaration/">Dispatchers.Main.immediate</span> dispatcher</p><p class="paragraph">The <code>viewModelScope</code> instance is created automatically upon first access from the factory set in <a href="../-view-model-scope-factory/index.html">ViewModelScopeFactory</a>.</p><p class="paragraph">The type of <span data-unresolved-link="kotlinx.coroutines//CoroutineScope/#kotlin.coroutines.CoroutineContext/PointingToDeclaration/">CoroutineScope</span> created is configurable via <a href="../-view-model-scope-factory/set.html">ViewModelScopeFactory.set</a>.</p><p class="paragraph"><code>viewModelScope</code> is automatically cancelled when <code>onCleared()</code> is invoked.</p></p></div><div class="symbol monospace">val <a href="index.html#dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a>: <span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dispatch-android-viewmodel:dokkaHtml/release"><div class="brief "><p class="paragraph"><p class="paragraph"><span data-unresolved-link="kotlinx.coroutines//CoroutineScope/#kotlin.coroutines.CoroutineContext/PointingToDeclaration/">CoroutineScope</span> instance for the <a href="index.html">DispatchViewModel</a>. By default, it uses the <span data-unresolved-link="kotlinx.coroutines/MainCoroutineDispatcher/immediate/#/PointingToDeclaration/">Dispatchers.Main.immediate</span> dispatcher</p><p class="paragraph">The <code>viewModelScope</code> instance is created automatically upon first access from the factory set in <a href="../-view-model-scope-factory/index.html">ViewModelScopeFactory</a>.</p><p class="paragraph">The type of <span data-unresolved-link="kotlinx.coroutines//CoroutineScope/#kotlin.coroutines.CoroutineContext/PointingToDeclaration/">CoroutineScope</span> created is configurable via <a href="../-view-model-scope-factory/set.html">ViewModelScopeFactory.set</a>.</p><p class="paragraph"><code>viewModelScope</code> is automatically cancelled when <code>onCleared()</code> is invoked.</p></p></div><div class="symbol monospace">val <a href="index.html#dispatch.android.viewmodel/DispatchViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a>: <span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -311,16 +352,20 @@ fun main() {
                 </div>
               </div>
               <h2 class=""><a data-name="sources"></a>Sources</h2>
-              <div class="table" data-togglable="Sources"><a data-name="dispatch.android.viewmodel/CoroutineViewModel///PointingToDeclaration/"></a>
+              <div class="table" data-togglable="Sources"><a data-name="dispatch.android.viewmodel/DispatchViewModel///PointingToDeclaration/"></a>
                 <div class="table-row" data-filterable-current=":dispatch-android-viewmodel:dokkaHtml/main" data-filterable-set=":dispatch-android-viewmodel:dokkaHtml/main">
-                  <div class="main-subrow "><span><a href="https://github.com/RBusarow/Dispatch/blob/main/dispatch-android-viewmodel/src/main/java/dispatch/android/viewmodel/CoroutineViewModel.kt#L22">(source)</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/CoroutineViewModel///PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div class="main-subrow "><span><a href="https://github.com/RBusarow/Dispatch/blob/main/dispatch-android-viewmodel/src/main/java/dispatch/android/viewmodel/DispatchViewModel.kt#L33">(source)</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="dispatch.android.viewmodel/DispatchViewModel///PointingToDeclaration/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
                         <div class="copy-popup-wrapper "><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Link copied to clipboard</span></div>
-                      </span></span></div>
+                      </span></span>
+                    <div class="platform-tags">
+                      <div class="platform-tag jvm-like">androidJvm</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

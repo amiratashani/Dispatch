@@ -369,6 +369,40 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-100-beta05" class="md-nav__link">
+    Version 1.0.0-beta05
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta05">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-changes" class="md-nav__link">
+    Api changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    Bug fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#housekeeping" class="md-nav__link">
+    Housekeeping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-100-beta04" class="md-nav__link">
     Version 1.0.0-beta04
   </a>
@@ -384,7 +418,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bug-fixes" class="md-nav__link">
+  <a href="#bug-fixes_1" class="md-nav__link">
     Bug fixes
   </a>
   
@@ -682,6 +716,40 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-100-beta05" class="md-nav__link">
+    Version 1.0.0-beta05
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 1.0.0-beta05">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-changes" class="md-nav__link">
+    Api changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    Bug fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#housekeeping" class="md-nav__link">
+    Housekeeping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-100-beta04" class="md-nav__link">
     Version 1.0.0-beta04
   </a>
@@ -697,7 +765,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bug-fixes" class="md-nav__link">
+  <a href="#bug-fixes_1" class="md-nav__link">
     Bug fixes
   </a>
   
@@ -848,12 +916,31 @@
                 
                 
                 <h1 id="change-log-for-dispatch">Change log for Dispatch<a class="headerlink" href="#change-log-for-dispatch" title="Permanent link">&para;</a></h1>
+<h2 id="version-100-beta05">Version 1.0.0-beta05<a class="headerlink" href="#version-100-beta05" title="Permanent link">&para;</a></h2>
+<h3 id="api-changes">Api changes<a class="headerlink" href="#api-changes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-view-lifecycle-coroutine-scope/index.html">ViewLifecycleCoroutineScope</a> is a special <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-dispatch-lifecycle-scope/index.html">DispatchLifecycleScope</a> meant for binding a scope to a <a href="https://developer.android.com/reference/androidx/fragment/app/Fragment">Fragment</a>'s <strong>view</strong> lifecycle. (<a href="https://github.com/RBusarow/Dispatch/issues/179">#179</a>)  </li>
+<li>Make <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/test-provided.html">testProvided</a> receive <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a> (<a href="https://github.com/RBusarow/Dispatch/issues/157">#157</a>)</li>
+<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/LifecycleCoroutineScope//PointingToDeclaration/">LifecycleCoroutineScope</a> has been renamed to <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-dispatch-lifecycle-scope/index.html">DispatchLifecycleScope</a>, along with its extension function. The old names are still functional with a deprecated typealias.  They will be removed in the future. (<a href="https://github.com/RBusarow/Dispatch/pull/186">#186</a>)  </li>
+<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/index.html#dispatch.android.viewmodel/CoroutineViewModel//PointingToDeclaration/">CoroutineViewModel</a> has been renamed to <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/-dispatch-view-model/index.html">DispatchViewModel</a>. The old names are still functional with a deprecated typealias.  They will be removed in the future. (<a href="https://github.com/RBusarow/Dispatch/pull/186">#186</a>)</li>
+</ul>
+<h3 id="bug-fixes">Bug fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/current-coroutine-context">currentCoroutineContext</a> to resolve the inner <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext</a> in <code>flowOn___</code> functions. (<a href="https://github.com/RBusarow/Dispatch/issues/181">#181</a>)  </li>
+</ul>
+<h3 id="housekeeping">Housekeeping<a class="headerlink" href="#housekeeping" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Set the project JDK target to 8. This only affects the build environment since all previous builds were done on a JDK 8 machine. (<a href="https://github.com/RBusarow/Dispatch/pull/187">#187</a>)  </li>
+<li>Coroutines has been updated to 1.4.0 (<a href="https://github.com/RBusarow/Dispatch/pull/183">#183</a>)</li>
+<li>Detekt has been updated to 1.4.2 (<a href="https://github.com/RBusarow/Dispatch/pull/184">#184</a>)</li>
+<li>JUnit6 has been updated to 5.7.0 (<a href="https://github.com/RBusarow/Dispatch/pull/178">#178</a>)</li>
+</ul>
 <h2 id="version-100-beta04">Version 1.0.0-beta04<a class="headerlink" href="#version-100-beta04" title="Permanent link">&para;</a></h2>
 <h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a> is now a mutable singleton which allows for a custom global default.</li>
 </ul>
-<h3 id="bug-fixes">Bug fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h3>
+<h3 id="bug-fixes_1">Bug fixes<a class="headerlink" href="#bug-fixes_1" title="Permanent link">&para;</a></h3>
 <h4 id="dispatch-test-junit5">dispatch-test-junit5<a class="headerlink" href="#dispatch-test-junit5" title="Permanent link">&para;</a></h4>
 <ul>
 <li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit5/dispatch.test/-coroutine-test-extension/index.html">CoroutineTestExtension</a> will now properly call <code>Dispatchers.setMain(...)</code> when injecting a
@@ -862,14 +949,14 @@
 </ul>
 <h4 id="dispatch-android-lifecycle">dispatch-android-lifecycle<a class="headerlink" href="#dispatch-android-lifecycle" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScope</a> will now be automatically cancelled when the associated <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.html">Lifecycle</a> drops to the <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.html">Destroyed</a> state.
+<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/LifecycleCoroutineScope//PointingToDeclaration/">LifecycleCoroutineScope</a> will now be automatically cancelled when the associated <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.html">Lifecycle</a> drops to the <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.html">Destroyed</a> state.
   (<a href="https://github.com/RBusarow/Dispatch/issues/135">#135</a>)</li>
 </ul>
 <h4 id="dispatch-android-lifecycle-extensions">dispatch-android-lifecycle-extensions<a class="headerlink" href="#dispatch-android-lifecycle-extensions" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Cached <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScopes</a> will now be removed from the cache when
+<li>Cached <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/LifecycleCoroutineScope//PointingToDeclaration/">LifecycleCoroutineScopes</a> will now be removed from the cache when
   they are destroyed. (<a href="https://github.com/RBusarow/Dispatch/issues/136">#136</a>)</li>
-<li>Fixed a race condition where multiple <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-lifecycle-coroutine-scope/index.html">LifecycleCoroutineScopes</a> may be
+<li>Fixed a race condition where multiple <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/LifecycleCoroutineScope//PointingToDeclaration/">LifecycleCoroutineScopes</a> may be
   created for concurrent cache misses. (<a href="https://github.com/RBusarow/Dispatch/issues/136">#136</a>)</li>
 </ul>
 <h3 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h3>
@@ -898,7 +985,7 @@
 <li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-espresso/dispatch.android.espresso/index.html">dispatch-android-espresso</a> adds support for <a href="https://developer.android.com/training/testing/espresso/idling-resource">IdlingResource</a> dispatchers in Espresso testing.</li>
 <li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle</a> adds an alternative to the Androidx <a href="https://cs.android.com/androidx/platform/frameworks/support/+/androidx-master-dev:lifecycle/lifecycle-runtime-ktx/src/main/java/androidx/lifecycle/Lifecycle.kt;l=44">LifecycleScope</a> functionality, with lots of configuration options.</li>
 <li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html">dispatch-android-lifecycle-extensions</a> adds the <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle-extensions/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/lifecycleScope/androidx.lifecycle.LifecycleOwner#/PointingToDeclaration/">lifecycleScope</a> extension property, but with a configurable factory (useful for Espresso testing).</li>
-<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/index.html">dispatch-android-viewmodel</a> adds an alternative to Androidx <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/-coroutine-view-model/index.html#dispatch.android.viewmodel/CoroutineViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a> with configuration options.</li>
+<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/index.html">dispatch-android-viewmodel</a> adds an alternative to Androidx <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/-dispatch-view-model/index.html#dispatch.android.viewmodel/DispatchViewModel/viewModelScope/#/PointingToDeclaration/">viewModelScope</a> with configuration options.</li>
 <li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-detekt/dispatch.detekt/index.html">dispatch-detekt</a> adds <a href="https://github.com/detekt/detekt">Detekt</a> rules to warn against accidentally using a hard-coded CoroutineDispatcher.</li>
 <li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit4/dispatch.test/index.html">dispatch-test-junit4</a> adds a JUnit4 Rule for automatically providing and cleaning up a <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a>.</li>
 <li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-test-junit4/dispatch.test/index.html">dispatch-test-junit5</a> adds JUnit5 Extension support for automatically providing and cleaning up a <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a>.</li>
