@@ -369,6 +369,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-100-beta06" class="md-nav__link">
+    Version 1.0.0-beta06
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-100-beta05" class="md-nav__link">
     Version 1.0.0-beta05
   </a>
@@ -716,6 +723,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-100-beta06" class="md-nav__link">
+    Version 1.0.0-beta06
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-100-beta05" class="md-nav__link">
     Version 1.0.0-beta05
   </a>
@@ -916,21 +930,25 @@
                 
                 
                 <h1 id="change-log-for-dispatch">Change log for Dispatch<a class="headerlink" href="#change-log-for-dispatch" title="Permanent link">&para;</a></h1>
+<h2 id="version-100-beta06">Version 1.0.0-beta06<a class="headerlink" href="#version-100-beta06" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Update to coroutines to <a href="https://github.com/Kotlin/kotlinx.coroutines/releases/tag/1.4.1">1.4.1</a> in order to fix <a href="https://github.com/Kotlin/kotlinx.coroutines/pull/2359">an issue with SharedFlow</a>(<a href="https://github.com/RBusarow/Dispatch/issues/189">#189</a>)</li>
+</ul>
 <h2 id="version-100-beta05">Version 1.0.0-beta05<a class="headerlink" href="#version-100-beta05" title="Permanent link">&para;</a></h2>
 <h3 id="api-changes">Api changes<a class="headerlink" href="#api-changes" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-view-lifecycle-coroutine-scope/index.html">ViewLifecycleCoroutineScope</a> is a special <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-dispatch-lifecycle-scope/index.html">DispatchLifecycleScope</a> meant for binding a scope to a <a href="https://developer.android.com/reference/androidx/fragment/app/Fragment">Fragment</a>'s <strong>view</strong> lifecycle. (<a href="https://github.com/RBusarow/Dispatch/issues/179">#179</a>)  </li>
+<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-view-lifecycle-coroutine-scope/index.html">ViewLifecycleCoroutineScope</a> is a special <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-dispatch-lifecycle-scope/index.html">DispatchLifecycleScope</a> meant for binding a scope to a <a href="https://developer.android.com/reference/androidx/fragment/app/Fragment">Fragment</a>'s <strong>view</strong> lifecycle. (<a href="https://github.com/RBusarow/Dispatch/issues/179">#179</a>)</li>
 <li>Make <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/test-provided.html">testProvided</a> receive <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-provided-coroutine-scope/index.html">TestProvidedCoroutineScope</a> (<a href="https://github.com/RBusarow/Dispatch/issues/157">#157</a>)</li>
-<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/LifecycleCoroutineScope//PointingToDeclaration/">LifecycleCoroutineScope</a> has been renamed to <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-dispatch-lifecycle-scope/index.html">DispatchLifecycleScope</a>, along with its extension function. The old names are still functional with a deprecated typealias.  They will be removed in the future. (<a href="https://github.com/RBusarow/Dispatch/pull/186">#186</a>)  </li>
+<li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/index.html#dispatch.android.lifecycle/LifecycleCoroutineScope//PointingToDeclaration/">LifecycleCoroutineScope</a> has been renamed to <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-lifecycle/dispatch.android.lifecycle/-dispatch-lifecycle-scope/index.html">DispatchLifecycleScope</a>, along with its extension function. The old names are still functional with a deprecated typealias.  They will be removed in the future. (<a href="https://github.com/RBusarow/Dispatch/pull/186">#186</a>)</li>
 <li><a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/index.html#dispatch.android.viewmodel/CoroutineViewModel//PointingToDeclaration/">CoroutineViewModel</a> has been renamed to <a href="https://rbusarow.github.io/Dispatch/api/dispatch-android-viewmodel/dispatch.android.viewmodel/-dispatch-view-model/index.html">DispatchViewModel</a>. The old names are still functional with a deprecated typealias.  They will be removed in the future. (<a href="https://github.com/RBusarow/Dispatch/pull/186">#186</a>)</li>
 </ul>
 <h3 id="bug-fixes">Bug fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Use <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/current-coroutine-context">currentCoroutineContext</a> to resolve the inner <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext</a> in <code>flowOn___</code> functions. (<a href="https://github.com/RBusarow/Dispatch/issues/181">#181</a>)  </li>
+<li>Use <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/current-coroutine-context">currentCoroutineContext</a> to resolve the inner <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext</a> in <code>flowOn___</code> functions. (<a href="https://github.com/RBusarow/Dispatch/issues/181">#181</a>)</li>
 </ul>
 <h3 id="housekeeping">Housekeeping<a class="headerlink" href="#housekeeping" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Set the project JDK target to 8. This only affects the build environment since all previous builds were done on a JDK 8 machine. (<a href="https://github.com/RBusarow/Dispatch/pull/187">#187</a>)  </li>
+<li>Set the project JDK target to 8. This only affects the build environment since all previous builds were done on a JDK 8 machine. (<a href="https://github.com/RBusarow/Dispatch/pull/187">#187</a>)</li>
 <li>Coroutines has been updated to 1.4.0 (<a href="https://github.com/RBusarow/Dispatch/pull/183">#183</a>)</li>
 <li>Detekt has been updated to 1.4.2 (<a href="https://github.com/RBusarow/Dispatch/pull/184">#184</a>)</li>
 <li>JUnit6 has been updated to 5.7.0 (<a href="https://github.com/RBusarow/Dispatch/pull/178">#178</a>)</li>
