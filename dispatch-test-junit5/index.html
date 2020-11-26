@@ -746,6 +746,7 @@
   <span class="k">override</span> <span class="k">fun</span> <span class="nf">create</span><span class="p">()</span> <span class="p">=</span> <span class="n">TestProvidedCoroutineScope</span><span class="p">(</span><span class="n">context</span> <span class="p">=</span> <span class="n">Job</span><span class="p">())</span>
 <span class="p">}</span>
 </code></pre></div>
+
 <h3 id="coroutinetestextension-example">CoroutineTestExtension example<a class="headerlink" href="#coroutinetestextension-example" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SomeClassTest</span> <span class="p">{</span>
 
@@ -769,6 +770,7 @@
   <span class="k">fun</span> <span class="nf">fireAndForget</span><span class="p">()</span> <span class="p">=</span> <span class="n">launch</span> <span class="p">{</span> <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+
 <h2 id="setting-dispatchersmain">Setting Dispatchers.Main<a class="headerlink" href="#setting-dispatchersmain" title="Permanent link">&para;</a></h2>
 <p>Even though <code>dispatch-core</code> eliminates the need to use <code>Dispatchers.Main</code> in internal code, it’s still possible that code which has yet to be migrated, or a third-party library is making use of the hard-coded dispatcher.  Because of this, the extension still calls <code>Dispatchers.setMain(...)</code> in its setup and <code>Dispatchers.resetMain()</code> afterwards.</p>
 <h2 id="this-module-replaces-dispatch-test">This module replaces dispatch-test<a class="headerlink" href="#this-module-replaces-dispatch-test" title="Permanent link">&para;</a></h2>
@@ -787,16 +789,17 @@
 <span class="n">dependencies</span> <span class="p">{</span>
 
   <span class="c1">// core</span>
-  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0&quot;</span><span class="p">)</span>
-  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0&quot;</span><span class="p">)</span>
-  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-core:1.0.0-beta05&quot;</span><span class="p">)</span>
+  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1&quot;</span><span class="p">)</span>
+  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1&quot;</span><span class="p">)</span>
+  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-core:1.0.0-beta06&quot;</span><span class="p">)</span>
 
   <span class="c1">// the junit5 artifact also provides the dispatch-test artifact</span>
-  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-test-junit5:1.0.0-beta05&quot;</span><span class="p">)</span>
-  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.0&quot;</span><span class="p">)</span>
+  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-test-junit5:1.0.0-beta06&quot;</span><span class="p">)</span>
+  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.1&quot;</span><span class="p">)</span>
   <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;org.junit.jupiter:junit-jupiter:5.7.0&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+
 <h3 id="junit-4-interoperability">JUnit 4 interoperability<a class="headerlink" href="#junit-4-interoperability" title="Permanent link">&para;</a></h3>
 <p>Junit 4 provides a “vintage” (JUnit 4) artifact for legacy support (such as Robolectric or Android instrumented tests).  Dispatch also supports running both in the same project by just adding both artifacts.</p>
 <p>Add to your module's <code>build.gradle.kts</code>:</p>
@@ -807,27 +810,32 @@
 <span class="n">dependencies</span> <span class="p">{</span>
 
   <span class="c1">// core</span>
-  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0&quot;</span><span class="p">)</span>
-  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0&quot;</span><span class="p">)</span>
-  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-core:1.0.0-beta05&quot;</span><span class="p">)</span>
+  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1&quot;</span><span class="p">)</span>
+  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1&quot;</span><span class="p">)</span>
+  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-core:1.0.0-beta06&quot;</span><span class="p">)</span>
 
   <span class="c1">// the junit4 and junit5 artifacts also provides the dispatch-test artifact</span>
-  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-test-junit4:1.0.0-beta05&quot;</span><span class="p">)</span>
-  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-test-junit5:1.0.0-beta05&quot;</span><span class="p">)</span>
+  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-test-junit4:1.0.0-beta06&quot;</span><span class="p">)</span>
+  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-test-junit5:1.0.0-beta06&quot;</span><span class="p">)</span>
   <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;org.junit.jupiter:junit-jupiter:5.7.0&quot;</span><span class="p">)</span>
   <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;org.junit.vintage:junit-vintage-engine:5.7.0&quot;</span><span class="p">)</span>
-  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.0&quot;</span><span class="p">)</span>
+  <span class="n">testImplementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.1&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+
 <!--- MODULE dispatch-core-->
+
 <!--- INDEX  -->
+
 <!--- MODULE dispatch-test-->
+
 <!--- INDEX  -->
-<!--- MODULE dispatch-test-junit4-->
+
+<p><!--- MODULE dispatch-test-junit4-->
 <!--- INDEX  -->
 <!--- MODULE dispatch-test-junit5-->
-<!--- INDEX  -->
-<!--- MODULE dispatch-android-espresso-->
+<!--- INDEX  --></p>
+<p><!--- MODULE dispatch-android-espresso-->
 <!--- INDEX  -->
 <!--- MODULE dispatch-android-lifecycle-->
 <!--- INDEX  -->
@@ -835,7 +843,7 @@
 <!--- INDEX  -->
 <!--- MODULE dispatch-android-viewmodel-->
 <!--- INDEX  -->
-<!--- END -->
+<!--- END --></p>
                 
               
               
