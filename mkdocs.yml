@@ -39,7 +39,7 @@ extra:
       link: https://github.com/rbusarow/dispatch
 
 nav:
-  - 'Intro': index.md
+  - 'Intro': project.md
   #  - 'Getting Started': getting-started.md
   - 'Modules':
       - 'core': dispatch-core.md
