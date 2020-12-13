@@ -8,8 +8,8 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: 'Easy to Use',
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    title: 'CoroutineDispatcher Injection',
+    imageUrl: 'img/syringe-solid.svg',
     description: (
       <>
         Docusaurus was designed from the ground up to be easily installed and
@@ -18,8 +18,8 @@ const features = [
     ),
   },
   {
-    title: 'Focus on What Matters',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    title: 'Better Android Lifecycle Awareness',
+    imageUrl: 'img/power-off-solid.svg',
     description: (
       <>
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
@@ -28,7 +28,17 @@ const features = [
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Android Espresso',
+    imageUrl: 'img/coffee-solid.svg',
+    description: (
+      <>
+        Extend or customize your website layout by reusing React. Docusaurus can
+        be extended while reusing the same header and footer.
+      </>
+    ),
+  },
+  {
+    title: 'Test Utilities',
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
@@ -42,7 +52,7 @@ const features = [
 function Feature({imageUrl, title, description}) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={clsx('col col--4', styles.feature)}>
+    <div className={clsx('col col--3', styles.feature)}>
       {imgUrl && (
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} alt={title} />
