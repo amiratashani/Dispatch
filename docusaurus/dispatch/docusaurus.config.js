@@ -10,11 +10,11 @@ module.exports = {
   projectName: 'Dispatch', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
-      logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
-      },
+      title: 'Dispatch',
+//      logo: {
+//        alt: 'Dispatch Logo',
+//        src: 'img/logo.svg',
+//      },
       items: [
         {
           to: 'docs/',
@@ -74,6 +74,10 @@ module.exports = {
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Rick Busarow, Built with Docusaurus.`,
+    },
+    prism: {
+      theme: require('prism-react-renderer/themes/dracula'),
+      additionalLanguages: ['kotlin', 'groovy'],
     },
   },
   presets: [

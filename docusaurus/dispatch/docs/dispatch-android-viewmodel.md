@@ -20,7 +20,7 @@ The artifact I hope you don't need, but if you're not doing dependency injection
 <!--- END -->
 ## Examples
 
-```Kotlin
+``` kotlin
 import dispatch.android.*
 
 // DispatchViewModel is just a ViewModel with a lazy viewModelScope
