@@ -52,7 +52,6 @@ internal class WithViewLifecycleTest {
 
   @Test
   fun `when the livedata goes from null to non-null, lambda should be invoked`() {
-
     var invocations = 0
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -68,7 +67,6 @@ internal class WithViewLifecycleTest {
 
   @Test
   fun `when the livedata goes from null to non-null, lambda should be invoked every time`() {
-
     var invocations = 0
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -90,12 +88,10 @@ internal class WithViewLifecycleTest {
     fragment.setFakeViewLifecycleOwner(viewLifecycleOwner)
 
     invocations shouldBe 3
-
   }
 
   @Test
   fun `when the livedata gets set to non-null, lambda should be invoked every time`() {
-
     var invocations = 0
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -115,12 +111,10 @@ internal class WithViewLifecycleTest {
     fragment.setFakeViewLifecycleOwner(viewLifecycleOwner)
 
     invocations shouldBe 3
-
   }
 
   @Test
   fun `when the view lifecycle is destroyed, lambda should be cancelled`() {
-
     lateinit var job: Job
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -138,12 +132,10 @@ internal class WithViewLifecycleTest {
     viewLifecycleOwner.destroy()
 
     job.isCancelled shouldBe true
-
   }
 
   @Test
   fun `when the fragment lifecycle is destroyed, lambda be cancelled`() {
-
     lateinit var job: Job
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -161,34 +153,28 @@ internal class WithViewLifecycleTest {
     fragmentLifecycleOwner.destroy()
 
     job.isActive shouldBe false
-
   }
 
   @Test
   fun `the lambda's LifecycleScope should correspond to the view lifecycle`() = runBlocking {
-
     lateinit var job: Job
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
 
     rule.withViewLifecycle(fragment) {
       job = launch {
-
         lifecycle shouldBeSameInstanceAs viewLifecycleOwner.lifecycle
-
       }
     }
 
     fragment.setFakeViewLifecycleOwner(viewLifecycleOwner)
 
     job.join()
-
   }
 
   @Test
   fun `receiver CoroutineScope should not be cancelled when Fragment's lifecycle is destroyed`() =
     runBlocking {
-
       /*
       This extension creates a ViewLifecycleScope without knowing where the receiver CoroutineScope came from.
 
@@ -205,11 +191,9 @@ internal class WithViewLifecycleTest {
 
       receiverScope.withViewLifecycle(fragment) {
         launch {
-
           internalScope = this
 
           lifecycle shouldBeSameInstanceAs viewLifecycleOwner.lifecycle
-
         }
       }
 
@@ -225,7 +209,6 @@ internal class WithViewLifecycleTest {
   @Test
   fun `receiver CoroutineScope and View scope contexts should be identical except for the Job`() =
     runBlocking {
-
       val fragment = FakeFragment(fragmentLifecycleOwner)
 
       val receiverScope =
@@ -235,11 +218,9 @@ internal class WithViewLifecycleTest {
 
       receiverScope.withViewLifecycle(fragment) {
         launch {
-
           internalScope = this
 
           lifecycle shouldBeSameInstanceAs viewLifecycleOwner.lifecycle
-
         }
       }
 
@@ -258,6 +239,4 @@ internal class WithViewLifecycleTest {
 
       receiverContext + internalJob shouldEqualFolded internalContext
     }
-
 }
-

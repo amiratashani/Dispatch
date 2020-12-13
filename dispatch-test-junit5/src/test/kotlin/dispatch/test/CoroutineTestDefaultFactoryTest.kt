@@ -46,14 +46,12 @@ class CoroutineTestDefaultFactoryTest(
 
   @Test
   fun `testProvided with default context should use testScope`() = testScope.testProvided {
-
     // RBT adds a SupervisorJob when there is no Job, so we really only need to check the other properties
     coroutineContext shouldEqualFolded testScope.coroutineContext + coroutineContext[Job]!!
   }
 
   @Test
   fun `testProvided with context arg should use testScope + context arg`() {
-
     val job = Job()
 
     val dispatcher = testScope.coroutineContext[ContinuationInterceptor] as TestCoroutineDispatcher
@@ -64,7 +62,6 @@ class CoroutineTestDefaultFactoryTest(
       dispatcherProvider,
       testScope.coroutineContext + job
     ).testProvided {
-
       // RBT adds a SupervisorJob when there is no Job, so we really only need to check the other properties
       coroutineContext shouldEqualFolded testScope.coroutineContext + job
     }
@@ -91,14 +88,12 @@ class CoroutineTestDefaultFactoryTest(
 
     @Test
     fun `testProvided with default context should use testScope`() = testScope.testProvided {
-
       // RBT adds a SupervisorJob when there is no Job, so we really only need to check the other properties
       coroutineContext shouldEqualFolded testScope.coroutineContext + coroutineContext[Job]!!
     }
 
     @Test
     fun `testProvided with context arg should use testScope + context arg`() {
-
       val job = Job()
 
       val dispatcher =
@@ -110,7 +105,6 @@ class CoroutineTestDefaultFactoryTest(
         dispatcherProvider,
         testScope.coroutineContext + job
       ).testProvided {
-
         // RBT adds a SupervisorJob when there is no Job, so we really only need to check the other properties
         coroutineContext shouldEqualFolded testScope.coroutineContext + job
       }

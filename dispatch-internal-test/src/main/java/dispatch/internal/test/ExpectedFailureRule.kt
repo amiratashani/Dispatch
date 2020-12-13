@@ -23,15 +23,14 @@ import org.junit.runners.model.*
 class ExpectedFailureRule : TestRule {
 
   override fun apply(
-    base: Statement, description: Description
+    base: Statement,
+    description: Description
   ) = object : Statement() {
 
     override fun evaluate() {
       try {
-
         base.evaluate()
       } catch (e: Error) {
-
         val failsAnnotation = description.getAnnotation(Fails::class.java)
 
         if (failsAnnotation != null) {
@@ -43,5 +42,3 @@ class ExpectedFailureRule : TestRule {
     }
   }
 }
-
-

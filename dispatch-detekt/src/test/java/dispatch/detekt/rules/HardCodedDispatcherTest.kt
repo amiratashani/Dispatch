@@ -26,9 +26,10 @@ internal class HardCodedDispatcherTest : FreeSpec(
   {
 
     fun findingMessage(expression: String) =
-      "Using Dispatchers singleton reference (`$expression`) instead of a DispatcherProvider property."
+      "Using Dispatchers singleton reference (`$expression`) " +
+        "instead of a DispatcherProvider property."
 
-    "positive cases"   {
+    "positive cases" {
 
       forAll(
         row("import kotlinx.coroutines.Dispatchers.Default", "Default"),
@@ -79,7 +80,7 @@ internal class HardCodedDispatcherTest : FreeSpec(
       }
     }
 
-    "importing without using it should not report finding"   {
+    "importing without using it should not report finding" {
 
       forAll(
         row("import kotlinx.coroutines.Dispatchers.Default"),
@@ -125,14 +126,14 @@ internal class HardCodedDispatcherTest : FreeSpec(
       }
     }
 
-    "issue id should be AndroidXLifecycleScope"   {
+    "issue id should be AndroidXLifecycleScope" {
 
       val rule = HardCodedDispatcher()
 
       rule.issue.id shouldBe "HardCodedDispatcher"
     }
 
-    "issue should not be reported if suppressing HardCodedDispatcher"   {
+    "issue should not be reported if suppressing HardCodedDispatcher" {
 
       forAll(
         row("import kotlinx.coroutines.Dispatchers.Default", "Default"),
@@ -185,7 +186,7 @@ internal class HardCodedDispatcherTest : FreeSpec(
       }
     }
 
-    "allowing a dispatcher should mean its usage is not reported"   {
+    "allowing a dispatcher should mean its usage is not reported" {
 
       checkAll(
         Exhaustive.boolean(),
@@ -237,5 +238,4 @@ internal class HardCodedDispatcherTest : FreeSpec(
         findings.messages shouldBe expected
       }
     }
-
   })

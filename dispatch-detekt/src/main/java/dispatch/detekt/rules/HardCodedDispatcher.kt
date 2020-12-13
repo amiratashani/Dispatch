@@ -59,7 +59,8 @@ class HardCodedDispatcher(config: Config = Config.empty) : Rule(config) {
   override val issue = Issue(
     id = "HardCodedDispatcher",
     severity = Severity.Defect,
-    description = "Dispatchers properties do not contain DispatcherProviders and don't work with this library.",
+    description = "Dispatchers properties do not contain DispatcherProviders " +
+      "and don't work with this library.",
     debt = Debt.FIVE_MINS
   )
 
@@ -91,32 +92,28 @@ class HardCodedDispatcher(config: Config = Config.empty) : Rule(config) {
    */
   @Suppress("ReturnCount", "ComplexMethod", "NestedBlockDepth")
   override fun visitDotQualifiedExpression(expression: KtDotQualifiedExpression) {
-
     super.visitDotQualifiedExpression(expression)
 
     if (expression.isInImportDirective()) return
 
-    if (!expression.isDotReceiver()
-      && expression.text != "Dispatchers.Main.immediate"
-      && matchers.any { matcher -> matcher.matches(expression) }
+    if (!expression.isDotReceiver() &&
+      expression.text != "Dispatchers.Main.immediate" &&
+      matchers.any { matcher -> matcher.matches(expression) }
     ) {
       report(CodeSmell(issue, Entity.from(expression), message(expression.text)))
       return
     }
 
     if (expression.receiverExpression.text == "Main") {
-
       val selector = expression.selectorExpression ?: return
 
       if (mainMatcher.matches(expression) || mainImmediateMatcher.matches(selector)) {
         report(CodeSmell(issue, Entity.from(expression), message(expression.text)))
       }
     } else if (expression.receiverExpression.text == "Dispatchers") {
-
       val selector = expression.selectorExpression ?: return
 
       if (selector.text == "Main") {
-
         selector.parent?.parent?.let { maybeImmediate ->
 
           if (maybeImmediate.text == "Dispatchers.Main.immediate") {
@@ -152,7 +149,6 @@ class HardCodedDispatcher(config: Config = Config.empty) : Rule(config) {
     if (expression.isDotReceiver() || expression.isDotSelector()) return
 
     if (!expression.isInImportDirective() && expression.text != "immediate") {
-
       if (matches) {
         report(CodeSmell(issue, Entity.from(expression), message(expression.text)))
       }
@@ -181,7 +177,6 @@ class HardCodedDispatcher(config: Config = Config.empty) : Rule(config) {
     val fullyQualifiedName = "$explicitDispatchersImport.$reference"
 
     fun matches(expression: PsiElement): Boolean {
-
       if (allowed) return false
 
       val trimmedImports = imports.map { it.removeSuffix(".*") }
@@ -189,12 +184,15 @@ class HardCodedDispatcher(config: Config = Config.empty) : Rule(config) {
 
       val text = expression.text
 
-      return text == fullyQualifiedName
-          || expression.parent?.text == fullyQualifiedName
-          || trimmedImports.any { import ->
+      return text == fullyQualifiedName ||
+        expression.parent?.text == fullyQualifiedName ||
+        trimmedImports.any { import ->
 
-        ((text == reference && import == fullyQualifiedName) || "$import.$text" == fullyQualifiedName)
-      }
+          (
+            (text == reference && import == fullyQualifiedName) ||
+              "$import.$text" == fullyQualifiedName
+            )
+        }
     }
   }
 }

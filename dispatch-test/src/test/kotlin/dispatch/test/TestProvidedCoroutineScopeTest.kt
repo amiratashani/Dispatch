@@ -35,31 +35,26 @@ internal class TestProvidedCoroutineScopeTest {
 
     @Test
     fun `TestProvidedCoroutineScope should implement DefaultCoroutineScope`() {
-
       scope.shouldBeInstanceOf<DefaultCoroutineScope>()
     }
 
     @Test
     fun `TestProvidedCoroutineScope should implement IOCoroutineScope`() {
-
       scope.shouldBeInstanceOf<IOCoroutineScope>()
     }
 
     @Test
     fun `TestProvidedCoroutineScope should implement MainCoroutineScope`() {
-
       scope.shouldBeInstanceOf<MainCoroutineScope>()
     }
 
     @Test
     fun `TestProvidedCoroutineScope should implement MainImmediateCoroutineScope`() {
-
       scope.shouldBeInstanceOf<MainImmediateCoroutineScope>()
     }
 
     @Test
     fun `TestProvidedCoroutineScope should implement UnconfinedCoroutineScope`() {
-
       scope.shouldBeInstanceOf<UnconfinedCoroutineScope>()
     }
   }
@@ -69,7 +64,6 @@ internal class TestProvidedCoroutineScopeTest {
 
     @Test
     fun `scope implementation should contain DispatcherProvider property`() {
-
       val scope = TestProvidedCoroutineScopeImpl(provider)
 
       scope.coroutineContext.dispatcherProvider shouldBe provider
@@ -77,7 +71,6 @@ internal class TestProvidedCoroutineScopeTest {
 
     @Test
     fun `DispatcherProvider property should override context arg`() {
-
       val scope = TestProvidedCoroutineScopeImpl(
         dispatcherProvider = provider,
         context = TestDispatcherProvider()
@@ -85,7 +78,6 @@ internal class TestProvidedCoroutineScopeTest {
 
       scope.coroutineContext.dispatcherProvider shouldBe provider
     }
-
   }
 
   @Nested
@@ -93,7 +85,6 @@ internal class TestProvidedCoroutineScopeTest {
 
     @Test
     fun `scope should contain DispatcherProvider property`() {
-
       val scope = TestProvidedCoroutineScope(dispatcherProvider = provider)
 
       scope.coroutineContext.dispatcherProvider shouldBe provider
@@ -101,7 +92,6 @@ internal class TestProvidedCoroutineScopeTest {
 
     @Test
     fun `dispatcher arg should be used to create default DispatcherProvider`() {
-
       val scope = TestProvidedCoroutineScope(dispatcher = dispatcher)
 
       scope.dispatcherProvider.default shouldBe dispatcher
@@ -113,7 +103,6 @@ internal class TestProvidedCoroutineScopeTest {
 
     @Test
     fun `DispatcherProvider arg should override context arg`() {
-
       val scope = TestProvidedCoroutineScope(
         dispatcherProvider = provider,
         context = TestDispatcherProvider()

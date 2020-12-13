@@ -34,5 +34,4 @@ dependencies {
   testImplementation(Libs.Kotlin.test)
   testImplementation(Libs.Kotlin.testCommon)
   testImplementation(Libs.Kotlinx.Coroutines.test)
-
 }

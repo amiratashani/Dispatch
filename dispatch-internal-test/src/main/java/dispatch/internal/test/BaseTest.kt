@@ -31,7 +31,6 @@ abstract class BaseTest {
   }
 
   fun expect(expectedIndex: Int) {
-
     val actualIndex = index.incrementAndGet()
 
     actualIndex shouldBe expectedIndex
@@ -44,12 +43,12 @@ abstract class BaseTest {
 
   fun resetIndex() {
     try {
-      require(index.value == 0 || finished.value) { "Expecting that 'finish(...)' was invoked, but it was not" }
+      require(index.value == 0 || finished.value) {
+        "Expecting that 'finish(...)' was invoked, but it was not"
+      }
     } finally {
       index.value = 0
       finished.value = false
     }
   }
 }
-
-

@@ -25,26 +25,22 @@ class ViewModelScopeSample {
 
   @Sample
   fun viewModelScopeSample() {
-
     class SomeViewModel : DispatchViewModel() {
 
       init {
-
         // auto-created MainImmediateCoroutineScope which is auto-cancelled in onClear()
-        viewModelScope //...
+        viewModelScope // ...
 
         // it works as a normal CoroutineScope (because it is)
         viewModelScope.launchMain { }
 
         // this is the same CoroutineScope instance each time
         viewModelScope.launchMain { }
-
       }
 
       override fun onClear() {
         viewModelScope.isActive shouldBe false
       }
     }
-
   }
 }

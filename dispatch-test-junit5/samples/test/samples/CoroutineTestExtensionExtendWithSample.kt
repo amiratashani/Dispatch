@@ -29,8 +29,6 @@ class CoroutineTestExtensionExtendWithSample(
 
   @Test
   fun `injected scope should be injected`() {
-
     testScope shouldNotBe null
   }
-
 }

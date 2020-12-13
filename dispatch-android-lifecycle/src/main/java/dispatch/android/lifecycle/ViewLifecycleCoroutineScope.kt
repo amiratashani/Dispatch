@@ -71,6 +71,5 @@ fun CoroutineScope.withViewLifecycle(
   fragment: Fragment,
   block: ViewLifecycleCoroutineScope.() -> Unit
 ): Job {
-
   return bindViewLifecycleCoroutineScope(this, fragment, block)
 }

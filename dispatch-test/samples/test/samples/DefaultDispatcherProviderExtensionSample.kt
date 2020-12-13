@@ -41,7 +41,6 @@ class DefaultDispatcherProviderExtensionSample {
 
   @Sample
   fun defaultDispatcherProviderResetSample() {
-
     val custom = CustomDispatcherProvider()
     DefaultDispatcherProvider.set(custom)
 
@@ -58,7 +57,6 @@ class DefaultDispatcherProviderExtensionSample {
     default.main shouldBe Dispatchers.Main
     default.mainImmediate shouldBe Dispatchers.Main.immediate
     default.unconfined shouldBe Dispatchers.Unconfined
-
   }
 
   @Suppress("TestFunctionName")

@@ -32,5 +32,4 @@ dependencies {
 
   testImplementation(project(":dispatch-test"))
   testImplementation(project(":dispatch-test-junit4"))
-
 }

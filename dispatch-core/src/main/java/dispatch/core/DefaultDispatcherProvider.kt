@@ -67,10 +67,11 @@ object DefaultDispatcherProvider {
    * @see DispatcherProvider
    */
   @Deprecated(
-    message = "The DefaultDispatcherProvider class has been replaced with this singleton object.  " +
-        "To create a DispatcherProvider with the default implementation," +
-        " use the DispatcherProvider companion object factory.  " +
-        "This function will be removed before the 1.0 release.",
+    message = "The DefaultDispatcherProvider class has been replaced " +
+      "with this singleton object.  " +
+      "To create a DispatcherProvider with the default implementation," +
+      " use the DispatcherProvider companion object factory.  " +
+      "This function will be removed before the 1.0 release.",
     replaceWith = ReplaceWith("DispatcherProvider()"),
     level = DeprecationLevel.HIDDEN
   )

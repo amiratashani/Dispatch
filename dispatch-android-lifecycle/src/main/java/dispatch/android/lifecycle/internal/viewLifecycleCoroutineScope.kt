@@ -29,12 +29,10 @@ internal fun bindViewLifecycleCoroutineScope(
   fragment: Fragment,
   block: ViewLifecycleCoroutineScope.() -> Unit
 ): Job {
-
   val observerJob = fragment.viewLifecycleOwnerLiveData.asFlow()
     .onEachLatest { owner: LifecycleOwner? ->
 
       if (owner != null) {
-
         /*
         Create a new ViewLifecycleCoroutineScope for each update to the LiveData.
 
@@ -48,17 +46,17 @@ internal fun bindViewLifecycleCoroutineScope(
         )
 
         viewScope.block()
-
       }
     }.flowOnMainImmediate()
     .launchIn(receiverScope)
 
-  fragment.lifecycle.addObserver(LifecycleEventObserver { _, event ->
-    if (event == Lifecycle.Event.ON_DESTROY) {
-      observerJob.cancel()
+  fragment.lifecycle.addObserver(
+    LifecycleEventObserver { _, event ->
+      if (event == Lifecycle.Event.ON_DESTROY) {
+        observerJob.cancel()
+      }
     }
-  })
+  )
 
   return observerJob
 }
-

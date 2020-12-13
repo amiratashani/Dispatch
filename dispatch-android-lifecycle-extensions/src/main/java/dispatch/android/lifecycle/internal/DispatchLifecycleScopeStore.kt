@@ -39,7 +39,6 @@ internal object DispatchLifecycleScopeStore : LifecycleEventObserver {
   }
 
   fun get(lifecycle: Lifecycle): DispatchLifecycleScope {
-
     if (lifecycle.currentState <= Lifecycle.State.DESTROYED) {
       return LifecycleScopeFactory.create(lifecycle)
     }
@@ -64,7 +63,6 @@ internal object DispatchLifecycleScopeStore : LifecycleEventObserver {
   }
 
   private fun bindLifecycle(lifecycle: Lifecycle): DispatchLifecycleScope {
-
     val scope = LifecycleScopeFactory.create(lifecycle)
 
     scope.launchMainImmediate {
@@ -75,5 +73,4 @@ internal object DispatchLifecycleScopeStore : LifecycleEventObserver {
 
     return scope
   }
-
 }

@@ -23,14 +23,14 @@ import org.junit.jupiter.api.extension.*
 @ExperimentalCoroutinesApi
 class CoroutineTestExtensionInjectionTest {
 
-  @JvmField @RegisterExtension val extension = CoroutineTestExtension()
+  @JvmField @RegisterExtension
+  val extension = CoroutineTestExtension()
 
   @Nested
   inner class `nested classes` {
 
     @Test
     fun `function arguments should be automatically injected`(scope: TestProvidedCoroutineScope) {
-
       scope shouldNotBe null
     }
   }
@@ -53,14 +53,11 @@ class CoroutineTestExtensionInjectionTest {
 
     @Test
     fun `beforeAll should be injected before a function is called`() {
-
       beforeAllInjectedScope shouldNotBe null
-
     }
 
     @Test
     fun `beforeEach should be injected before a function is called`() {
-
       beforeEachInjectedScope shouldNotBe null
     }
   }

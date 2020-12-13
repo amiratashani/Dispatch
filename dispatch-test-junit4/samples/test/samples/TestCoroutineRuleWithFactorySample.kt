@@ -35,7 +35,6 @@ class TestCoroutineRuleWithFactorySample {
 
   @Test
   fun `rule should be a TestProvidedCoroutineScope`() = runBlocking {
-
     rule.shouldBeInstanceOf<TestProvidedCoroutineScope>()
 
     rule.launch {
@@ -46,7 +45,6 @@ class TestCoroutineRuleWithFactorySample {
 
   @Test
   fun `rule should be the provided custom scope`() = runBlocking {
-
     val context = rule.coroutineContext
 
     context shouldBe customScope.coroutineContext

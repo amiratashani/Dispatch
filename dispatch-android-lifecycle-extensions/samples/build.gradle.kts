@@ -43,5 +43,4 @@ dependencies {
   testImplementation(Libs.Robolectric.core)
 
   testImplementation(project(":dispatch-internal-test-android"))
-
 }

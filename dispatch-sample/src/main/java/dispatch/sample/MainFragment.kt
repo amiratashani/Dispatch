@@ -45,9 +45,7 @@ class MainFragment : Fragment() {
     super.onCreate(savedInstanceState)
 
     scope.withViewLifecycle(this) {
-
       launchOnCreate {
-
         var count = 0
 
         while (true) {
@@ -57,7 +55,6 @@ class MainFragment : Fragment() {
         }
       }
     }
-
   }
 
   override fun onCreateView(
@@ -91,12 +88,11 @@ class MainFragment : Fragment() {
       // the default dispatcher in this scope is now Dispatchers.IO
       .launchIn(ioDefaultScope)
   }
-
 }
 
 @Suppress("UNCHECKED_CAST")
 inline fun <reified VM : ViewModel> viewModelFactory(crossinline f: () -> VM):
-    ViewModelProvider.Factory =
+  ViewModelProvider.Factory =
   object : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(aClass: Class<T>): T = f() as T
   }

@@ -27,11 +27,15 @@ import kotlin.coroutines.*
 class TestCoroutineRuleTest {
 
   val customScope = TestProvidedCoroutineScope()
-  @JvmField @Rule val customFactoryRule = TestCoroutineRule { customScope }
 
-  @JvmField @Rule val defaultRule = TestCoroutineRule()
+  @JvmField @Rule
+  val customFactoryRule = TestCoroutineRule { customScope }
 
-  @JvmField @Rule val failureRule = ExpectedFailureRule()
+  @JvmField @Rule
+  val defaultRule = TestCoroutineRule()
+
+  @JvmField @Rule
+  val failureRule = ExpectedFailureRule()
 
   @Test
   fun `a no-arg rule should use a default TestProvidedCoroutineScope`() {
@@ -52,11 +56,9 @@ class TestCoroutineRuleTest {
 
   @Test
   fun `a custom factory rule should use use the custom factory`() {
-
     val context = customFactoryRule.coroutineContext
 
     context shouldBe customScope.coroutineContext
-
   }
 
   /**
@@ -69,10 +71,7 @@ class TestCoroutineRuleTest {
   @Test
   @Fails(expected = UncompletedCoroutinesError::class)
   fun `leaking coroutine should fail with UncompletedCoroutineError`() {
-
     // Job should run well past completion -- making the coroutine leak
     defaultRule.launch { delay(100000) }
   }
-
 }
-

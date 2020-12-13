@@ -36,5 +36,4 @@ dependencies {
   testImplementation(Libs.RickBusarow.Hermit.junit5)
 
   testImplementation(project(":dispatch-internal-test"))
-
 }

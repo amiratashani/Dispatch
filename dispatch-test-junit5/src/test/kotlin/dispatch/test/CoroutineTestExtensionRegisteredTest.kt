@@ -26,8 +26,12 @@ import kotlin.coroutines.*
 class CoroutineTestExtensionRegisteredTest {
 
   val customScope = TestProvidedCoroutineScope()
-  @JvmField @RegisterExtension val customFactoryExtension = coroutineTestExtension { customScope }
-  @JvmField @RegisterExtension val defaultExtension = CoroutineTestExtension()
+
+  @JvmField @RegisterExtension
+  val customFactoryExtension = coroutineTestExtension { customScope }
+
+  @JvmField @RegisterExtension
+  val defaultExtension = CoroutineTestExtension()
 
   @Test
   fun `a no-arg extension should use a default TestProvidedCoroutineScope`() {
@@ -47,7 +51,6 @@ class CoroutineTestExtensionRegisteredTest {
 
   @Test
   fun `a custom factory extension should use use the custom factory`() {
-
     val context = customFactoryExtension.scope.coroutineContext
 
     context shouldBe customScope.coroutineContext
@@ -73,12 +76,9 @@ class CoroutineTestExtensionRegisteredTest {
 
     @Test
     fun `a custom factory extension should use use the custom factory`() {
-
       val context = customFactoryExtension.scope.coroutineContext
 
       context shouldBe customScope.coroutineContext
     }
   }
 }
-
-

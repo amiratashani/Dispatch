@@ -24,6 +24,7 @@ class DispatchConfigValidator : ConfigValidator {
 
   override fun validate(config: Config): Collection<Notification> {
     val result = mutableListOf<Notification>()
+
     runCatching {
       config.subConfig("dispatch")
         .subConfig("AndroidXLifecycleScope")
@@ -31,6 +32,7 @@ class DispatchConfigValidator : ConfigValidator {
     }.onFailure {
       result.add(ConfigError("'active' property must be of type boolean."))
     }
+
     runCatching {
       config.subConfig("dispatch")
         .subConfig("HardCodedDispatcher")
@@ -38,31 +40,44 @@ class DispatchConfigValidator : ConfigValidator {
     }.onFailure {
       result.add(ConfigError("'active' property must be of type boolean."))
     }
+
     runCatching {
       config.subConfig("dispatch")
         .subConfig("HardCodedDispatcher")
         .valueOrNull<Boolean>("allowDefaultDispatcher")
-    }.onFailure { result.add(ConfigError("'allowDefaultDispatcher' property must be of type boolean.")) }
+    }.onFailure {
+      result.add(ConfigError("'allowDefaultDispatcher' property must be of type boolean."))
+    }
+
     runCatching {
       config.subConfig("dispatch")
         .subConfig("HardCodedDispatcher")
         .valueOrNull<Boolean>("allowIODispatcher")
     }.onFailure { result.add(ConfigError("'allowIODispatcher' property must be of type boolean.")) }
+
     runCatching {
       config.subConfig("dispatch")
         .subConfig("HardCodedDispatcher")
         .valueOrNull<Boolean>("allowMainDispatcher")
-    }.onFailure { result.add(ConfigError("'allowMainDispatcher' property must be of type boolean.")) }
+    }.onFailure {
+      result.add(ConfigError("'allowMainDispatcher' property must be of type boolean."))
+    }
+
     runCatching {
       config.subConfig("dispatch")
         .subConfig("HardCodedDispatcher")
         .valueOrNull<Boolean>("allowMainImmediateDispatcher")
-    }.onFailure { result.add(ConfigError("'allowMainImmediateDispatcher' property must be of type boolean.")) }
+    }.onFailure {
+      result.add(ConfigError("'allowMainImmediateDispatcher' property must be of type boolean."))
+    }
+
     runCatching {
       config.subConfig("dispatch")
         .subConfig("HardCodedDispatcher")
         .valueOrNull<Boolean>("allowUnconfinedDispatcher")
-    }.onFailure { result.add(ConfigError("'allowUnconfinedDispatcher' property must be of type boolean.")) }
+    }.onFailure {
+      result.add(ConfigError("'allowUnconfinedDispatcher' property must be of type boolean."))
+    }
 
     return result
   }

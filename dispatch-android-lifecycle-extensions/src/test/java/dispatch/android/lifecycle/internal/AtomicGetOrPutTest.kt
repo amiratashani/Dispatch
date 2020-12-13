@@ -16,7 +16,7 @@
 package dispatch.android.lifecycle.internal
 
 import androidx.lifecycle.*
-import dispatch.android.lifecycle.DispatchLifecycleScope
+import dispatch.android.lifecycle.*
 import dispatch.core.*
 import dispatch.internal.test.android.*
 import dispatch.test.*
@@ -37,7 +37,6 @@ internal class AtomicGetOrPutTest : HermitJUnit5() {
     inner class `multiple threads access lifecycleScope at once` {
       @Test
       fun `all threads should get the same instance`() = runBlocking {
-
         val main = newSingleThreadContext("main")
 
         val storeMap = ConcurrentHashMap<Lifecycle, DispatchLifecycleScope>()
@@ -54,7 +53,6 @@ internal class AtomicGetOrPutTest : HermitJUnit5() {
 
         val all = List(200) {
           async(hugeExecutor) {
-
             lock.await()
 
             storeMap.atomicGetOrPut(androidLifecycle) {
@@ -63,7 +61,6 @@ internal class AtomicGetOrPutTest : HermitJUnit5() {
                 coroutineScope = MainImmediateCoroutineScope(Job(), TestDispatcherProvider(main))
               )
               withContext(main) {
-
                 androidLifecycle.addObserver(DispatchLifecycleScopeStore)
               }
               scope
@@ -80,7 +77,6 @@ internal class AtomicGetOrPutTest : HermitJUnit5() {
 
         androidLifecycle.observerCount shouldBe 2
       }
-
     }
   }
 }

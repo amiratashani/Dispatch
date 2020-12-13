@@ -106,7 +106,6 @@ fun TestDispatcherProvider(
 @ExperimentalCoroutinesApi
 @Suppress("HardCodedDispatcher")
 fun TestBasicDispatcherProvider(): TestDispatcherProvider {
-
   @Suppress("EXPERIMENTAL_API_USAGE")
   val mainThread = newSingleThreadContext("main thread proxy")
 

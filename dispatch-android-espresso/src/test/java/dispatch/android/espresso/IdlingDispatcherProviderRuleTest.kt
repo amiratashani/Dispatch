@@ -28,9 +28,11 @@ class IdlingDispatcherProviderRuleTest {
 
   val idlingDispatcherProvider = IdlingDispatcherProvider()
 
-  @JvmField @Rule val mockkRule = EspressoMockingWrapper()
+  @JvmField @Rule
+  val mockkRule = EspressoMockingWrapper()
 
-  @JvmField @Rule val idlingRule = IdlingDispatcherProviderRule { idlingDispatcherProvider }
+  @JvmField @Rule
+  val idlingRule = IdlingDispatcherProviderRule { idlingDispatcherProvider }
 
   @Test
   fun `rule's DispatcherProvider should be what is returned by the factory`() {
@@ -39,7 +41,6 @@ class IdlingDispatcherProviderRuleTest {
 
   @Test
   fun `dispatcherProvider should be registered with IdlingRegistry before test begins`() {
-
     val registry = mockkRule.idlingRegistry
 
     verify { registry.register(idlingDispatcherProvider.default.counter) }
@@ -47,9 +48,7 @@ class IdlingDispatcherProviderRuleTest {
     verify { registry.register(idlingDispatcherProvider.main.counter) }
     verify { registry.register(idlingDispatcherProvider.mainImmediate.counter) }
     verify { registry.register(idlingDispatcherProvider.unconfined.counter) }
-
   }
-
 }
 
 class EspressoMockingWrapper : TestWatcher() {

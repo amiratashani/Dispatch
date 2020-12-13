@@ -25,7 +25,6 @@ class IdlingCoroutineScopeSample {
 
   @Sample
   fun createNoArgIdlingCoroutineScope() {
-
     val scope = IdlingCoroutineScope()
 
     scope.idlingDispatcherProvider.registerAllIdlingResources()
@@ -33,7 +32,6 @@ class IdlingCoroutineScopeSample {
 
   @Sample
   fun createCustomIdlingCoroutineScope() {
-
     val scope = IdlingCoroutineScope(
       job = Job(),
       dispatcherProvider = SomeCustomIdlingDispatcherProvider()

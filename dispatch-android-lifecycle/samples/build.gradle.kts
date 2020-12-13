@@ -51,5 +51,4 @@ dependencies {
   testImplementation(project(":dispatch-internal-test-android"))
   testImplementation(project(":dispatch-test"))
   testImplementation(project(":dispatch-test-junit5"))
-
 }

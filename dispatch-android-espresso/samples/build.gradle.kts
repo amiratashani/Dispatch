@@ -38,5 +38,4 @@ dependencies {
   testImplementation(project(":dispatch-android-lifecycle-extensions"))
   testImplementation(project(":dispatch-android-viewmodel"))
   testImplementation(project(":dispatch-internal-test"))
-
 }

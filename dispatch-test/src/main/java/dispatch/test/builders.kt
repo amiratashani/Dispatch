@@ -42,7 +42,6 @@ fun runBlockingProvided(
   context: CoroutineContext = EmptyCoroutineContext,
   block: suspend CoroutineScope.() -> Unit
 ): Unit = runBlocking(context) {
-
   val existingDispatcherProvider = context[DispatcherProvider]
 
   val newContext = if (existingDispatcherProvider == null) {
@@ -74,7 +73,6 @@ fun testProvided(
   context: CoroutineContext = EmptyCoroutineContext,
   testBody: suspend TestProvidedCoroutineScope.() -> Unit
 ) {
-
   val dispatcher = (context[ContinuationInterceptor] as? TestCoroutineDispatcher)
     ?: TestCoroutineDispatcher()
 
@@ -84,7 +82,6 @@ fun testProvided(
   val combinedContext = context + dispatcher + dispatcherProvider
 
   return runBlockingTest(context = combinedContext) {
-
     val providedScope = TestProvidedCoroutineScopeImpl(
       dispatcherProvider = dispatcherProvider,
       context = combinedContext + coroutineContext

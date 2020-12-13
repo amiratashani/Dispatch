@@ -77,7 +77,6 @@ public class CoroutineTestExtension(
     parameterContext: ParameterContext,
     extensionContext: ExtensionContext
   ): TestProvidedCoroutineScope {
-
     val scope = contextScopeMap[extensionContext]
 
     // if a scope was already created for this context (not sure how), return it
@@ -116,7 +115,6 @@ public class CoroutineTestExtension(
    * @suppress
    */
   override fun beforeEach(context: ExtensionContext) {
-
     /*
     In case of using RegisterExtension with the internal scope without resolving a parameter,
     make sure it's registered as Dispatchers.Main.
@@ -130,7 +128,6 @@ public class CoroutineTestExtension(
    * @suppress
    */
   override fun afterEach(context: ExtensionContext) {
-
     if (lazyScope.isInitialized()) {
       scope.cleanupTestCoroutines()
     }
@@ -157,7 +154,6 @@ public class CoroutineTestExtension(
     open fun create(): TestProvidedCoroutineScope =
       TestProvidedCoroutineScope()
   }
-
 }
 
 /**

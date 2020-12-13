@@ -27,12 +27,10 @@ internal class DispatchLifecycleScopeBinding(
 ) : LifecycleEventObserver {
 
   fun bind() {
-
     if (lifecycle.currentState == Lifecycle.State.DESTROYED) {
       cancelDestroyed()
     } else {
       CoroutineScope(coroutineContext).launchMainImmediate {
-
         if (lifecycle.currentState == Lifecycle.State.DESTROYED) {
           cancelDestroyed()
         } else {

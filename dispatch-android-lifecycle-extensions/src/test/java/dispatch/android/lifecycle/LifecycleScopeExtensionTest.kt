@@ -37,7 +37,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
   @BeforeEach
   fun beforeEach() {
-
     val dispatcher = TestCoroutineDispatcher()
 
     LifecycleScopeFactory.set { dispatcher + TestDispatcherProvider(dispatcher) + Job() }
@@ -61,14 +60,12 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `scope and job should already be cancelled`() = runBlocking {
-
         scope.isActive shouldBe false
         scope.coroutineContext[Job]!!.isActive shouldBe false
       }
 
       @Test
       fun `scope should not be cached`() {
-
         storeMap[lifecycleOwner.lifecycle] shouldBe null
       }
 
@@ -76,7 +73,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
       // This isn't actually desired, but the precondition should be impossible.
       @Test
       fun `additional scopes should be unique`() {
-
         lifecycleOwner.dispatchLifecycleScope shouldNotBe scope
       }
     }
@@ -94,13 +90,11 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `scope and job should be active`() {
-
         scope.isActive shouldBe true
       }
 
       @Test
       fun `scope should be cached`() {
-
         scope
 
         storeMap[lifecycleOwner.lifecycle] shouldBe scope
@@ -108,7 +102,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `repeated access should return the same scope`() {
-
         lifecycleOwner.dispatchLifecycleScope shouldBe scope
       }
 
@@ -125,13 +118,11 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
         @Test
         fun `scope should be cancelled`() {
-
           scope.isActive shouldBe false
         }
 
         @Test
         fun `scope should be removed from the cache`() {
-
           storeMap[lifecycleOwner.lifecycle] shouldBe null
         }
       }
@@ -142,7 +133,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `all threads should get the same instance`() = runBlocking {
-
         val hugeExecutor = ThreadPoolExecutor(
           200, 200, 5000, TimeUnit.MILLISECONDS, LinkedBlockingQueue()
         )
@@ -178,13 +168,11 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `scope and job should be active`() {
-
         scope.isActive shouldBe true
       }
 
       @Test
       fun `scope should be cached`() {
-
         scope
 
         storeMap[lifecycleOwner.lifecycle] shouldBe scope
@@ -192,7 +180,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `repeated access should return the same scope`() {
-
         lifecycleOwner.dispatchLifecycleScope shouldBe scope
       }
 
@@ -206,13 +193,11 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
         @Test
         fun `scope should be cancelled`() {
-
           scope.isActive shouldBe false
         }
 
         @Test
         fun `scope should be removed from the cache`() {
-
           storeMap[lifecycleOwner.lifecycle] shouldBe null
         }
       }
@@ -223,7 +208,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `all threads should get the same instance`() = runBlocking {
-
         val hugeExecutor = ThreadPoolExecutor(
           200, 200, 5000, TimeUnit.MILLISECONDS, LinkedBlockingQueue()
         )
@@ -259,13 +243,11 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `scope and job should be active`() {
-
         scope.isActive shouldBe true
       }
 
       @Test
       fun `scope should be cached`() {
-
         scope
 
         storeMap[lifecycleOwner.lifecycle] shouldBe scope
@@ -273,7 +255,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `repeated access should return the same scope`() {
-
         lifecycleOwner.dispatchLifecycleScope shouldBe scope
       }
 
@@ -287,13 +268,11 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
         @Test
         fun `scope should be cancelled`() {
-
           scope.isActive shouldBe false
         }
 
         @Test
         fun `scope should be removed from the cache`() {
-
           storeMap[lifecycleOwner.lifecycle] shouldBe null
         }
       }
@@ -304,7 +283,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `all threads should get the same instance`() = runBlocking {
-
         val hugeExecutor = ThreadPoolExecutor(
           200, 200, 5000, TimeUnit.MILLISECONDS, LinkedBlockingQueue()
         )
@@ -340,13 +318,11 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `scope and job should be active`() {
-
         scope.isActive shouldBe true
       }
 
       @Test
       fun `scope should be cached`() {
-
         scope
 
         storeMap[lifecycleOwner.lifecycle] shouldBe scope
@@ -354,7 +330,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `repeated access should return the same scope`() {
-
         lifecycleOwner.dispatchLifecycleScope shouldBe scope
       }
 
@@ -363,19 +338,16 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
         @BeforeEach
         fun beforeEach() {
-
           lifecycleOwner.destroy()
         }
 
         @Test
         fun `scope should be cancelled`() {
-
           scope.isActive shouldBe false
         }
 
         @Test
         fun `scope should be removed from the cache`() {
-
           storeMap[lifecycleOwner.lifecycle] shouldBe null
         }
       }
@@ -386,7 +358,6 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
 
       @Test
       fun `all threads should get the same instance`() = runBlocking {
-
         val hugeExecutor = ThreadPoolExecutor(
           200, 200, 5000, TimeUnit.MILLISECONDS, LinkedBlockingQueue()
         )
@@ -409,5 +380,4 @@ internal class LifecycleScopeExtensionTest : HermitJUnit5() {
       }
     }
   }
-
 }

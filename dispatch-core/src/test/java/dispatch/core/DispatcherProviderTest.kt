@@ -41,40 +41,32 @@ internal class DispatcherProviderTest {
 
     @Test
     fun `created provider default dispatcher should use Dispatchers Default`() {
-
       DispatcherProvider().default shouldBe Dispatchers.Default
     }
 
     @Test
     fun `created provider io dispatcher should use Dispatchers IO`() {
-
       DispatcherProvider().io shouldBe Dispatchers.IO
     }
 
     @Test
     fun `created provider main dispatcher should use Dispatchers Main`() {
-
       DispatcherProvider().main shouldBe Dispatchers.Main
     }
 
     @Test
     fun `created provider mainImmediate dispatcher should use Dispatchers Main immediate`() {
-
       DispatcherProvider().mainImmediate shouldBe Dispatchers.Main.immediate
     }
 
     @Test
     fun `created provider unconfined dispatcher should use Dispatchers Unconfined`() {
-
       DispatcherProvider().unconfined shouldBe Dispatchers.Unconfined
     }
 
     @Test
     fun `DispatcherProvider factory should create DefaultDispatcherProvider`() {
-
       DispatcherProvider() shouldBe DefaultDispatcherProvider.get()
     }
   }
-
-
 }

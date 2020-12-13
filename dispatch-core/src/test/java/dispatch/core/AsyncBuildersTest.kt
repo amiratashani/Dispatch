@@ -38,7 +38,6 @@ internal class AsyncBuildersTest {
     @Test
     fun `empty context arg should use receiver context with provided default dispatcher`() =
       runBlocking(testProvider) {
-
         val ctx: CoroutineContext = coroutineContext + testProvider.default
 
         asyncDefault { coroutineContext shouldEqualFolded ctx }.join()
@@ -46,7 +45,6 @@ internal class AsyncBuildersTest {
 
     @Test
     fun `context should override specified provider dispatcher`() = runBlocking(testProvider) {
-
       val job = Job()
       val ctx: CoroutineContext = coroutineContext + testProvider.default
 
@@ -62,7 +60,6 @@ internal class AsyncBuildersTest {
     @Test
     fun `empty context arg should use receiver context with provided io dispatcher`() =
       runBlocking(testProvider) {
-
         val ctx: CoroutineContext = coroutineContext + testProvider.io
 
         asyncIO { coroutineContext shouldEqualFolded ctx }.join()
@@ -70,7 +67,6 @@ internal class AsyncBuildersTest {
 
     @Test
     fun `context should override specified provider dispatcher`() = runBlocking(testProvider) {
-
       val job = Job()
       val ctx: CoroutineContext = coroutineContext + testProvider.io
 
@@ -86,7 +82,6 @@ internal class AsyncBuildersTest {
     @Test
     fun `empty context arg should use receiver context with provided main dispatcher`() =
       runBlocking(testProvider) {
-
         val ctx: CoroutineContext = coroutineContext + testProvider.main
 
         asyncMain { coroutineContext shouldEqualFolded ctx }.join()
@@ -94,7 +89,6 @@ internal class AsyncBuildersTest {
 
     @Test
     fun `context should override specified provider dispatcher`() = runBlocking(testProvider) {
-
       val job = Job()
       val ctx: CoroutineContext = coroutineContext + testProvider.main
 
@@ -110,7 +104,6 @@ internal class AsyncBuildersTest {
     @Test
     fun `empty context arg should use receiver context with provided mainImmediate dispatcher`() =
       runBlocking(testProvider) {
-
         val ctx: CoroutineContext = coroutineContext + testProvider.mainImmediate
 
         asyncMainImmediate { coroutineContext shouldEqualFolded ctx }.join()
@@ -118,7 +111,6 @@ internal class AsyncBuildersTest {
 
     @Test
     fun `context should override specified provider dispatcher`() = runBlocking(testProvider) {
-
       val job = Job()
       val ctx: CoroutineContext = coroutineContext + testProvider.mainImmediate
 
@@ -134,7 +126,6 @@ internal class AsyncBuildersTest {
     @Test
     fun `empty context arg should use receiver context with provided mainImmediate dispatcher`() =
       runBlocking(testProvider) {
-
         val ctx: CoroutineContext = coroutineContext + testProvider.unconfined
 
         asyncUnconfined { coroutineContext shouldEqualFolded ctx }.join()
@@ -142,7 +133,6 @@ internal class AsyncBuildersTest {
 
     @Test
     fun `context should override specified provider dispatcher`() = runBlocking(testProvider) {
-
       val job = Job()
       val ctx: CoroutineContext = coroutineContext + testProvider.unconfined
 

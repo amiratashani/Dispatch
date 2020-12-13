@@ -23,67 +23,46 @@ class AsyncSample {
 
   @Sample
   fun asyncDefaultSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     asyncDefault {
-
       dispatcherName() shouldBe "default"
-
     }.join()
-
   }
 
   @Sample
   fun asyncIOSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     asyncIO {
-
       dispatcherName() shouldBe "io"
-
     }.join()
-
   }
 
   @Sample
   fun asyncMainSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     asyncMain {
-
       dispatcherName() shouldBe "main"
-
     }.join()
-
   }
 
   @Sample
   fun asyncMainImmediateSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     asyncMainImmediate {
-
       dispatcherName() shouldBe "main immediate"
-
     }.join()
-
   }
 
   @Sample
   fun asyncUnconfinedSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     asyncUnconfined {
-
       dispatcherName() shouldBe "unconfined"
-
     }.join()
-
   }
 }
-

@@ -56,7 +56,6 @@ internal class DispatchViewModelTest {
 
   @Test
   fun `accessing the property repeatedly should return the same scope`() = runBlocking {
-
     val viewModel = TestViewModel()
 
     val fresh = viewModel.viewModelScope
@@ -68,7 +67,6 @@ internal class DispatchViewModelTest {
 
   @Test
   fun `different ViewModels should get different scopes`() = runBlocking {
-
     val fresh = TestViewModel().viewModelScope
 
     val alsoFresh = TestViewModel().viewModelScope
@@ -78,7 +76,6 @@ internal class DispatchViewModelTest {
 
   @Test
   fun `default factory should be a default MainImmediateCoroutineScope`() = runBlockingTest {
-
     val scope = TestViewModel().viewModelScope
 
     scope.coroutineContext[DispatcherProvider] shouldBe DefaultDispatcherProvider.get()
@@ -92,7 +89,6 @@ internal class DispatchViewModelTest {
 
   @Test
   fun `a custom factory should be used after being set`() = runBlockingTest {
-
     ViewModelScopeFactory.set { MainImmediateCoroutineScope(originContext) }
 
     val scope = TestViewModel().viewModelScope
@@ -102,7 +98,6 @@ internal class DispatchViewModelTest {
 
   @Test
   fun `an initialized scope should be cancelled during onCleared`() = runBlockingTest {
-
     val store = ViewModelStore()
 
     val owner = ViewModelStoreOwner { store }
@@ -119,5 +114,4 @@ internal class DispatchViewModelTest {
   }
 
   class TestViewModel : DispatchViewModel()
-
 }

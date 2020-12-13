@@ -34,7 +34,6 @@ class WithViewLifecycleScopeSample {
 
   @Test
   fun withViewLifecycleScopeSample() {
-
     class MyFragment @Inject constructor(
       scope: MainImmediateCoroutineScope
     ) : Fragment() {

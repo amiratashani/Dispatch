@@ -51,7 +51,6 @@ class IdlingDispatcher(
    * The count is incremented for every dispatch, and decremented for every completion, including suspension.
    */
   override fun dispatch(context: CoroutineContext, block: Runnable) {
-
     val runnable = Runnable {
       counter.increment()
       try {
@@ -68,4 +67,3 @@ class IdlingDispatcher(
    */
   override fun toString(): String = "CountingDispatcher delegating to $delegate"
 }
-

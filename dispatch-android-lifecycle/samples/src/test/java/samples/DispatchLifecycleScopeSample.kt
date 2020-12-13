@@ -30,7 +30,6 @@ class DispatchLifecycleScopeSample {
 
   @Sample
   fun lifecycleCoroutineScopeFromScopeSample() = runBlocking {
-
     // This could be any LifecycleOwner -- Fragments, Activities, Services...
     class SomeFragment @Inject constructor(
       coroutineScope: CoroutineScope // could be any type of CoroutineScope
@@ -39,7 +38,6 @@ class DispatchLifecycleScopeSample {
       val lifecycleScope = DispatchLifecycleScope(lifecycle, coroutineScope)
 
       init {
-
         // active only when "resumed".  starts a fresh coroutine each time
         lifecycleScope.launchOnResume { }
 
@@ -55,14 +53,12 @@ class DispatchLifecycleScopeSample {
 
         // it works as a normal CoroutineScope as well (because it is)
         lifecycleScope.launchMain { }
-
       }
     }
   }
 
   @Sample
   fun lifecycleCoroutineScopeFromContextSample() = runBlocking {
-
     // This could be any LifecycleOwner -- Fragments, Activities, Services...
     class SomeFragment : Fragment() {
 
@@ -71,7 +67,6 @@ class DispatchLifecycleScopeSample {
       val lifecycleScope = DispatchLifecycleScope(lifecycle, context)
 
       init {
-
         // active only when "resumed".  starts a fresh coroutine each time
         lifecycleScope.launchOnResume { }
 
@@ -87,21 +82,18 @@ class DispatchLifecycleScopeSample {
 
         // it works as a normal CoroutineScope as well (because it is)
         lifecycleScope.launchMain { }
-
       }
     }
   }
 
   @Sample
   fun lifecycleCoroutineScopeDefaultSample() = runBlocking {
-
     // This could be any LifecycleOwner -- Fragments, Activities, Services...
     class SomeFragment : Fragment() {
 
       val lifecycleScope = DispatchLifecycleScope(lifecycle)
 
       init {
-
         // active only when "resumed".  starts a fresh coroutine each time
         lifecycleScope.launchOnResume { }
 
@@ -123,7 +115,6 @@ class DispatchLifecycleScopeSample {
 
   @Sample
   fun launchOnCreateOnceSample() = runBlocking {
-
     val channel = Channel<String>()
     val history = mutableListOf<String>()
 
@@ -140,7 +131,6 @@ class DispatchLifecycleScopeSample {
       val viewModel = SomeViewModel()
 
       init {
-
         dispatchLifecycleScope.launchOnCreate(minimumStatePolicy = CANCEL) {
           viewModel.someFlow.collect {
             channel.send("$it")
@@ -173,7 +163,6 @@ class DispatchLifecycleScopeSample {
 
   @Sample
   fun launchOnCreateRestartingSample() = runBlocking {
-
     val channel = Channel<String>()
     val history = mutableListOf<String>()
 
@@ -190,7 +179,6 @@ class DispatchLifecycleScopeSample {
       val viewModel = SomeViewModel()
 
       init {
-
         dispatchLifecycleScope.launchOnCreate {
           viewModel.someFlow.collect {
             channel.send("$it")
@@ -223,7 +211,6 @@ class DispatchLifecycleScopeSample {
 
   @Sample
   fun launchOnStartOnceSample() = runBlocking {
-
     val channel = Channel<String>()
     val history = mutableListOf<String>()
 
@@ -274,7 +261,6 @@ class DispatchLifecycleScopeSample {
 
   @Sample
   fun launchOnStartRestartingSample() = runBlocking {
-
     val channel = Channel<String>()
     val history = mutableListOf<String>()
 
@@ -339,7 +325,6 @@ class DispatchLifecycleScopeSample {
 
   @Sample
   fun launchOnResumeOnceSample() = runBlocking {
-
     val channel = Channel<String>()
     val history = mutableListOf<String>()
 
@@ -390,7 +375,6 @@ class DispatchLifecycleScopeSample {
 
   @Sample
   fun launchOnResumeRestartingSample() = runBlocking {
-
     val channel = Channel<String>()
     val history = mutableListOf<String>()
 
@@ -452,5 +436,4 @@ class DispatchLifecycleScopeSample {
       "pausing"
     )
   }
-
 }

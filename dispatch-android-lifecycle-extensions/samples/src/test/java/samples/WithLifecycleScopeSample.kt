@@ -31,7 +31,6 @@ class WithViewLifecycleScopeExtensionSample {
 
   @Test
   fun withViewLifecycleScopeSample() {
-
     class MyViewModel {
 
       val dataFlow = flow<Data> {

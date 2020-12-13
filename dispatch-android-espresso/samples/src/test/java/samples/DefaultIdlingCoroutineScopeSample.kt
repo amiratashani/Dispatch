@@ -25,7 +25,6 @@ class DefaultIdlingCoroutineScopeSample {
 
   @Sample
   fun createNoArgDefaultIdlingCoroutineScope() {
-
     val scope = DefaultIdlingCoroutineScope()
 
     scope.idlingDispatcherProvider.registerAllIdlingResources()
@@ -33,7 +32,6 @@ class DefaultIdlingCoroutineScopeSample {
 
   @Sample
   fun createCustomDefaultIdlingCoroutineScope() {
-
     val scope = DefaultIdlingCoroutineScope(
       job = Job(),
       dispatcherProvider = SomeCustomIdlingDispatcherProvider()

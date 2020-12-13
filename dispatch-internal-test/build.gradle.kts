@@ -37,5 +37,4 @@ dependencies {
   implementation(Libs.Kotlinx.Coroutines.test)
 
   implementation(project(":dispatch-core"))
-
 }

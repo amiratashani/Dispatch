@@ -55,7 +55,6 @@ internal class ViewModelScopeFactoryTest {
 
   @Test
   fun `default factory should be a default MainCoroutineScope`() = runBlockingTest {
-
     val scope = ViewModelScopeFactory.create()
 
     scope.coroutineContext[DispatcherProvider] shouldBe DefaultDispatcherProvider.get()
@@ -69,7 +68,6 @@ internal class ViewModelScopeFactoryTest {
 
   @Test
   fun `a custom factory should be used after being set`() = runBlockingTest {
-
     ViewModelScopeFactory.set { MainCoroutineScope(originContext) }
 
     val scope = ViewModelScopeFactory.create()
@@ -79,7 +77,6 @@ internal class ViewModelScopeFactoryTest {
 
   @Test
   fun `reset after setting a custom factory should return to the default`() = runBlockingTest {
-
     ViewModelScopeFactory.set { MainCoroutineScope(originContext) }
 
     val custom = ViewModelScopeFactory.create()
@@ -98,5 +95,4 @@ internal class ViewModelScopeFactoryTest {
 
     default.shouldBeInstanceOf<MainCoroutineScope>()
   }
-
 }

@@ -25,7 +25,6 @@ class UnconfinedIdlingCoroutineScopeSample {
 
   @Sample
   fun createNoArgUnconfinedIdlingCoroutineScope() {
-
     val scope = UnconfinedIdlingCoroutineScope()
 
     scope.idlingDispatcherProvider.registerAllIdlingResources()
@@ -33,7 +32,6 @@ class UnconfinedIdlingCoroutineScopeSample {
 
   @Sample
   fun createCustomUnconfinedIdlingCoroutineScope() {
-
     val scope = UnconfinedIdlingCoroutineScope(
       job = Job(),
       dispatcherProvider = SomeCustomIdlingDispatcherProvider()

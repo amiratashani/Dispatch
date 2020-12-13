@@ -32,14 +32,12 @@ class RegisterSample {
 
   @Test
   fun `extension should be a TestProvidedCoroutineScope`() = runBlocking<Unit> {
-
     extension.scope.shouldBeInstanceOf<TestProvidedCoroutineScope>()
   }
 
   @Test
   fun `extension should automatically inject into functions`(scope: TestProvidedCoroutineScope) =
     runBlocking {
-
       val subject = SomeClass(scope)
 
       val resultDeferred = subject.someFunction()
@@ -49,4 +47,3 @@ class RegisterSample {
       resultDeferred.await() shouldBe someValue
     }
 }
-

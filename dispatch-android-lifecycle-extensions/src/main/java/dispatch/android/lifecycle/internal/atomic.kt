@@ -37,7 +37,6 @@ internal inline fun ConcurrentMap<Lifecycle, DispatchLifecycleScope>.atomicGetOr
   key: Lifecycle,
   defaultValue: () -> DispatchLifecycleScope
 ): DispatchLifecycleScope {
-
   var newInstance: DispatchLifecycleScope? = null
 
   val existingOrNew = getOrPut(key) {
@@ -50,7 +49,6 @@ internal inline fun ConcurrentMap<Lifecycle, DispatchLifecycleScope>.atomicGetOr
   newInstance?.let { new ->
     if (new != existingOrNew) {
       existingOrNew.launchMainImmediate {
-
         new.coroutineContext[Job]?.cancel()
       }
     }

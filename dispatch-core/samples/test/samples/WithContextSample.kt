@@ -23,61 +23,46 @@ class WithContextSample {
 
   @Sample
   fun withDefaultSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     withDefault {
-
       dispatcherName() shouldBe "default"
-
     }
   }
 
   @Sample
   fun withIOSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     withIO {
-
       dispatcherName() shouldBe "io"
-
     }
   }
 
   @Sample
   fun withMainSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     withMain {
-
       dispatcherName() shouldBe "main"
-
     }
   }
 
   @Sample
   fun withMainImmediateSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     withMainImmediate {
-
       dispatcherName() shouldBe "main immediate"
-
     }
   }
 
   @Sample
   fun withUnconfinedSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     withUnconfined {
-
       dispatcherName() shouldBe "unconfined"
-
     }
   }
 }

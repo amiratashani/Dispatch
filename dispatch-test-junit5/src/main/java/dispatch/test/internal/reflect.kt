@@ -19,17 +19,13 @@ import org.junit.jupiter.api.extension.*
 import java.lang.reflect.*
 
 internal inline fun <reified T : Annotation> ExtensionContext.getAnnotationRecursive(): T? {
-
   return this.elementOrNull()
     ?.getAnnotation(T::class.java) ?: parentOrNull()?.getAnnotationRecursive(T::class.java)
-
 }
 
 internal fun <T : Annotation> ExtensionContext.getAnnotationRecursive(aClass: Class<T>): T? {
-
   return this.elementOrNull()
     ?.getAnnotation(aClass) ?: parentOrNull()?.getAnnotationRecursive(aClass)
-
 }
 
 @Suppress("NewApi")

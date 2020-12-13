@@ -23,12 +23,10 @@ import kotlinx.coroutines.*
 import kotlin.coroutines.*
 
 fun Job.shouldBeSupervisorJob() {
-
   this::class.simpleName shouldBe "SupervisorJobImpl"
 }
 
 infix fun Job?.shouldBeOrChildOf(other: Job?) {
-
   if (this == null) return
 
   if (this === other) {
@@ -57,4 +55,3 @@ infix fun CoroutineContext.shouldNotEqualFolded(other: CoroutineContext) {
     get(DispatcherProvider) shouldBe other[DispatcherProvider]
   }
 }
-

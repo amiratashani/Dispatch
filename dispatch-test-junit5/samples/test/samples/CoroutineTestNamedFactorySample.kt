@@ -36,9 +36,7 @@ class CoroutineTestNamedFactorySample {
 
     @Test
     fun `injected scope should have a Job context`() = runBlocking {
-
       testScope.coroutineContext[Job] shouldNotBe null
     }
-
   }
 }

@@ -26,11 +26,9 @@ class LifecycleScopeFactorySample {
 
   @Sample
   fun setLifecycleScopeFactoryProductionSample() {
-
     class MyApplication : Application {
 
       override fun onCreate() {
-
         LifecycleScopeFactory.set { MyCustomElement() + MainImmediateContext() }
       }
     }
@@ -38,30 +36,30 @@ class LifecycleScopeFactorySample {
 
   @Sample
   fun setLifecycleScopeFactoryEspressoSample() {
-
     class MyEspressoTest {
 
       @Before
       fun setUp() {
-
         val dispatcherProvider = IdlingDispatcherProvider()
 
-        LifecycleScopeFactory.set { SupervisorJob() + dispatcherProvider + dispatcherProvider.mainImmediate }
+        LifecycleScopeFactory.set {
+          SupervisorJob() + dispatcherProvider + dispatcherProvider.mainImmediate
+        }
       }
     }
   }
 
   @Sample
   fun LifecycleScopeFactoryResetSample() {
-
     class MyEspressoTest {
 
       @Before
       fun setUp() {
-
         val dispatcherProvider = DispatcherProvider()
 
-        LifecycleScopeFactory.set { SupervisorJob() + dispatcherProvider + dispatcherProvider.mainImmediate }
+        LifecycleScopeFactory.set {
+          SupervisorJob() + dispatcherProvider + dispatcherProvider.mainImmediate
+        }
       }
 
       @After
@@ -73,6 +71,4 @@ class LifecycleScopeFactorySample {
 
   private annotation class Before
   private annotation class After
-
 }
-

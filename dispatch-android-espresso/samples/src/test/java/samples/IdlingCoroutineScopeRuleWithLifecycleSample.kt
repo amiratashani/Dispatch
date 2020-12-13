@@ -48,10 +48,7 @@ class IdlingCoroutineScopeRuleWithLifecycleSample {
 
   @Test
   fun testThings() = runBlocking {
-
     // Now any CoroutineScope which uses the DispatcherProvider
     // in TestAppComponent will sync its "idle" state with Espresso
-
   }
-
 }

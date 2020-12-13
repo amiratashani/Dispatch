@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 package dispatch.android.lifecycle.internal
 
 import androidx.lifecycle.*
@@ -43,7 +42,6 @@ internal suspend fun <T> Lifecycle.onNext(
   minimumState: Lifecycle.State,
   block: suspend CoroutineScope.() -> T
 ): T? {
-
   var result: T? = null
   val stateReached = AtomicBoolean(false)
 
@@ -104,7 +102,6 @@ internal fun DispatchLifecycleScope.launchEvery(
 internal fun Lifecycle.eventFlow(
   minimumState: Lifecycle.State
 ): Flow<Boolean> = callbackFlow<Boolean> {
-
   val observer = LifecycleEventObserver { _, _ ->
 
     // send true if the state is high enough, false if not

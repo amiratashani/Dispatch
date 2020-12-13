@@ -23,262 +23,285 @@ import org.jetbrains.dokka.gradle.*
 import org.jetbrains.kotlin.gradle.tasks.*
 
 buildscript {
-  repositories {
-    mavenLocal()
-    mavenCentral()
-    maven("https://oss.sonatype.org/content/repositories/snapshots")
-    google()
-    jcenter()
-    gradlePluginPortal()
-    maven("https://dl.bintray.com/kotlin/kotlinx")
-  }
-  dependencies {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven("https://oss.sonatype.org/content/repositories/snapshots")
+        google()
+        jcenter()
+        gradlePluginPortal()
+        maven("https://dl.bintray.com/kotlin/kotlinx")
+    }
+    dependencies {
 
-    classpath(BuildPlugins.androidGradlePlugin)
-    classpath(BuildPlugins.atomicFu)
-    classpath(BuildPlugins.binaryCompatibility)
-    classpath(BuildPlugins.kotlinGradlePlugin)
-    classpath(BuildPlugins.gradleMavenPublish)
-    classpath(BuildPlugins.knit)
-  }
+        classpath(BuildPlugins.androidGradlePlugin)
+        classpath(BuildPlugins.atomicFu)
+        classpath(BuildPlugins.binaryCompatibility)
+        classpath(BuildPlugins.kotlinGradlePlugin)
+        classpath(BuildPlugins.gradleMavenPublish)
+        classpath(BuildPlugins.knit)
+    }
 }
 
 plugins {
-  id(Plugins.benManes) version Versions.benManes
-  id(Plugins.dependencyAnalysis) version Versions.dependencyAnalysis
-  id(Plugins.gradleDoctor) version Versions.gradleDoctor
-  id(Plugins.detekt) version Libs.Detekt.version
-  kotlin("jvm")
-  id(Plugins.dokka) version Versions.dokka
-  id(Plugins.taskTree) version Versions.taskTree
-  base
+    id(Plugins.benManes) version Versions.benManes
+    id(Plugins.dependencyAnalysis) version Versions.dependencyAnalysis
+    id(Plugins.gradleDoctor) version Versions.gradleDoctor
+    id(Plugins.detekt) version Libs.Detekt.version
+    id(Plugins.ktLint) version Versions.ktLint
+    kotlin("jvm")
+    id(Plugins.dokka) version Versions.dokka
+    id(Plugins.taskTree) version Versions.taskTree
+    base
 }
 
 allprojects {
 
-  repositories {
-    mavenLocal()
-    mavenCentral()
-    google()
-    jcenter()
-  }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
 
-  tasks.withType<Test> {
-    useJUnitPlatform()
-  }
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
 tasks.dokkaHtmlMultiModule.configure {
 
-  outputDirectory.set(buildDir.resolve("dokka"))
-
-  // missing from 1.4.10  https://github.com/Kotlin/dokka/issues/1530
-  // documentationFileName.set("README.md")
-}
-
-subprojects {
-
-  tasks.withType<DokkaTask>().configureEach {
-
-    dependsOn(allprojects.mapNotNull { it.tasks.findByName("assemble") })
-
     outputDirectory.set(buildDir.resolve("dokka"))
 
-    dokkaSourceSets.configureEach {
+    // missing from 1.4.10  https://github.com/Kotlin/dokka/issues/1530
+    // documentationFileName.set("README.md")
+}
 
-      jdkVersion.set(8)
-      reportUndocumented.set(true)
-      skipEmptyPackages.set(true)
-      noAndroidSdkLink.set(false)
+subprojects {
 
-      samples.from(files("samples"))
+    tasks.withType<DokkaTask>().configureEach {
 
-      if (File("$projectDir/README.md").exists()) {
-        includes.from(files("README.md"))
-      }
+        dependsOn(allprojects.mapNotNull { it.tasks.findByName("assemble") })
 
-      sourceLink {
+        outputDirectory.set(buildDir.resolve("dokka"))
 
-        val modulePath = this@subprojects.path.replace(":", "/").replaceFirst("/", "")
+        dokkaSourceSets.configureEach {
 
-        // Unix based directory relative path to the root of the project (where you execute gradle respectively).
-        localDirectory.set(file("src/main"))
+            jdkVersion.set(8)
+            reportUndocumented.set(true)
+            skipEmptyPackages.set(true)
+            noAndroidSdkLink.set(false)
 
-        // URL showing where the source code can be accessed through the web browser
-        remoteUrl.set(uri("https://github.com/RBusarow/Dispatch/blob/main/$modulePath/src/main").toURL())
-        // Suffix which is used to append the line number to the URL. Use #L for GitHub
-        remoteLineSuffix.set("#L")
-      }
+            samples.from(files("samples"))
+
+            if (File("$projectDir/README.md").exists()) {
+                includes.from(files("README.md"))
+            }
+
+            sourceLink {
+
+                val modulePath = this@subprojects.path.replace(":", "/").replaceFirst("/", "")
+
+                // Unix based directory relative path to the root of the project (where you execute gradle respectively).
+                localDirectory.set(file("src/main"))
+
+                // URL showing where the source code can be accessed through the web browser
+                remoteUrl.set(
+                    uri("https://github.com/RBusarow/Dispatch/blob/main/$modulePath/src/main").toURL()
+                )
+                // Suffix which is used to append the line number to the URL. Use #L for GitHub
+                remoteLineSuffix.set("#L")
+            }
+        }
     }
-  }
 }
 subprojects {
-  @Suppress("UNUSED_VARIABLE")
-  val buildDocs by tasks.registering {
+    @Suppress("UNUSED_VARIABLE")
+    val buildDocs by tasks.registering {
 
-    description = "recreates all documentation for the /docs directory"
-    group = "documentation"
+        description = "recreates all documentation for the /docs directory"
+        group = "documentation"
 
-    doFirst {
-      updateReadMeArtifactVersions()
+        doFirst {
+            updateReadMeArtifactVersions()
+        }
+
+        dependsOn(
+            rootProject.tasks.findByName("cleanDocs"),
+            rootProject.tasks.findByName("copyRootFiles"),
+            rootProject.tasks.findByName("knit")
+        )
+
+        doLast {
+            copyKdoc()
+            copyReadMe()
+        }
     }
-
-    dependsOn(
-      rootProject.tasks.findByName("cleanDocs"),
-      rootProject.tasks.findByName("copyRootFiles"),
-      rootProject.tasks.findByName("knit")
-    )
-
-    doLast {
-      copyKdoc()
-      copyReadMe()
-    }
-  }
 }
 
 val cleanDocs by tasks.registering {
 
-  description = "cleans /docs"
-  group = "documentation"
+    description = "cleans /docs"
+    group = "documentation"
 
-  doLast {
-    cleanDocs()
-  }
+    doLast {
+        cleanDocs()
+    }
 }
 
 val copyRootFiles by tasks.registering {
 
-  description = "copies documentation files from the project root into /docs"
-  group = "documentation"
+    description = "copies documentation files from the project root into /docs"
+    group = "documentation"
 
-  dependsOn("cleanDocs")
+    dependsOn("cleanDocs")
 
-  doLast {
-    copySite()
-    copyRootFiles()
-  }
+    doLast {
+        copySite()
+        copyRootFiles()
+    }
 }
 
 @Suppress("DEPRECATION")
 detekt {
 
-  parallel = true
-  config = files("$rootDir/detekt/detekt-config.yml")
+    parallel = true
+    config = files("$rootDir/detekt/detekt-config.yml")
 
-  reports {
-    xml.enabled = false
-    html.enabled = true
-    txt.enabled = false
-  }
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        txt.enabled = false
+    }
 }
 
 dependencies {
 
-  detekt(Libs.Detekt.cli)
-  detektPlugins(project(path = ":dispatch-detekt"))
+    detekt(Libs.Detekt.cli)
+    detektPlugins(project(path = ":dispatch-detekt"))
 }
 
 tasks.withType<DetektCreateBaselineTask> {
 
-  setSource(files(rootDir))
+    setSource(files(rootDir))
 
-  include("**/*.kt", "**/*.kts")
-  exclude("**/resources/**", "**/build/**", "**/src/test/java**")
+    include("**/*.kt", "**/*.kts")
+    exclude("**/resources/**", "**/build/**", "**/src/test/java**")
 
-  // Target version of the generated JVM bytecode. It is used for type resolution.
-  this.jvmTarget = "1.8"
+    // Target version of the generated JVM bytecode. It is used for type resolution.
+    this.jvmTarget = "1.8"
 }
 
 tasks.withType<Detekt> {
 
-  setSource(files(rootDir))
+    setSource(files(rootDir))
 
-  include("**/*.kt", "**/*.kts")
-  exclude("**/resources/**", "**/build/**", "**/src/test/java**")
+    include("**/*.kt", "**/*.kts")
+    exclude("**/resources/**", "**/build/**", "**/src/test/java**")
 
-  // Target version of the generated JVM bytecode. It is used for type resolution.
-  this.jvmTarget = "1.8"
+    // Target version of the generated JVM bytecode. It is used for type resolution.
+    this.jvmTarget = "1.8"
 }
 
 apply(plugin = Plugins.binaryCompatilibity)
 
 extensions.configure<ApiValidationExtension> {
 
-  /**
-   * Packages that are excluded from public API dumps even if they
-   * contain public API.
-   */
-  ignoredPackages = mutableSetOf("sample", "samples")
+    /**
+     * Packages that are excluded from public API dumps even if they
+     * contain public API.
+     */
+    ignoredPackages = mutableSetOf("sample", "samples")
 
-  /**
-   * Sub-projects that are excluded from API validation
-   */
-  ignoredProjects = mutableSetOf(
-    "dispatch-internal-test",
-    "dispatch-internal-test-android",
-    "dispatch-sample",
-    "samples"
-  )
+    /**
+     * Sub-projects that are excluded from API validation
+     */
+    ignoredProjects = mutableSetOf(
+        "dispatch-internal-test",
+        "dispatch-internal-test-android",
+        "dispatch-sample",
+        "samples"
+    )
 }
 
 apply(plugin = Plugins.knit)
 
 extensions.configure<KnitPluginExtension> {
 
-  rootDir = rootProject.rootDir
-  moduleRoots = listOf(".")
+    rootDir = rootProject.rootDir
+    moduleRoots = listOf(".")
 
-  moduleDocs = "build/dokka"
-  moduleMarkers = listOf("build.gradle", "build.gradle.kts")
-  siteRoot = "https://rbusarow.github.io/Dispatch/api"
+    moduleDocs = "build/dokka"
+    moduleMarkers = listOf("build.gradle", "build.gradle.kts")
+    siteRoot = "https://rbusarow.github.io/Dispatch/api"
 }
 
 // Build API docs for all modules with dokka before running Knit
 tasks.withType<KnitTask> {
-  dependsOn(allprojects.mapNotNull { it.tasks.findByName("dokkaHtml") })
-  doLast {
-    fixDocsReferencePaths()
-  }
+    dependsOn(allprojects.mapNotNull { it.tasks.findByName("dokkaHtml") })
+    doLast {
+        fixDocsReferencePaths()
+    }
 }
 
 val generateDependencyGraph by tasks.registering {
 
-  description = "generate a visual dependency graph"
-  group = "refactor"
+    description = "generate a visual dependency graph"
+    group = "refactor"
 
-  doLast {
-    createDependencyGraph()
-  }
+    doLast {
+        createDependencyGraph()
+    }
 }
 
 val sortDependencies by tasks.registering {
 
-  description = "sort all dependencies in a gradle kts file"
-  group = "refactor"
+    description = "sort all dependencies in a gradle kts file"
+    group = "refactor"
 
-  doLast {
-    sortDependencies()
-  }
+    doLast {
+        sortDependencies()
+    }
 }
 
 dependencyAnalysis {
-  issues {
-    all {
-      ignoreKtx(false) // default is false
+    issues {
+        all {
+            ignoreKtx(false) // default is false
+        }
     }
-  }
 }
 
-
 fun isNonStable(version: String): Boolean {
-  val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
-  val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-  val isStable = stableKeyword || regex.matches(version)
-  return isStable.not()
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable.not()
 }
 
 tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
-  rejectVersionIf {
-    isNonStable(candidate.version) && !isNonStable(currentVersion)
-  }
+    rejectVersionIf {
+        isNonStable(candidate.version) && !isNonStable(currentVersion)
+    }
+}
+subprojects {
+    apply {
+        plugin("org.jlleitschuh.gradle.ktlint")
+    }
+    ktlint {
+        debug.set(false)
+        version.set("0.40.0")
+        verbose.set(true)
+        outputColorName.set("RED")
+        android.set(false)
+        outputToConsole.set(true)
+        ignoreFailures.set(false)
+        enableExperimentalRules.set(true)
+        additionalEditorconfigFile.set(file("${rootProject.rootDir}/.editorconfig"))
+        disabledRules.set(setOf("no-wildcard-imports", "experimental:argument-list-wrapping"))
+        filter {
+            exclude("**/generated/**")
+            include("**/kotlin/**")
+        }
+    }
 }

@@ -27,6 +27,7 @@ object Plugins {
 
   const val dokka = "org.jetbrains.dokka"
   const val knit = "kotlinx-knit"
+  const val ktLint = "org.jlleitschuh.gradle.ktlint"
 
   const val javaLibrary = "java-library"
 
@@ -45,6 +46,7 @@ object Versions {
   const val dependencyAnalysis = "0.64.0"
   const val knit = "0.2.2"
   const val gradleDoctor = "0.6.3"
+  const val ktLint = "9.4.1"
 
   const val compileSdk = 29
   const val minSdk = "21"
@@ -79,7 +81,6 @@ object BuildPlugins {
   const val androidApplication = "com.android.application"
   const val kotlinAndroid = "kotlin-android"
   const val kotlinAndroidExtensions = "kotlin-android-extensions"
-
 }
 
 object Libs {
@@ -205,7 +206,6 @@ object Libs {
     object Knit {
       const val test = "org.jetbrains.kotlinx:kotlinx-knit-test:${Versions.knit}"
     }
-
   }
 
   object MockK {
@@ -231,7 +231,6 @@ object Libs {
         const val core = "com.rickbusarow.dispatch:dispatch-test:${Versions.versionName}"
         const val jUnit4 = "com.rickbusarow.dispatch:dispatch-test-junit4:${Versions.versionName}"
         const val jUnit5 = "com.rickbusarow.dispatch:dispatch-test-junit5:${Versions.versionName}"
-
       }
     }
 

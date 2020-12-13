@@ -21,7 +21,6 @@ class DispatchLifecycleScopeFactorySample {
 
   @Sample
   fun factorySample() {
-
     @Provides
     fun provideFactory(): DispatchLifecycleScopeFactory = DispatchLifecycleScopeFactory {
       // other elements are added automatically

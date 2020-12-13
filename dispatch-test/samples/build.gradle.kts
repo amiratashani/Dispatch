@@ -35,5 +35,4 @@ dependencies {
   testImplementation(Libs.Kotlinx.Coroutines.test)
 
   testImplementation(project(":dispatch-test"))
-
 }

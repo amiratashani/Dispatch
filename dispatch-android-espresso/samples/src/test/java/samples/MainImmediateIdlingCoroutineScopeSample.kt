@@ -25,7 +25,6 @@ class MainImmediateIdlingCoroutineScopeSample {
 
   @Sample
   fun createNoArgMainImmediateIdlingCoroutineScope() {
-
     val scope = MainImmediateIdlingCoroutineScope()
 
     scope.idlingDispatcherProvider.registerAllIdlingResources()
@@ -33,7 +32,6 @@ class MainImmediateIdlingCoroutineScopeSample {
 
   @Sample
   fun createCustomMainImmediateIdlingCoroutineScope() {
-
     val scope = MainImmediateIdlingCoroutineScope(
       job = Job(),
       dispatcherProvider = SomeCustomIdlingDispatcherProvider()

@@ -29,7 +29,6 @@ class CoroutineTestDefaultFactorySample(
 
   @Test
   fun `extension should automatically inject into test class`() = runBlocking {
-
     val subject = SomeClass(testScope)
 
     val resultDeferred = subject.someFunction()
@@ -38,5 +37,4 @@ class CoroutineTestDefaultFactorySample(
 
     resultDeferred.await() shouldBe someValue
   }
-
 }

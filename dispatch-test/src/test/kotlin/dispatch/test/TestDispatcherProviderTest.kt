@@ -33,7 +33,6 @@ internal class TestDispatcherProviderTest {
 
     @Test
     fun `provider arg should be assigned to all properties`() {
-
       val provider = TestDispatcherProvider(dispatcher)
 
       provider.default shouldBe dispatcher
@@ -45,7 +44,6 @@ internal class TestDispatcherProviderTest {
 
     @Test
     fun `factory should create TestDispatcherProvider`() {
-
       val provider = TestDispatcherProvider(dispatcher)
 
       provider.shouldBeTypeOf<TestDispatcherProvider>()
@@ -57,7 +55,6 @@ internal class TestDispatcherProviderTest {
 
     @Test
     fun `default property should delegate to Dispatchers_Default`() {
-
       val provider = TestBasicDispatcherProvider()
 
       provider.default shouldBe Dispatchers.Default
@@ -65,7 +62,6 @@ internal class TestDispatcherProviderTest {
 
     @Test
     fun `io property should delegate to Dispatchers_IO`() {
-
       val provider = TestBasicDispatcherProvider()
 
       provider.io shouldBe Dispatchers.IO
@@ -73,7 +69,6 @@ internal class TestDispatcherProviderTest {
 
     @Test
     fun `main and mainImmediate properties should be a single dispatcher`() {
-
       val provider = TestBasicDispatcherProvider()
 
       provider.main shouldBe provider.mainImmediate
@@ -81,7 +76,6 @@ internal class TestDispatcherProviderTest {
       val count = AtomicInteger(1)
 
       runBlocking(provider.main) {
-
         provider.main.asExecutor()
 
         count.getAndIncrement() shouldBe 1
@@ -102,7 +96,6 @@ internal class TestDispatcherProviderTest {
 
     @Test
     fun `unconfined property should delegate to Dispatchers_Unconfined`() {
-
       val provider = TestBasicDispatcherProvider()
 
       provider.unconfined shouldBe Dispatchers.Unconfined
@@ -110,11 +103,9 @@ internal class TestDispatcherProviderTest {
 
     @Test
     fun `factory should create TestDispatcherProvider`() {
-
       val provider = TestDispatcherProvider()
 
       provider.shouldBeTypeOf<TestDispatcherProvider>()
     }
   }
-
 }

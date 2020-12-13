@@ -88,7 +88,6 @@ fun IdlingDispatcherProvider(
  * @see IdlingDispatcherProvider.unregisterAllIdlingResources
  */
 fun IdlingDispatcherProvider.registerAllIdlingResources() {
-
   listOf(
     default,
     io,
@@ -99,7 +98,6 @@ fun IdlingDispatcherProvider.registerAllIdlingResources() {
     IdlingRegistry.getInstance()
       .register(it.counter)
   }
-
 }
 
 /**
@@ -113,7 +111,6 @@ fun IdlingDispatcherProvider.registerAllIdlingResources() {
  * @see IdlingDispatcherProvider.registerAllIdlingResources
  */
 fun IdlingDispatcherProvider.unregisterAllIdlingResources() {
-
   listOf(
     default,
     io,
@@ -124,5 +121,4 @@ fun IdlingDispatcherProvider.unregisterAllIdlingResources() {
     IdlingRegistry.getInstance()
       .unregister(it.counter)
   }
-
 }

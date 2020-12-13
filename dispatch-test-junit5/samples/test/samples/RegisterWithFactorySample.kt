@@ -33,7 +33,6 @@ class RegisterWithFactorySample {
 
   @Test
   fun `extension should provide a scope from the custom factory`() = runBlocking {
-
     extension.scope.coroutineContext[CoroutineName] shouldBe CoroutineName("custom name")
   }
 }

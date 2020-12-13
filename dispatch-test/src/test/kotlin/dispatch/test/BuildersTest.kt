@@ -41,16 +41,14 @@ internal class BuildersTest {
     @Test
     fun `default CoroutineContext param should create scope with TestDispatcherProvider`() =
       runBlockingProvided {
-
         val dispatcherProvider = coroutineContext.dispatcherProvider
 
         dispatcherProvider.shouldBeTypeOf<TestDispatcherProvider>()
       }
 
     @Test
-    fun `existing DispatcherProvider in CoroutineContext param should be used in new CoroutineContext`() =
+    fun `existing DispatcherProvider in context param should be used in new CoroutineContext`() =
       runBlockingProvided(testProvider) {
-
         val dispatcherProvider = coroutineContext.dispatcherProvider
 
         dispatcherProvider shouldBe testProvider
@@ -58,20 +56,17 @@ internal class BuildersTest {
 
     @Test
     fun `existing unique CoroutineContext elements should be used in CoroutineContext`() {
-
       val ctx = TestCoroutineContext()
 
       runBlockingProvided(ctx) {
-
         coroutineContext[TestCoroutineContext] shouldBe ctx
       }
     }
 
     @Test
-    fun `CoroutineContext param without DispatcherProvider should create provider which delegates to Dispatchers`() =
+    fun `context param without DispatcherProvider should delegate to Dispatchers`() =
 
       runBlockingProvided {
-
         val provider = dispatcherProvider
 
         provider.default shouldBe Dispatchers.Default
@@ -82,7 +77,6 @@ internal class BuildersTest {
 
         provider.main shouldNotBe Dispatchers.Main
       }
-
   }
 
   @Nested
@@ -91,7 +85,6 @@ internal class BuildersTest {
     @Test
     fun `default params should create scope with TestDispatcherProvider`() =
       testProvided {
-
         val dispatcherProvider = coroutineContext.dispatcherProvider
 
         dispatcherProvider.shouldBeTypeOf<TestDispatcherProvider>()
@@ -100,7 +93,6 @@ internal class BuildersTest {
     @Test
     fun `specified provider param should be used in CoroutineContext`() =
       testProvided(testProvider) {
-
         val dispatcherProvider = coroutineContext.dispatcherProvider
 
         dispatcherProvider shouldBe testProvider
@@ -108,24 +100,20 @@ internal class BuildersTest {
 
     @Test
     fun `specified context param should be used in CoroutineContext`() {
-
       val ctx = TestCoroutineContext()
 
       testProvided(ctx) {
-
         coroutineContext[TestCoroutineContext] shouldBe ctx
       }
     }
 
     @Test
     fun `CoroutineScope receiver should be TestProvidedCoroutineScope`() = testProvided {
-
       this.shouldBeInstanceOf<TestProvidedCoroutineScope>()
     }
 
     @Test
     fun `CoroutineScope receiver should be TestCoroutineScope`() = testProvided {
-
       this.shouldBeInstanceOf<TestCoroutineScope>()
     }
 
@@ -139,9 +127,8 @@ internal class BuildersTest {
       }
 
     @Test
-    fun `new CoroutineContext should have the same TestCoroutineDispatcher as the DispatcherProvider`() =
+    fun `new context should have the same TestCoroutineDispatcher as the DispatcherProvider`() =
       testProvided {
-
         val dispatcher = coroutineContext[ContinuationInterceptor]
 
         dispatcher shouldBe dispatcherProvider.default
@@ -150,7 +137,6 @@ internal class BuildersTest {
         dispatcher shouldBe dispatcherProvider.mainImmediate
         dispatcher shouldBe dispatcherProvider.unconfined
       }
-
   }
 
   class TestCoroutineContext : CoroutineContext.Element {
@@ -158,5 +144,4 @@ internal class BuildersTest {
 
     companion object Key : CoroutineContext.Key<TestCoroutineContext>
   }
-
 }

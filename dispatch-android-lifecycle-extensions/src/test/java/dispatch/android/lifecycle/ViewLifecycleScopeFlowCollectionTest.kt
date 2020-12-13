@@ -50,7 +50,6 @@ internal class ViewLifecycleScopeFlowCollectionTest {
 
   @Test
   fun `launchOnCreate collection should only happen while at least CREATED`() = runBlocking {
-
     val fragment = FakeFragment(fragmentLifecycleOwner)
 
     val flow = MutableStateFlow(0)
@@ -83,7 +82,6 @@ internal class ViewLifecycleScopeFlowCollectionTest {
 
   @Test
   fun `launchOnStart collection should only happen while at least STARTED`() = runBlocking {
-
     val fragment = FakeFragment(fragmentLifecycleOwner)
 
     val flow = MutableStateFlow(0)
@@ -117,7 +115,6 @@ internal class ViewLifecycleScopeFlowCollectionTest {
 
   @Test
   fun `launchOnResume collection should only happen while RESUMED`() = runBlocking {
-
     val fragment = FakeFragment(fragmentLifecycleOwner)
 
     val flow = MutableStateFlow(0)
@@ -146,6 +143,5 @@ internal class ViewLifecycleScopeFlowCollectionTest {
     flow.value = 2
 
     collected shouldBe listOf(0, 1)
-
   }
 }

@@ -38,21 +38,17 @@ class CoroutineTestCustomFactoryTest(
 
   @Test
   fun `a custom factory extension should use use the custom factory`() {
-
     testScope shouldBe customScope
-
   }
 
   @Test
   fun `testProvided with default context should use testScope`() = testScope.testProvided {
-
     // RBT adds a SupervisorJob when there is no Job, so we really only need to check the other properties
     coroutineContext shouldEqualFolded testScope.coroutineContext + coroutineContext[Job]!!
   }
 
   @Test
   fun `runBlockingTest with context arg should use testScope + context arg`() {
-
     val job = Job()
 
     val dispatcher = testScope.coroutineContext[ContinuationInterceptor] as TestCoroutineDispatcher
@@ -63,7 +59,6 @@ class CoroutineTestCustomFactoryTest(
       dispatcherProvider,
       testScope.coroutineContext + job
     ).testProvided {
-
       // RBT adds a SupervisorJob when there is no Job, so we really only need to check the other properties
       coroutineContext shouldEqualFolded testScope.coroutineContext + job
     }
@@ -74,21 +69,17 @@ class CoroutineTestCustomFactoryTest(
 
     @Test
     fun `a custom factory extension should use use the custom factory`() {
-
       testScope shouldBe customScope
-
     }
 
     @Test
     fun `testProvided with default context should use testScope`() = testScope.testProvided {
-
       // RBT adds a SupervisorJob when there is no Job, so we really only need to check the other properties
       coroutineContext shouldEqualFolded testScope.coroutineContext + coroutineContext[Job]!!
     }
 
     @Test
     fun `runBlockingTest with context arg should use testScope + context arg`() {
-
       val job = Job()
 
       val dispatcher =
@@ -100,7 +91,6 @@ class CoroutineTestCustomFactoryTest(
         dispatcherProvider,
         testScope.coroutineContext + job
       ).testProvided {
-
         // RBT adds a SupervisorJob when there is no Job, so we really only need to check the other properties
         coroutineContext shouldEqualFolded testScope.coroutineContext + job
       }

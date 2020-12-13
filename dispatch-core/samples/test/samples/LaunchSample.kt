@@ -23,67 +23,46 @@ class LaunchSample {
 
   @Sample
   fun launchDefaultSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     launchDefault {
-
       dispatcherName() shouldBe "default"
-
     }.join()
-
   }
 
   @Sample
   fun launchIOSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     launchIO {
-
       dispatcherName() shouldBe "io"
-
     }.join()
-
   }
 
   @Sample
   fun launchMainSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     launchMain {
-
       dispatcherName() shouldBe "main"
-
     }.join()
-
   }
 
   @Sample
   fun launchMainImmediateSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     launchMainImmediate {
-
       dispatcherName() shouldBe "main immediate"
-
     }.join()
-
   }
 
   @Sample
   fun launchUnconfinedSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     launchUnconfined {
-
       dispatcherName() shouldBe "unconfined"
-
     }.join()
-
   }
 }
-

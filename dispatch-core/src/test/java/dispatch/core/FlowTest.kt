@@ -38,7 +38,6 @@ internal class FlowTest {
 
   @BeforeEach
   fun beforeEach() {
-
     originalDispatcher = RecordingDispatcher("origin")
 
     testProvider = object : DispatcherProvider {
@@ -55,7 +54,6 @@ internal class FlowTest {
 
   @AfterEach
   fun afterEach() {
-
     dispatcherStack.clear()
     dispatchCount.set(0)
 
@@ -67,10 +65,9 @@ internal class FlowTest {
 
   @Test
   fun `flow on default should use provided default dispatcher`() = runTest {
-
     flowOf(1).onEach {
-        delegatedDispatcher = dispatcherStack.pop()
-      }
+      delegatedDispatcher = dispatcherStack.pop()
+    }
       .flowOnDefault()
       .onStart {
         originDispatcher = dispatcherStack.pop()
@@ -83,10 +80,9 @@ internal class FlowTest {
 
   @Test
   fun `flow on io should use provided io dispatcher`() = runTest {
-
     flowOf(1).onEach {
-        delegatedDispatcher = dispatcherStack.pop()
-      }
+      delegatedDispatcher = dispatcherStack.pop()
+    }
       .flowOnIO()
       .onStart {
         originDispatcher = dispatcherStack.pop()
@@ -99,10 +95,9 @@ internal class FlowTest {
 
   @Test
   fun `flow on main should use provided main dispatcher`() = runTest {
-
     flowOf(1).onEach {
-        delegatedDispatcher = dispatcherStack.pop()
-      }
+      delegatedDispatcher = dispatcherStack.pop()
+    }
       .flowOnMain()
       .onStart {
         originDispatcher = dispatcherStack.pop()
@@ -115,10 +110,9 @@ internal class FlowTest {
 
   @Test
   fun `flow on mainImmediate should use provided mainImmediate dispatcher`() = runTest {
-
     flowOf(1).onEach {
-        delegatedDispatcher = dispatcherStack.pop()
-      }
+      delegatedDispatcher = dispatcherStack.pop()
+    }
       .flowOnMainImmediate()
       .onStart {
         originDispatcher = dispatcherStack.pop()
@@ -131,10 +125,9 @@ internal class FlowTest {
 
   @Test
   fun `flow on unconfined should use provided unconfined dispatcher`() = runTest {
-
     flowOf(1).onEach {
-        delegatedDispatcher = dispatcherStack.pop()
-      }
+      delegatedDispatcher = dispatcherStack.pop()
+    }
       .flowOnUnconfined()
       .onStart {
         originDispatcher = dispatcherStack.pop()
@@ -147,7 +140,6 @@ internal class FlowTest {
 
   @Test
   fun `multi element flows should only switch dispatchers once`() = runTest {
-
     flowOf(1, 2, 3, 4, 5, 6)
       .flowOnUnconfined()
       .launchIn(originalScope)
@@ -157,7 +149,6 @@ internal class FlowTest {
 
   @Test
   fun `flowOn should not dispatch if origin dispatcher and new are the same`() = runTest {
-
     flowOf(1)
       .flowOnDefault()
       .launchIn(originalScope + testProvider.default)
@@ -167,14 +158,13 @@ internal class FlowTest {
 
   @Test
   fun `flowOn output should fuse context with ChannelFlow`() = runTest {
-
     flowOf(1)
       .flowOn(testProvider.default)
       .flowOnDefault()
       .flowOn(testProvider.default)
       .launchIn(originalScope + testProvider.default)
 
-    dispatchCount.get() shouldBe 1  // ChannelFlow does not re-dispatch for the same dispatcher
+    dispatchCount.get() shouldBe 1 // ChannelFlow does not re-dispatch for the same dispatcher
 
     dispatchCount.set(0)
 
@@ -184,12 +174,11 @@ internal class FlowTest {
       .flowOn(testProvider.main)
       .launchIn(originalScope + testProvider.default)
 
-    dispatchCount.get() shouldBe 3  // sanity check -- switching should increment the count
+    dispatchCount.get() shouldBe 3 // sanity check -- switching should increment the count
   }
 
   @Test
   fun `provider flowOn should buffer like a normal flowOn would`() = runTest {
-
     val sourceProgress = mutableListOf<Int>()
 
     flowOf(1, 2, 3, 4, 5)
@@ -204,7 +193,6 @@ internal class FlowTest {
   inner class RecordingDispatcher(private val name: String) : CoroutineDispatcher() {
 
     override fun dispatch(context: CoroutineContext, block: Runnable) {
-
       dispatchCount.incrementAndGet()
 
       dispatcherStack.push(this)

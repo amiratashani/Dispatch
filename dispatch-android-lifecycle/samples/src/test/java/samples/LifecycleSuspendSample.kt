@@ -30,13 +30,11 @@ class LifecycleSuspendSample(
 
   @BeforeEach
   fun beforeEach() {
-
     LifecycleScopeFactory.set { testScope.coroutineContext }
   }
 
   @Sample
   fun lifecycleOwnerOnNextCreateSample() = runBlocking {
-
     class SomeFragment : Fragment() {
 
       var invocations = 0
@@ -60,7 +58,6 @@ class LifecycleSuspendSample(
 
   @Sample
   fun lifecycleOnNextCreateSample() = runBlocking {
-
     class SomeFragment : Fragment() {
 
       var invocations = 0
@@ -84,7 +81,6 @@ class LifecycleSuspendSample(
 
   @Sample
   fun lifecycleOwnerOnNextStartSample() = runBlocking {
-
     class SomeFragment : Fragment() {
 
       var invocations = 0
@@ -113,7 +109,6 @@ class LifecycleSuspendSample(
 
   @Sample
   fun lifecycleOnNextStartSample() = runBlocking {
-
     class SomeFragment : Fragment() {
 
       var invocations = 0
@@ -142,7 +137,6 @@ class LifecycleSuspendSample(
 
   @Sample
   fun lifecycleOwnerOnNextResumeSample() = runBlocking {
-
     class SomeFragment : Fragment() {
 
       var invocations = 0
@@ -171,7 +165,6 @@ class LifecycleSuspendSample(
 
   @Sample
   fun lifecycleOnNextResumeSample() = runBlocking {
-
     class SomeFragment : Fragment() {
 
       var invocations = 0
@@ -197,5 +190,4 @@ class LifecycleSuspendSample(
     fragment.resume()
     fragment.invocations shouldBe 1
   }
-
 }

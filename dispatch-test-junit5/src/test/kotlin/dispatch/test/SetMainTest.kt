@@ -25,11 +25,11 @@ import org.junit.jupiter.api.extension.*
 @ExperimentalCoroutinesApi
 class SetMainTest {
 
-  @RegisterExtension @JvmField val ext = CoroutineTestExtension()
+  @RegisterExtension @JvmField
+  val ext = CoroutineTestExtension()
 
   @Test
   fun `extension's internal scope's dispatcher should be set as Main by default`() {
-
     val beforeSet = Dispatchers.Main
 
     Dispatchers.setMain(ext.scope.dispatcherProvider.main)
@@ -41,7 +41,6 @@ class SetMainTest {
   fun `function injected scope's dispatcher should be set as Main by default`(
     scope: TestProvidedCoroutineScope
   ) {
-
     val beforeSet = Dispatchers.Main
 
     Dispatchers.setMain(scope.dispatcherProvider.main)
@@ -56,14 +55,11 @@ class SetMainTest {
 
     @Test
     fun `constructor injected scope's dispatcher should be set as Main by default`() {
-
       val beforeSet = Dispatchers.Main
 
       Dispatchers.setMain(scope.dispatcherProvider.main)
 
       beforeSet shouldBe Dispatchers.Main
     }
-
   }
-
 }

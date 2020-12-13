@@ -24,7 +24,6 @@ class AtomicCounterExtension : AfterEachCallback {
   private val finished = atomic(false)
 
   fun expect(expectedIndex: Int) {
-
     val actualIndex = index.incrementAndGet()
 
     assert(expectedIndex == actualIndex) {

@@ -43,7 +43,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `scope with Job should cancel on init if lifecycle is destroyed`() = runBlocking {
-
       lifecycleOwner.destroy()
 
       val scope = DispatchLifecycleScope(lifecycle, testScope)
@@ -53,7 +52,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `scope should cancel when lifecycle is destroyed`() = runBlocking {
-
       lifecycleOwner.create()
 
       val scope = DispatchLifecycleScope(lifecycle, testScope)
@@ -67,7 +65,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `lifecycle observer should be removed when scope is cancelled`() = runBlocking {
-
       lifecycleOwner.create()
 
       val scope = DispatchLifecycleScope(lifecycle, testScope)
@@ -85,7 +82,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block should immediately execute if already created`() = runBlocking {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       var executed = false
@@ -97,7 +93,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block should not immediately execute if screen is not created`() = runBlocking {
-
       var executed = false
 
       scope.launchOnCreate { executed = true }
@@ -107,7 +102,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block context should respect context parameter`() = runBlocking {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       var dispatcher: ContinuationInterceptor? = null
@@ -121,7 +115,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block should stop when screen is destroyed`() = runBlocking {
-
       val input = Channel<Int>()
       val output = mutableListOf<Int>()
       var completed = false
@@ -150,7 +143,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block should immediately execute if already started`() = runBlocking {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_START)
 
       var executed = false
@@ -162,12 +154,11 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block should not immediately execute if screen is not started`() = runBlocking {
-
       Lifecycle.Event.values()
         .filter {
           when (it) {
-            Lifecycle.Event.ON_CREATE  -> true
-            Lifecycle.Event.ON_STOP    -> true
+            Lifecycle.Event.ON_CREATE -> true
+            Lifecycle.Event.ON_STOP -> true
             Lifecycle.Event.ON_DESTROY -> true
             else                       -> false
           }
@@ -186,7 +177,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block context should respect context parameter`() = runBlocking {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_START)
 
       var dispatcher: ContinuationInterceptor? = null
@@ -200,7 +190,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block should stop when screen is stopped`() = runBlocking {
-
       val input = Channel<Int>()
       val output = mutableListOf<Int>()
       var completed = false
@@ -229,7 +218,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block should immediately execute if already resumed`() = runBlocking {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
 
       var executed = false
@@ -241,14 +229,13 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block should not immediately execute if screen is not resumed`() = runBlocking {
-
       Lifecycle.Event.values()
         .filter {
           when (it) {
-            Lifecycle.Event.ON_CREATE  -> true
-            Lifecycle.Event.ON_START   -> true
-            Lifecycle.Event.ON_PAUSE   -> true
-            Lifecycle.Event.ON_STOP    -> true
+            Lifecycle.Event.ON_CREATE -> true
+            Lifecycle.Event.ON_START -> true
+            Lifecycle.Event.ON_PAUSE -> true
+            Lifecycle.Event.ON_STOP -> true
             Lifecycle.Event.ON_DESTROY -> true
             else                       -> false
           }
@@ -267,7 +254,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block context should respect context parameter`() = runBlocking {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
 
       var dispatcher: ContinuationInterceptor? = null
@@ -281,7 +267,6 @@ class DispatchLifecycleScopeTest : HermitJUnit5() {
 
     @Test
     fun `block should stop when screen is paused`() = runBlocking {
-
       val input = Channel<Int>()
       val output = mutableListOf<Int>()
       var completed = false

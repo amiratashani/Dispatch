@@ -40,7 +40,6 @@ class DefaultDispatcherProviderSample {
 
   @Sample
   fun defaultDispatcherProviderSetSample() {
-
     val custom = CustomDispatcherProvider()
     DefaultDispatcherProvider.set(custom)
 

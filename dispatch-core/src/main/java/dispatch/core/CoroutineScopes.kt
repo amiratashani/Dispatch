@@ -155,7 +155,7 @@ public fun MainImmediateCoroutineScope(
   dispatcherProvider: DispatcherProvider = DefaultDispatcherProvider.get()
 ): MainImmediateCoroutineScope = object : MainImmediateCoroutineScope {
   override val coroutineContext = job + dispatcherProvider.mainImmediate +
-      dispatcherProvider
+    dispatcherProvider
 }
 
 /**
@@ -209,7 +209,6 @@ public fun UnconfinedCoroutineScope(
 private inline fun CoroutineContext.withDefaultElements(
   dispatcherPromise: DispatcherProvider.() -> ContinuationInterceptor
 ): CoroutineContext {
-
   val job = get(Job) ?: SupervisorJob()
   val provider = get(DispatcherProvider) ?: DefaultDispatcherProvider.get()
 

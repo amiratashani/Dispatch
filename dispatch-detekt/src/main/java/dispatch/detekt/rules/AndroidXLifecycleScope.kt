@@ -34,7 +34,8 @@ class AndroidXLifecycleScope(config: Config = Config.empty) : Rule(config) {
   override val issue = Issue(
     id = "AndroidXLifecycleScope",
     severity = Severity.Defect,
-    description = "The AndroidX lifecycleScope leaks its pausing behavior and uses hard-coded dispatchers.",
+    description = "The AndroidX lifecycleScope " +
+      "leaks its pausing behavior and uses hard-coded dispatchers.",
     debt = Debt.FIVE_MINS
   )
 
@@ -57,35 +58,31 @@ class AndroidXLifecycleScope(config: Config = Config.empty) : Rule(config) {
     super.visitReferenceExpression(expression)
 
     if (!expression.isInImportDirective() && expression.textMatches(functionName)) {
-
       calls.add(expression)
 
       if (importPresent) {
-
         val finding = CodeSmell(
           issue = issue,
           entity = Entity.from(expression),
-          message = "Using androidx.lifecycle.lifecycleScope instead of dispatch.lifecycle.lifecycleScope."
+          message = "Using androidx.lifecycle.lifecycleScope " +
+            "instead of dispatch.lifecycle.lifecycleScope."
         )
 
         report(finding)
       }
     }
-
   }
 
   /**
    * @suppress
    */
   override fun visitImportDirective(importDirective: KtImportDirective) {
-
     val importString = importDirective.importPath?.pathStr
 
     if (importString?.matches(explicitImportRegex) == true || importString?.matches(
         starImportRegex
       ) == true
     ) {
-
       importPresent = true
 
       calls.forEach { call ->
@@ -93,7 +90,8 @@ class AndroidXLifecycleScope(config: Config = Config.empty) : Rule(config) {
         val finding = CodeSmell(
           issue = issue,
           entity = Entity.from(call),
-          message = "Using androidx.lifecycle.lifecycleScope instead of dispatch.android.lifecycle.lifecycleScope."
+          message = "Using androidx.lifecycle.lifecycleScope " +
+            "instead of dispatch.android.lifecycle.lifecycleScope."
         )
 
         report(finding)
@@ -102,6 +100,3 @@ class AndroidXLifecycleScope(config: Config = Config.empty) : Rule(config) {
     super.visitImportDirective(importDirective)
   }
 }
-
-
-

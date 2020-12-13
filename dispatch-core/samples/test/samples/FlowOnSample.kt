@@ -25,78 +25,62 @@ class FlowOnSample {
 
   @Sample
   fun flowOnDefaultSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     flow {
-
       dispatcherName() shouldBe "default"
 
       emit(Unit)
     }.flowOnDefault() // switch to the "default" dispatcher for everything upstream
-      .collect()      // collect the flow from the "main" dispatcher
-
+      .collect() // collect the flow from the "main" dispatcher
   }
 
   @Sample
   fun flowOnIOSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     flow {
-
       dispatcherName() shouldBe "io"
 
       emit(Unit)
-    }.flowOnIO()      // switch to the "io" dispatcher for everything upstream
-      .collect()      // collect the flow from the "main" dispatcher
-
+    }.flowOnIO() // switch to the "io" dispatcher for everything upstream
+      .collect() // collect the flow from the "main" dispatcher
   }
 
   @Sample
   fun flowOnMainSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     flow {
-
       dispatcherName() shouldBe "main"
 
       emit(Unit)
-    }.flowOnMain()    // switch to the "main" dispatcher for everything upstream
-      .collect()      // collect the flow from the "default" dispatcher
-
+    }.flowOnMain() // switch to the "main" dispatcher for everything upstream
+      .collect() // collect the flow from the "default" dispatcher
   }
 
   @Sample
   fun flowOnMainImmediateSample() =
     runBlocking(someDispatcherProvider) {
-
       dispatcherName() shouldBe "runBlocking thread"
 
       flow {
-
         dispatcherName() shouldBe "main immediate"
 
         emit(Unit)
-      }.flowOnMainImmediate()  // switch to the "mainImmediate" dispatcher for everything upstream
-        .collect()             // collect the flow from the "main" dispatcher
-
+      }.flowOnMainImmediate() // switch to the "mainImmediate" dispatcher for everything upstream
+        .collect() // collect the flow from the "main" dispatcher
     }
 
   @Sample
   fun flowOnUnconfinedSample() = runBlocking(someDispatcherProvider) {
-
     dispatcherName() shouldBe "runBlocking thread"
 
     flow {
-
       dispatcherName() shouldBe "unconfined"
 
       emit(Unit)
-    }.flowOnUnconfined()  // switch to the "unconfined" dispatcher for everything upstream
-      .collect()          // collect the flow from the "main" dispatcher
-
+    }.flowOnUnconfined() // switch to the "unconfined" dispatcher for everything upstream
+      .collect() // collect the flow from the "main" dispatcher
   }
-
 }

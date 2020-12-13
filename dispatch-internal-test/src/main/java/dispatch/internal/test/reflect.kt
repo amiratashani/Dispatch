@@ -19,7 +19,6 @@ import kotlin.reflect.full.*
 import kotlin.reflect.jvm.*
 
 inline fun <reified T : Any, reified R : Any> T.getPrivateObjectFieldByName(name: String): R {
-
   val kClass = T::class
 
   val property = kClass.members.find { it.name == name }
@@ -32,7 +31,6 @@ inline fun <reified T : Any, reified R : Any> T.getPrivateObjectFieldByName(name
 }
 
 inline fun <reified T : Any, reified R : Any> T.getPrivateFieldByName(name: String): R {
-
   val kClass = T::class
 
   val property = kClass.memberProperties.find { it.name == name }

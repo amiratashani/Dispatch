@@ -26,13 +26,11 @@ internal class AssertionsTest {
 
     @Test
     fun `normal Job should fail`() {
-
       assertFails { Job().shouldBeSupervisorJob() }
     }
 
     @Test
     fun `SupervisorJob should pass`() {
-
       SupervisorJob().shouldBeSupervisorJob()
     }
   }
@@ -42,7 +40,6 @@ internal class AssertionsTest {
 
     @Test
     fun `referential equality should pass`() {
-
       val job = Job()
 
       job shouldBeOrChildOf job
@@ -50,7 +47,6 @@ internal class AssertionsTest {
 
     @Test
     fun `receiver job as child of parameter should pass`() = runBlocking a@{
-
       launch b@{
         this@b.coroutineContext[Job]!! shouldBeOrChildOf this@a.coroutineContext[Job]!!
       }.join()
@@ -58,21 +54,19 @@ internal class AssertionsTest {
 
     @Test
     fun `parameter job as child of receiver should fail`() = runBlocking<Unit> a@{
-
       launch b@{
-        assertFails { this@a.coroutineContext[Job]!! shouldBeOrChildOf this@b.coroutineContext[Job]!! }
+        assertFails {
+          this@a.coroutineContext[Job]!! shouldBeOrChildOf this@b.coroutineContext[Job]!!
+        }
       }
     }
 
     @Test
     fun `unrelated jobs should fail`() {
-
       val a = Job()
       val b = Job()
 
       assertFails { a shouldBeOrChildOf b }
     }
-
   }
 }
-

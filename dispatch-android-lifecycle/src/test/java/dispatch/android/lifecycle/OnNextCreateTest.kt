@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package  dispatch.android.lifecycle
+package dispatch.android.lifecycle
 
 import androidx.lifecycle.*
 import dispatch.core.*
@@ -36,7 +36,6 @@ class OnNextCreateTest : BaseTest() {
 
   @BeforeEach
   fun beforeEach() {
-
     lifecycleOwner = LifecycleOwner { lifecycle }
     lifecycle = LifecycleRegistry(lifecycleOwner)
   }
@@ -46,7 +45,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should immediately execute if already created`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       var executed = false
@@ -58,7 +56,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should not immediately execute if lifecycle is not created`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
 
       var executed = false
@@ -72,7 +69,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should stop when lifecycle is destroyed`() = testProvided {
-
       val input = Channel<Int>()
       val output = mutableListOf<Int>()
       var completed = false
@@ -99,7 +95,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should not execute twice when lifecycle is created twice`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       lifecycle.onNextCreate { expect(1) }
@@ -115,7 +110,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should return value if allowed to complete`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       val result = lifecycle.onNextCreate { true }
@@ -125,7 +119,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should return null if not allowed to complete`() = testProvided {
-
       val lock = Mutex(locked = true)
 
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -146,7 +139,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block context should respect context parameter`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       var dispatcher: ContinuationInterceptor? = null
@@ -164,7 +156,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should immediately execute if already created`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       var executed = false
@@ -176,7 +167,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should not immediately execute if lifecycle is not created`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
 
       var executed = false
@@ -190,7 +180,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should stop when lifecycle is destroyed`() = testProvided {
-
       val input = Channel<Int>()
       val output = mutableListOf<Int>()
       var completed = false
@@ -217,7 +206,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should not execute twice when lifecycle is created twice`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       lifecycleOwner.onNextCreate { expect(1) }
@@ -233,7 +221,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should return value if allowed to complete`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       val result = lifecycleOwner.onNextCreate { true }
@@ -243,7 +230,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block should return null if not allowed to complete`() = testProvided {
-
       val lock = Mutex(locked = true)
 
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -264,7 +250,6 @@ class OnNextCreateTest : BaseTest() {
 
     @Test
     fun `block context should respect context parameter`() = testProvided {
-
       lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
       var dispatcher: ContinuationInterceptor? = null

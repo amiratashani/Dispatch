@@ -50,7 +50,6 @@ internal class WithViewLifecycleScopeExtensionTest {
 
   @Test
   fun `when the livedata goes from null to non-null, lambda should be invoked`() {
-
     var invocations = 0
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -68,7 +67,6 @@ internal class WithViewLifecycleScopeExtensionTest {
 
   @Test
   fun `when the livedata goes from null to non-null, lambda should be invoked every time`() {
-
     var invocations = 0
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -92,12 +90,10 @@ internal class WithViewLifecycleScopeExtensionTest {
     fragment.setFakeViewLifecycleOwner(viewLifecycleOwner)
 
     invocations shouldBe 3
-
   }
 
   @Test
   fun `when the livedata gets set to non-null, lambda should be invoked every time`() {
-
     var invocations = 0
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -119,12 +115,10 @@ internal class WithViewLifecycleScopeExtensionTest {
     fragment.setFakeViewLifecycleOwner(viewLifecycleOwner)
 
     invocations shouldBe 3
-
   }
 
   @Test
   fun `when the view lifecycle is destroyed, lambda should be cancelled`() {
-
     lateinit var job: Job
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -144,12 +138,10 @@ internal class WithViewLifecycleScopeExtensionTest {
     viewLifecycleOwner.destroy()
 
     job.isCancelled shouldBe true
-
   }
 
   @Test
   fun `when the fragment lifecycle is destroyed, lambda be cancelled`() {
-
     lateinit var job: Job
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -169,12 +161,10 @@ internal class WithViewLifecycleScopeExtensionTest {
     fragmentLifecycleOwner.destroy()
 
     job.isActive shouldBe false
-
   }
 
   @Test
   fun `the lambda's LifecycleScope should correspond to the view lifecycle`() = runBlocking {
-
     lateinit var job: Job
 
     val fragment = FakeFragment(fragmentLifecycleOwner)
@@ -182,9 +172,7 @@ internal class WithViewLifecycleScopeExtensionTest {
     with(fragment) {
       withViewLifecycleScope {
         job = launch {
-
           lifecycle shouldBeSameInstanceAs viewLifecycleOwner.lifecycle
-
         }
       }
     }
@@ -192,7 +180,5 @@ internal class WithViewLifecycleScopeExtensionTest {
     fragment.setFakeViewLifecycleOwner(viewLifecycleOwner)
 
     job.join()
-
   }
 }
-

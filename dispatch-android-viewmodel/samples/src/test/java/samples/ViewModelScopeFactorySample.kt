@@ -26,7 +26,6 @@ class ViewModelScopeFactorySample {
 
   @Sample
   fun setViewModelScopeFactoryProductionSample() {
-
     class MyApplication : Application {
 
       override fun onCreate() {
@@ -37,7 +36,6 @@ class ViewModelScopeFactorySample {
 
   @Sample
   fun setViewModelScopeFactoryEspressoSample() {
-
     class MyEspressoTest {
 
       @Before
@@ -49,7 +47,6 @@ class ViewModelScopeFactorySample {
 
   @Sample
   fun viewModelScopeFactoryResetSample() {
-
     class MyEspressoTest {
 
       @Before
@@ -66,7 +63,6 @@ class ViewModelScopeFactorySample {
 
   @Sample
   fun setViewModelScopeFactoryJvmSample() {
-
     class MyJvmTest {
 
       @Before
@@ -78,5 +74,4 @@ class ViewModelScopeFactorySample {
 
   private annotation class Before
   private annotation class After
-
 }
