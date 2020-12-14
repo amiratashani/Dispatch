@@ -688,11 +688,10 @@
   <span class="n">dependencies</span> <span class="p">{</span>
     <span class="n">detekt</span><span class="p">(</span><span class="s">&quot;io.gitlab.arturbosch.detekt:detekt-cli:1.14.2&quot;</span><span class="p">)</span>
 
-    <span class="n">detektPlugins</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-detekt:1.0.0-beta07&quot;</span><span class="p">)</span>
+    <span class="n">detektPlugins</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-detekt:1.0.0-beta08&quot;</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>After adding the dependencies, you'll want to add parameters to your detekt config .yml file.</p>
 <p>If you don't already have a config file, you can create one by invoking:</p>
@@ -710,30 +709,19 @@
     <span class="nt">allowMainImmediateDispatcher</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>    <span class="c1"># if true, Detekt will ignore all usage of Dispatchers.Main.immediate</span>
     <span class="nt">allowUnconfinedDispatcher</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>       <span class="c1"># if true, Detekt will ignore all usage of Dispatchers.Unconfined</span>
 </code></pre></div>
-
 <h3 id="gradle-daemon-bug">Gradle Daemon bug<a class="headerlink" href="#gradle-daemon-bug" title="Permanent link">&para;</a></h3>
 <p>There is an <a href="https://github.com/detekt/detekt/issues/2582">issue</a> with ClassLoader caching which may cause issues the first time running Detekt.  The workaround is to execute <code>./gradlew --stop</code> once via command line.  You should only ever need to do this one time, if at all.  The fix for this has already been merged into Detekt.</p>
 <!--- MODULE dispatch-core-->
-
 <!--- INDEX  -->
-
 <!--- MODULE dispatch-test-->
-
 <!--- INDEX  -->
-
 <!--- MODULE dispatch-test-junit4-->
-
 <!--- INDEX  -->
-
 <!--- MODULE dispatch-test-junit5-->
-
 <!--- INDEX  -->
-
 <!--- MODULE dispatch-detekt-->
-
 <!--- INDEX  -->
-
-<p><!--- MODULE dispatch-android-espresso-->
+<!--- MODULE dispatch-android-espresso-->
 <!--- INDEX  -->
 <!--- MODULE dispatch-android-lifecycle-->
 <!--- INDEX  -->
@@ -741,7 +729,7 @@
 <!--- INDEX  -->
 <!--- MODULE dispatch-android-viewmodel-->
 <!--- INDEX  -->
-<!--- END --></p>
+<!--- END -->
                 
               
               

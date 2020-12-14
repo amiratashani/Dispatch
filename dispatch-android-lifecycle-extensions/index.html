@@ -704,7 +704,6 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SomeApplication</span> <span class="p">:</span> <span class="n">Application</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">()</span>
@@ -713,7 +712,6 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SomeEspressoTest</span> <span class="p">{</span>
   <span class="n">@Before</span>
   <span class="k">fun</span> <span class="nf">setUp</span><span class="p">()</span> <span class="p">{</span>
@@ -729,7 +727,6 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h2 id="difference-from-androidx">Difference from AndroidX<a class="headerlink" href="#difference-from-androidx" title="Permanent link">&para;</a></h2>
 <p>This module is really just a slightly different version of <a href="https://developer.android.com/jetpack/androidx/releases/lifecycle">androidx-lifecycle-runtime-ktx</a> — the library which gives us the <a href="https://cs.android.com/androidx/platform/frameworks/support/+/androidx-master-dev:lifecycle/lifecycle-runtime-ktx/src/main/java/androidx/lifecycle/Lifecycle.kt;l=44">lifecycleScope</a> property.</p>
 <p>Why not just use AndroidX?  Because we need two things it doesn't offer.</p>
@@ -751,7 +748,6 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h2 id="automatic-lifecycle-jobs">Automatic lifecycle jobs<a class="headerlink" href="#automatic-lifecycle-jobs" title="Permanent link">&para;</a></h2>
 <p>Structured concurrency relies upon cancellation, but <a href="https://developer.android.com/jetpack/androidx/releases/lifecycle">androidx-lifecycle-runtime.ktx</a> doesn't cancel.  It uses a special <a href="https://cs.android.com/androidx/platform/frameworks/support/+/androidx-master-dev:lifecycle/lifecycle-runtime-ktx/src/main/java/androidx/lifecycle/PausingDispatcher.kt">PausingDispatcher</a>. This pausing behavior then <strong>leaks</strong> upstream, creating backpressure and potentially deadlocks.</p>
 <p>There's a <a href="https://issuetracker.google.com/issues/146370660">bug filed in their issue tracker</a>, but 2.2.0 got released anyway.</p>
@@ -771,7 +767,6 @@
 
 <span class="p">}</span>
 </code></pre></div>
-
 <p>This has the desired effect of not leaking backpressure upstream (which in this example is the <code>viewModel</code>).</p>
 <h2 id="minimum-gradle-config">Minimum Gradle Config<a class="headerlink" href="#minimum-gradle-config" title="Permanent link">&para;</a></h2>
 <p>Add to your module's <code>build.gradle.kts</code>:</p>
@@ -783,39 +778,28 @@
 
   <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2&quot;</span><span class="p">)</span>
   <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2&quot;</span><span class="p">)</span>
-  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-android-lifecycle-extensions:1.0.0-beta07&quot;</span><span class="p">)</span>
+  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-android-lifecycle-extensions:1.0.0-beta08&quot;</span><span class="p">)</span>
 
   <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;androidx.lifecycle:lifecycle-common:2.2.0&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <!--- MODULE dispatch-core-->
-
 <!--- INDEX  -->
-
 <!--- MODULE dispatch-test-->
-
 <!--- INDEX  -->
-
 <!--- MODULE dispatch-test-junit4-->
-
 <!--- INDEX  -->
-
 <!--- MODULE dispatch-test-junit5-->
-
 <!--- INDEX  -->
-
 <!--- MODULE dispatch-android-espresso-->
-
 <!--- INDEX  -->
-
-<p><!--- MODULE dispatch-android-lifecycle-->
+<!--- MODULE dispatch-android-lifecycle-->
 <!--- INDEX  -->
 <!--- MODULE dispatch-android-viewmodel-->
 <!--- INDEX  -->
 <!--- MODULE dispatch-android-viewmodel-->
 <!--- INDEX  -->
-<!--- END --></p>
+<!--- END -->
                 
               
               

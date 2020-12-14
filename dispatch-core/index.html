@@ -767,7 +767,6 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
   <span class="n">scope</span><span class="p">.</span><span class="n">launchUnconfined</span> <span class="p">{</span>  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>You can define custom mappings via a <a href="#marker-interfaces-and-factories">factory</a>, making testing much easier, or use the default, which simply maps to <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/index.html">Dispatchers</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// a standard DispatcherProvider is easy to create</span>
 <span class="k">val</span> <span class="py">myDefaultDispatchProvider</span> <span class="p">=</span> <span class="n">DispatcherProvider</span><span class="p">()</span>
@@ -782,7 +781,6 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
   <span class="k">override</span> <span class="k">val</span> <span class="py">unconfined</span><span class="p">:</span> <span class="n">CoroutineDispatcher</span> <span class="p">=</span> <span class="n">newSingleThreadCoroutineContext</span><span class="p">(</span><span class="s">&quot;unconfined&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>Custom <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScopes</a> interfaces allow for more granularity when defining a class or function with a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a> dependency.</p>
 <p>There are also factory functions for conveniently creating any implementation, with a built-in <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">mainScope</span> <span class="p">=</span> <span class="n">MainCoroutineScope</span><span class="p">()</span>
@@ -797,7 +795,6 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
 
 <span class="p">}</span>
 </code></pre></div>
-
 <h2 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">&para;</a></h2>
 <!--- TOC -->
 
@@ -922,7 +919,6 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
   <span class="n">scope</span><span class="p">.</span><span class="n">launchUnconfined</span> <span class="p">{</span>  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="async">Async<a class="headerlink" href="#async" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">fun</span> <span class="nf">foo</span><span class="p">(</span><span class="n">scope</span><span class="p">:</span> <span class="n">CoroutineScope</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">scope</span><span class="p">.</span><span class="n">asyncDefault</span> <span class="p">{</span>  <span class="p">}</span>
@@ -932,7 +928,6 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
   <span class="n">scope</span><span class="p">.</span><span class="n">asyncUnconfined</span> <span class="p">{</span>  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="withcontext">WithContext<a class="headerlink" href="#withcontext" title="Permanent link">&para;</a></h3>
 <p>The <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext</a> used for <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/with-context.html">withContext</a> comes from the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/coroutine-context.html">coroutineContext</a> top-level suspend property in <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/index.html">kotlin.coroutines</a>.  It returns the current context, so the <code>default</code>, <code>io</code>, etc. used here are the ones defined in the <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a> of the caller. There is no need to inject any other dependencies.</p>
 <div class="highlight"><pre><span></span><code><span class="n">suspend</span> <span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
@@ -944,7 +939,6 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
   <span class="n">withUnconfined</span> <span class="p">{</span>  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="flow">Flow<a class="headerlink" href="#flow" title="Permanent link">&para;</a></h3>
 <p>Like <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/with-context.html">withContext</a>, <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/index.html">Flow</a> typically doesn’t get a <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/coroutine-scope.html">CoroutineScope</a> of its own.  They inherit the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/coroutine-context.html">coroutineContext</a> from the collector in a pattern called <a href="https://medium.com/@elizarov/execution-context-of-kotlin-flows-b8c151c9309b">context preservation</a>. These new operators maintain context preservation (<em>they’re forced to, actually</em>), and extract the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/coroutine-context.html">coroutineContext</a> from the collector.</p>
 <div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">someFlow</span> <span class="p">=</span> <span class="n">flow</span> <span class="p">{</span>  <span class="p">}</span>
@@ -954,7 +948,6 @@ or via convenient <a href="#extensions">extension functions</a>.</p>
   <span class="p">.</span><span class="n">flowOnMainImmediate</span><span class="p">()</span>
   <span class="p">.</span><span class="n">flowOnUnconfined</span><span class="p">()</span>
 </code></pre></div>
-
 <h2 id="defaultdispatcherprovider">DefaultDispatcherProvider<a class="headerlink" href="#defaultdispatcherprovider" title="Permanent link">&para;</a></h2>
 <p>The simplest way to get up and running with Dispatch. All library access to a
 <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/">CoroutineContext's</a> <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-dispatcher-provider/index.html">DispatcherProvider</a> filters through a single extension
@@ -962,7 +955,6 @@ property:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">val</span> <span class="py">CoroutineContext</span><span class="p">.</span><span class="n">dispatcherProvider</span><span class="p">:</span> <span class="n">DispatcherProvider</span>
   <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="k">get</span><span class="p">(</span><span class="n">DispatcherProvider</span><span class="p">)</span> <span class="o">?:</span> <span class="n">DefaultDispatcherProvider</span><span class="p">.</span><span class="k">get</span><span class="p">()</span> 
 </code></pre></div>
-
 <p>If the receiver does not have a <code>DispatcherProvider</code>, the value from <a href="https://rbusarow.github.io/Dispatch/api/dispatch-core/dispatch.core/-default-dispatcher-provider/index.html">DefaultDispatcherProvider</a>
 will be returned. In practice, this brings at least two benefits:</p>
 <h3 id="out-of-box-default-functionality">Out-of-box default functionality<a class="headerlink" href="#out-of-box-default-functionality" title="Permanent link">&para;</a></h3>
@@ -990,7 +982,6 @@ of an application's lifecycle, but the most likely use-case is certainly in test
   <span class="n">DefaultDispatcherProvider</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span> <span class="c1">// from dispatch-test</span>
 <span class="p">}</span> 
 </code></pre></div>
-
 <blockquote>
 <p>See <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/index.html">dispatch-test</a> and <a href="https://rbusarow.github.io/Dispatch/api/dispatch-test/dispatch.test/-test-dispatcher-provider/index.html">TestDispatcherProvider</a></p>
 </blockquote>
@@ -1004,16 +995,13 @@ of an application's lifecycle, but the most likely use-case is certainly in test
 
   <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2&quot;</span><span class="p">)</span>
   <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2&quot;</span><span class="p">)</span>
-  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-core:1.0.0-beta07&quot;</span><span class="p">)</span>
+  <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.rickbusarow.dispatch:dispatch-core:1.0.0-beta08&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <!--- MODULE dispatch-core-->
-
 <!--- INDEX  -->
-
-<p><!--- MODULE dispatch-test-->
-<!--- INDEX  --></p>
+<!--- MODULE dispatch-test-->
+<!--- INDEX  -->
 <!--- END -->
                 
               
