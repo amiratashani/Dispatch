@@ -57,15 +57,15 @@ import kotlin.coroutines.*
 public class CoroutineTestExtension(
   private val scopeFactory: ScopeFactory = ScopeFactory()
 ) : TypeBasedParameterResolver<TestProvidedCoroutineScope>(),
-    BeforeEachCallback,
-    AfterEachCallback {
+  BeforeEachCallback,
+  AfterEachCallback {
 
   private val lazyScope = lazy { scopeFactory.create() }
 
   /**
    * A single `TestProvidedCoroutineScope` instance which is reset via [cleanUpTestCoroutines][TestCoroutineScope.cleanupTestCoroutines] after each test.
    */
-  val scope: TestProvidedCoroutineScope
+  public val scope: TestProvidedCoroutineScope
     get() = lazyScope.value
 
   private val contextScopeMap = mutableMapOf<ExtensionContext, TestProvidedCoroutineScope>()
@@ -149,15 +149,14 @@ public class CoroutineTestExtension(
    * @sample samples.CoroutineTestNamedFactorySample
    */
   @ExperimentalCoroutinesApi
-  open class ScopeFactory {
+  public open class ScopeFactory {
 
     /**
      * Creates an instance of [TestProvidedCoroutineScope].  Uses the no-arg factory by default.
      */
-    open fun create(): TestProvidedCoroutineScope =
+    public open fun create(): TestProvidedCoroutineScope =
       TestProvidedCoroutineScope()
   }
-
 }
 
 /**

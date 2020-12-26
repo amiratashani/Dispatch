@@ -36,6 +36,7 @@ object Plugins {
 
   const val mavenPublish = "com.vanniktech.maven.publish"
   const val taskTree = "com.dorongold.task-tree"
+  const val spotless = "com.diffplug.spotless"
   const val benManes = "com.github.ben-manes.versions"
 }
 
@@ -54,11 +55,12 @@ object Versions {
   const val benManes = "0.33.0"
   const val gradleWrapper = "4.1.0"
   const val dagger = "2.25.2"
-  const val kotlin = "1.4.20"
+  const val kotlin = "1.4.21"
   const val mavenPublish = "0.13.0"
 
+  const val spotless = "5.8.2"
   const val taskTree = "1.5"
-  const val versionName = "1.0.0-beta07"
+  const val versionName = "1.0.0-beta08"
 }
 
 object BuildPlugins {
@@ -79,7 +81,6 @@ object BuildPlugins {
   const val androidApplication = "com.android.application"
   const val kotlinAndroid = "kotlin-android"
   const val kotlinAndroidExtensions = "kotlin-android-extensions"
-
 }
 
 object Libs {
@@ -205,7 +206,6 @@ object Libs {
     object Knit {
       const val test = "org.jetbrains.kotlinx:kotlinx-knit-test:${Versions.knit}"
     }
-
   }
 
   object MockK {
@@ -231,7 +231,6 @@ object Libs {
         const val core = "com.rickbusarow.dispatch:dispatch-test:${Versions.versionName}"
         const val jUnit4 = "com.rickbusarow.dispatch:dispatch-test-junit4:${Versions.versionName}"
         const val jUnit5 = "com.rickbusarow.dispatch:dispatch-test-junit5:${Versions.versionName}"
-
       }
     }
 

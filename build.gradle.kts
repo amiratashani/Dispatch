@@ -51,6 +51,7 @@ plugins {
   kotlin("jvm")
   id(Plugins.dokka) version Versions.dokka
   id(Plugins.taskTree) version Versions.taskTree
+  id(Plugins.spotless) version Versions.spotless
   base
 }
 
@@ -134,37 +135,6 @@ subprojects {
       copyReadMe()
     }
   }
-}
-
-allprojects {
-  // force Java 8 source when building java-only artifacts.  This is different than the Kotlin jvm target.
-  pluginManager.withPlugin("java") {
-    configure<JavaPluginExtension> {
-      sourceCompatibility = JavaVersion.VERSION_1_8
-      targetCompatibility = JavaVersion.VERSION_1_8
-    }
-  }
-}
-
-
-subprojects {
-  tasks.withType<KotlinCompile>()
-    .configureEach {
-
-      kotlinOptions {
-        allWarningsAsErrors = true
-
-        jvmTarget = "1.8"
-
-        // https://youtrack.jetbrains.com/issue/KT-24946
-        // freeCompilerArgs = listOf(
-        //     "-progressive",
-        //     "-Xskip-runtime-version-check",
-        //     "-Xdisable-default-scripting-plugin",
-        //     "-Xuse-experimental=kotlin.Experimental"
-        // )
-      }
-    }
 }
 
 val cleanDocs by tasks.registering {
@@ -272,16 +242,6 @@ tasks.withType<KnitTask> {
   }
 }
 
-val generateDependencyGraph by tasks.registering {
-
-  description = "generate a visual dependency graph"
-  group = "refactor"
-
-  doLast {
-    createDependencyGraph()
-  }
-}
-
 val sortDependencies by tasks.registering {
 
   description = "sort all dependencies in a gradle kts file"
@@ -289,32 +249,6 @@ val sortDependencies by tasks.registering {
 
   doLast {
     sortDependencies()
-  }
-}
-
-subprojects {
-
-  // force update all transitive dependencies (prevents some library leaking an old version)
-  configurations.all {
-    resolutionStrategy {
-      force(
-        Libs.Kotlin.reflect,
-        // androidx is currently leaking coroutines 1.1.1 everywhere
-        Libs.Kotlinx.Coroutines.core,
-        Libs.Kotlinx.Coroutines.test,
-        Libs.Kotlinx.Coroutines.android,
-        // prevent dependency libraries from leaking their own old version of this library
-        Libs.RickBusarow.Dispatch.core,
-        Libs.RickBusarow.Dispatch.detekt,
-        Libs.RickBusarow.Dispatch.espresso,
-        Libs.RickBusarow.Dispatch.lifecycle,
-        Libs.RickBusarow.Dispatch.lifecycleExtensions,
-        Libs.RickBusarow.Dispatch.viewModel,
-        Libs.RickBusarow.Dispatch.Test.core,
-        Libs.RickBusarow.Dispatch.Test.jUnit4,
-        Libs.RickBusarow.Dispatch.Test.jUnit5
-      )
-    }
   }
 }
 
@@ -326,7 +260,6 @@ dependencyAnalysis {
   }
 }
 
-
 fun isNonStable(version: String): Boolean {
   val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
   val regex = "^[0-9,.v-]+(-r)?$".toRegex()
@@ -337,5 +270,36 @@ fun isNonStable(version: String): Boolean {
 tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
   rejectVersionIf {
     isNonStable(candidate.version) && !isNonStable(currentVersion)
+  }
+}
+
+configure<com.diffplug.gradle.spotless.SpotlessExtension> {
+  kotlin {
+    target("**/src/**/*.kt")
+    ktlint("0.40.0")
+      .userData(
+        mapOf(
+          "indent_size" to "2",
+          "continuation_indent_size" to "2",
+          "max_line_length" to "off",
+          "disabled_rules" to "no-wildcard-imports",
+          "ij_kotlin_imports_layout" to "*,java.**,javax.**,kotlin.**,^"
+        )
+      )
+    trimTrailingWhitespace()
+    endWithNewline()
+  }
+  kotlinGradle {
+    target("*.gradle.kts")
+    ktlint("0.40.0")
+      .userData(
+        mapOf(
+          "indent_size" to "2",
+          "continuation_indent_size" to "2",
+          "max_line_length" to "off",
+          "disabled_rules" to "no-wildcard-imports",
+          "ij_kotlin_imports_layout" to "*,java.**,javax.**,kotlin.**,^"
+        )
+      )
   }
 }
