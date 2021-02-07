@@ -24,6 +24,10 @@ jobs:
         with :
           # use a personal access token to check out so that this action can trigger other actions
           token : ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      # for Spotless's Prettier Javascript format
+      - uses: actions/setup-node@v2
+
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
