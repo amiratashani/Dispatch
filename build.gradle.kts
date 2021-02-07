@@ -274,6 +274,11 @@ tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
 }
 
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
+  format("javascript") {
+    target("**/docusaurus/**/*.js")
+    targetExclude("**/node_modules/**")
+    prettier()
+  }
   kotlin {
     target("**/src/**/*.kt")
     ktlint("0.40.0")

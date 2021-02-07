@@ -1,78 +1,78 @@
 module.exports = {
-  title: 'Dispatch',
-  tagline: 'Quality of life coroutine utilities',
-  url: 'https://rbusarow.github.io/Dispatch/',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'rbusarow', // Usually your GitHub org/user name.
-  projectName: 'Dispatch', // Usually your repo name.
+  title: "Dispatch",
+  tagline: "Quality of life coroutine utilities",
+  url: "https://rbusarow.github.io/Dispatch/",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
+  organizationName: "rbusarow", // Usually your GitHub org/user name.
+  projectName: "Dispatch", // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Dispatch',
-//      logo: {
-//        alt: 'Dispatch Logo',
-//        src: 'img/logo.svg',
-//      },
+      title: "Dispatch",
+      //      logo: {
+      //        alt: 'Dispatch Logo',
+      //        src: 'img/logo.svg',
+      //      },
       items: [
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
-          position: 'left',
+          to: "docs/",
+          activeBasePath: "docs",
+          label: "Docs",
+          position: "left",
         },
         {
-          to: 'blog',
-          label: 'Blog',
-          position: 'left'
+          to: "blog",
+          label: "Blog",
+          position: "left",
         },
         {
-          href: 'https://github.com/rbusarow/Dispatch',
-          label: 'GitHub',
-          position: 'right',
+          href: "https://github.com/rbusarow/Dispatch",
+          label: "GitHub",
+          position: "right",
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'Change Log',
-              to: 'docs/',
+              label: "Change Log",
+              to: "docs/",
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
+              label: "Second Doc",
+              to: "docs/doc2/",
             },
           ],
         },
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/dispatch',
+              label: "Stack Overflow",
+              href: "https://stackoverflow.com/questions/tagged/dispatch",
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/rbusarow',
+              label: "Twitter",
+              href: "https://twitter.com/rbusarow",
             },
           ],
         },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
-              label: 'Blog',
-              to: 'blog',
+              label: "Blog",
+              to: "blog",
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/rbusarow/Dispatch/',
+              label: "GitHub",
+              href: "https://github.com/rbusarow/Dispatch/",
             },
           ],
         },
@@ -80,28 +80,26 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Rick Busarow, Built with Docusaurus.`,
     },
     prism: {
-      theme: require('prism-react-renderer/themes/dracula'),
-      additionalLanguages: ['kotlin', 'groovy'],
+      theme: require("prism-react-renderer/themes/dracula"),
+      additionalLanguages: ["kotlin", "groovy"],
     },
   },
   presets: [
     [
-      '@docusaurus/preset-classic',
+      "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/rbusarow/Dispatch/',
+          editUrl: "https://github.com/rbusarow/Dispatch/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/rbusarow/Dispatch/',
+          editUrl: "https://github.com/rbusarow/Dispatch/",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       },
     ],
